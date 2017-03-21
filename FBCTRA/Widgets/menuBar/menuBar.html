@@ -1,5 +1,8 @@
 ﻿<img src="../assets/content/images/FBCTRA_logo.png" alt="HTML5 Icon" style="width:96px;height:96px;float:left;margin-top:-35px;">
 <div class="btn-group" toggle="buttons" id="lang">
-    <button type="button" class="btn btn-primary" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN" ng-class="{active:langKey=='en'}"></button>
-    <button type="button" class="btn btn-primary" ng-click="changeLanguage('es')" translate="BUTTON_LANG_ES" ng-class="{active:langKey=='es'}"></button>
+    <button type="button" class="btn btn-primary" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN" ng-class="{active:langKey=='en'}" ng-show="langKey=='es'"></button>
+    <button type="button" class="btn btn-primary" ng-click="changeLanguage('es')" translate="BUTTON_LANG_ES" ng-class="{active:langKey=='es'}" ng-show="langKey=='en'"></button>
+</div>
+<div class="btn-group" toggle="buttons">
+    <button type="button" class="btn btn-primary" ng-click="logout()" translate="BUTTON_LOGOUT" ng-hide="hideLogout"></button>
 </div>

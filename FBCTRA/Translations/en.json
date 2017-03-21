@@ -2,6 +2,7 @@
   "BUTTON_LANG_EN": "English",
   "BUTTON_LANG_ES": "Spanish",
   "BUTTON_LOGIN": "Login",
+  "BUTTON_LOGOUT": "Logout",
 
   "CONTENT_CUS_SUPPORT_CENTER": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders. Non account holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system.",
   "CONTENT_DONT_OWN_VEHICLE": "I No Longer Own This Vehicle. What Do I Do?",

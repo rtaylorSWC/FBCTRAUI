@@ -2,6 +2,8 @@
   "BUTTON_LANG_EN": "Inglés",
   "BUTTON_LANG_ES": "Español",
   "BUTTON_LOGIN": "Iniciar sesión",
+  "BUTTON_LOGOUT": "Cerrar sesión",
+
   "INFO_CUS_SUPPORT_CENTER": "Centro de atención al cliente",
   "INFO_DONT_OWN_VEHICLE": "Ya no tengo este vehículo. ¿Qué debo hacer?",
   "INFO_DONT_PAY": "Qué sucede si no pago",
