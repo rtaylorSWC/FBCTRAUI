@@ -1,0 +1,57 @@
+﻿<html>
+<head>
+    <title>Fort Bend County - TRA</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href="/assets/content/bootstrap.css" rel="stylesheet" />
+    <link href="/assets/content/app.css" rel="stylesheet" />
+
+    <script src="/assets/scripts/jquery-3.1.1.min.js"></script>
+    <!--<script src="/assets/scripts/angular.min.js"></script>-->
+    <script src="/assets/scripts/angular.js"></script>
+
+    <script src="/assets/scripts/angular-translate.js"></script>
+    <!--<script src="/assets/scripts/angular-translate.min.js"></script>-->
+    <script src="/assets/scripts/angular-translate-loader-static-files.js"></script>
+    <!--<script src="/assets/scripts/angular-translate-loader-static-files.min.js"></script>-->
+
+    <script src="/assets/scripts/angular-ui-router.min.js"></script>
+    <script src="/assets/scripts/angular-resource.min.js"></script>
+    <script src="/assets/scripts/angular-route.min.js"></script>
+    <script src="/assets/scripts/angular-cookies.min.js"></script>
+    <script src="/assets/scripts/jsonSelect.js"></script>
+    <script src="/assets/scripts/linq.js"></script>
+    <script src="/assets/scripts/angular-aside.js"></script>
+    <script src="/assets/scripts/ui-bootstrap-tpls-0.14.3.min.js"></script>
+</head>
+
+<body ng-app="UserLoginApp">
+    <script src="/Services/apiService.js"></script>
+    <script src="/Services/configurationProvider.js"></script>
+    <script src="/Services/authenticationFactory.js"></script>
+    <script src="/Services/flashService.js"></script>
+    <script src="/Services/localStore.js"></script>
+    <script src="/Services/messageBus.js"></script>
+
+    <script src="/UserLogin/app.js"></script>
+    <script src="/UserLogin/controllers/login.js"></script>
+    <script src="../Widgets/menuBar/menuBar.js"></script>
+    <script src="../Widgets/infoBar/infoBar.js"></script>
+    <script src="../Widgets/modal/modal.js"></script>
+
+    <header>
+        <div ui-view="menuBarView"></div>
+    </header>
+    <nav>
+        <div ui-view="infoBarView"></div>
+    </nav>
+    <main>
+        <div ng-class="{ 'alert': flash, 'alert-info': flash.type === 'info', 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'  }" ng-bind="flash.message"></div>
+        <div ng-show="false" ui-view="modalView"></div>
+        <div ui-view="loginView"></div>
+    </main>
+    <footer>
+        <div ui-view="navBarFooterView"></div>
+    </footer>
+</body>
+</html>

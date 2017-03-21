@@ -1,0 +1,94 @@
+﻿.homeSaveButton {
+    position: relative;
+    top: 0;
+    right: 2%;
+}
+
+.logoutButton {
+    color: #001F5B;
+    background-color: #fff;
+    opacity: 1;
+    filter: alpha(opacity=25);
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    right: 2%;
+}
+
+.customCenter {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.tac {
+    text-align: center;
+}
+
+.tar {
+    text-align: right;
+}
+
+.tal {
+    text-align: left;
+}
+
+.vam {
+    vertical-align: middle;
+}
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: .25em;
+    background-color: steelblue;
+    clear: left;
+    text-align: right;
+    margin: 35px;
+    color: white;
+}
+
+nav {
+    float: left;
+    max-width: 220px;
+    margin: 0;
+    padding: 1em;
+}
+
+navTitle {
+    padding: .25em;
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    margin: 20px;
+}
+loginTitle
+ {
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+}
+/*nav ul {
+        list-style-type: none;
+        padding: 0;
+    }*/
+
+/*nav ul a {
+            text-decoration: none;
+        }*/
+
+main {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

@@ -1,0 +1,22 @@
+﻿<div id="summary">
+        <kendo-grid options="mainGridOptions">
+            <div k-detail-template>
+                <kendo-tabstrip>
+                    <ul>
+                        <li class="k-state-active">Account Summary</li>
+                        <li>License Plate</li>
+                    </ul>
+                    <div>
+                        <div kendo-grid k-options="detailGridOptions(dataItem)"></div>
+                    </div>
+                    <div>
+                        <ul class="contact-info-form">
+                            <li><label>Account: </label><input class="k-textbox" /></li>
+                            <li><label>Begin Date: </label><input class="k-textbox" /></li>
+                            <li><label>End Date: </label><input class="k-textbox" /></li>
+                        </ul>
+                    </div>
+                </kendo-tabstrip>
+            </div>
+        </kendo-grid>
+</div>

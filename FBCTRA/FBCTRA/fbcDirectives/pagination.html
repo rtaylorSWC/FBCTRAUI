@@ -1,0 +1,11 @@
+﻿<div id="pagination" class="pagination">
+    <ul>
+        <li ng-class="{disabled: noPrevious()}"><a ng-click="selectFirst()">First</a></li>
+        <li ng-class="{disabled: noPrevious()}"><a ng-click="selectPrevious()">Prev</a></li>
+        <!--<li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="selectPage(page)">{{page}}</a></li>-->
+        <!--<li ng-class="{active: isActive(page)}"><a><page-select></page-select> of {{numPages}}</a></li>-->
+        <li ng-class="{active: isActive(page)}"><a>{{currentPage}} of {{numPages}}</a></li>
+        <li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li>
+        <li ng-class="{disabled: noNext()}"><a ng-click="selectLast()">Last</a></li>
+    </ul>
+</div>
