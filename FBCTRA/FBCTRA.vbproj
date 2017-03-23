@@ -111,7 +111,6 @@
     <Content Include="FBCTRA\notices\notices.html" />
     <Content Include="FBCTRA\notices\notices.js" />
     <Content Include="Services\authenticationFactory.js" />
-    <Content Include="Services\translationService.js" />
     <Content Include="Services\apiService.js" />
     <Content Include="Services\configurationProvider.js" />
     <Content Include="Services\messageBus.js" />
@@ -122,6 +121,7 @@
     <Content Include="assets\scripts\angular-resource.min.js" />
     <Content Include="assets\scripts\angular-route.min.js" />
     <Content Include="assets\scripts\angular.min.js" />
+    <Content Include="Services\translationService.js" />
     <Content Include="UserLogin\app.js" />
     <Content Include="UserLogin\controllers\login.js" />
     <Content Include="UserLogin\controllers\register.js" />
