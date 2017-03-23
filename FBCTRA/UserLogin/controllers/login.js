@@ -1,6 +1,6 @@
 ﻿angular.module('UserLoginApp')
-  .controller('LoginController', ['$scope', '$location', '$window', 'AuthenticationFactory', 'localStore', 'configurationService', 'FlashService',
-	function ($scope, $location, $window, AuthenticationFactory, localStore, configurationService, FlashService) {
+  .controller('LoginController', ['$scope', '$location', '$window', 'AuthenticationFactory', 'localStore', 'configurationService', 'FlashService', 'TranslationService',
+	function ($scope, $location, $window, AuthenticationFactory, localStore, configurationService, FlashService, TranslationService) {
 	    'use strict';
 
 	    $scope.navigateToLogin = function () {
@@ -22,9 +22,21 @@
 	        });
 	    };
 
+	    //$scope.getTranslationData = function (lang) {
+	    //    TranslationService.getTranslationData(lang, function (response) {
+	    //        //if (response.Success) {
+	    //        if (response) {
+	    //            localStore.setTranslatedData(response);
+	    //        } else {
+	    //            FlashService.Error("Unable to get tranlation data.");
+	    //        }
+	    //    });
+	    //};
+
 	    (function initController() {
 	        AuthenticationFactory.clearCredentials();
 	        localStore.reset();
+	        //$scope.getTranslationData('en');
 	    })();
 	}
   ]);

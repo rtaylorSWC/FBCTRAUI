@@ -1,5 +1,5 @@
 ﻿<div id="summary">
-        <kendo-grid options="mainGridOptions">
+        <!--<kendo-grid options="mainGridOptions">
             <div k-detail-template>
                 <kendo-tabstrip>
                     <ul>
@@ -18,5 +18,25 @@
                     </div>
                 </kendo-tabstrip>
             </div>
-        </kendo-grid>
+        </kendo-grid>-->
+
+    <kendo-tabstrip>
+        <ul>
+            <li class="k-state-active"> Notices</li>
+        </ul>
+
+        <kendo-grid options="mainGridOptions" k-data-source="ds"></kendo-grid>
+
+        <!--<div>
+            <ul class="contact-info-form">
+                <li><label>Account: </label><input class="k-textbox" /></li>
+                <li><label>Begin Date: </label><input class="k-textbox" /></li>
+                <li><label>End Date: </label><input class="k-textbox" /></li>
+            </ul>
+        </div>-->
+        <!--<kendo-grid options="mainGridOptions">
+
+        </kendo-grid>-->
+    </kendo-tabstrip>
 </div>
+

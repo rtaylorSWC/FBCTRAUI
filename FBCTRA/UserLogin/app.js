@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('UserLoginApp', ['ngResource', 'ui.router', 'pascalprecht.translate', "ui.bootstrap", "ngAside", 'ApiModule', 'AuthenticationModule',
+angular.module('UserLoginApp', ['ngResource', 'ui.router', 'pascalprecht.translate', "ui.bootstrap", "ngAside", 'ApiModule', 'AuthenticationModule', 'TranslationModule',
                                 'ConfigurationModule', 'LocalStoreModule', 'FlashModule', 'MessageBusModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule'])
 .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
 
@@ -32,11 +32,13 @@ angular.module('UserLoginApp', ['ngResource', 'ui.router', 'pascalprecht.transla
             })
         });
 
-    $translateProvider.useStaticFilesLoader({
-        prefix: '/Translations/',
-        suffix: '.json'
-    });
-    $translateProvider.preferredLanguage('en');
-    $translateProvider.fallbackLanguage('en');
-    $translateProvider.useSanitizeValueStrategy('escape');
+    //translations
+    $translateProvider
+        .preferredLanguage('en')
+        .fallbackLanguage('en')
+        .useSanitizeValueStrategy('escape')
+        .useStaticFilesLoader({
+            prefix: '/Translations/',
+            suffix: '.json'
+        });
 });

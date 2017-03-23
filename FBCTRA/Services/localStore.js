@@ -2,7 +2,7 @@
     .constant('localStoreConstants', {
         CURRENT_USER: '8638P1F2-7G18-692W-M2V2-50C9L31380DP',
         CURRENT_FULLNAME: '3833P1F2-9G12-692W-M2V2-50C9L31380WE',
-        USER_ENTITIES: '6993D3D7-5E82-407C-A9E9-50C9439350MH',
+        TRANSLATED_DATA: '6993D3D7-5E82-407C-A9E9-50C9439350MH',
         CURRENT_ENTITY: '389D3LE2-305Y-3H23-MN28-90238DE380DE'
     })
     .service('localStore', ['$log', '$window', 'localStoreConstants', 'messageBus',
@@ -11,13 +11,13 @@
             this.getCurrentUser = getCurrentUser;
             this.getCurrentFullName = getCurrentFullName;
             this.getAuthToken = getAuthToken;
-            this.getUserEntities = getUserEntities;
+            this.getTranslatedData = getTranslatedData;
             this.getCurrentEntity = getCurrentEntity;
 
             this.setCurrentUser = setCurrentUser;
             this.setCurrentFullName = setCurrentFullName;
             this.setAuthToken = setAuthToken;
-            this.setUserEntities = setUserEntities;
+            this.setTranslatedData = setTranslatedData;
             this.setCurrentEntity = setCurrentEntity;
 
             this.setSession = setSession;
@@ -36,8 +36,8 @@
                 return getSession(localStoreConstants.AUTH_TOKEN);
             }
 
-            function getUserEntities() {
-                return getSession(localStoreConstants.USER_ENTITIES);
+            function getTranslatedData() {
+                return getSession(localStoreConstants.TRANSLATED_DATA);
             }
 
             function getCurrentEntity() {
@@ -56,10 +56,10 @@
                 setSession(localStoreConstants.AUTH_TOKEN, authTokenValue);
             }
 
-            function setUserEntities(userEntitiesValue) {
-                setSession(localStoreConstants.USER_ENTITIES, userEntitiesValue);
+            function setTranslatedData(translatedDataValue) {
+                setSession(localStoreConstants.TRANSLATED_DATA, translatedDataValue);
 
-                messageBus.publish('userEntitiesChanged', userEntitiesValue);
+                messageBus.publish('translatedDataChanged', translatedDataValue);
             }
 
             function setCurrentEntity(currentEntityValue) {

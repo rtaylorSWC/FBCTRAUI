@@ -4,14 +4,8 @@
 	    'use strict';
 
 	    $scope.tabs = [{
-	        route: 'summary',
-	        titleId: 'TAB_SUMMARY'
-	    }, {
-	        route: 'invoice',
-	        titleId: 'TAB_INVOICE'
-	    }, {
-	        route: 'reporting',
-	        titleId: 'TAB_REPORTING'
+	        route: 'notices',
+	        titleId: 'TAB_NOTICES'
 	    }];
 
 	    $scope.isActive = function (viewRoute) {

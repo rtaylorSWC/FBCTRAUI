@@ -1,10 +1,8 @@
 ﻿<navTitle>GENERAL INFORMATION</navTitle>
-
 <nav>
     <ul class="nav nav-tabs">
         <li ng-repeat="tab in tabs" ng-class="{active: isActive(tab.route)}">
-            <!--<a ui-sref="{{ tab.route }}" ng-bind="tab.titleId | translate">&nbsp;</a>-->
-            <a ng-bind="tab.titleId | translate" ng-click="open(tab)" >&nbsp;</a>
+            <a ng-bind="tab.titleId | translate" ng-click="open(tab)" ></a>
         </li>
     </ul>
 </nav>

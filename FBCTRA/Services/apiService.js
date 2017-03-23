@@ -104,7 +104,7 @@
 	                params: params
 	            });
 	        },
-	        postAgent: function (uri, payload, params) {
+	        postData: function (uri, payload, params) {
 	            return getResourcePromise(
 	                uri,
 	                payload,

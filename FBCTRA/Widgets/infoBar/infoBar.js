@@ -5,55 +5,55 @@
 
 	    $scope.tabs = [{
 	        route: 'recieveNotice',
-	        titleId: 'INFO_RECIEVE_NOTICE',
+	        titleId: 'LABEL_INFO_RECIEVE_NOTICE',
 	        contentId: 'CONTENT_RECIEVE_NOTICE'
 	    }, {
 	        route: 'violation',
-	        titleId: 'INFO_VIOLATION',
+	        titleId: 'LABEL_INFO_VIOLATION',
 	        contentId: 'CONTENT_VIOLATION'
 	    }, {
 	        route: 'howPay',
-	        titleId: 'INFO_PAY',
+	        titleId: 'LABEL_INFO_PAY',
 	        contentId: 'CONTENT_PAY'
 	    }, {
 	        route: 'ownVehicle',
-	        titleId: 'INFO_DONT_OWN_VEHICLE',
+	        titleId: 'LABEL_INFO_DONT_OWN_VEHICLE',
 	        contentId: 'CONTENT_DONT_OWN_VEHICLE'
 	}, {
 	        route: 'tollTagNotice',
-	        titleId: 'INFO_TOLLTAG_NOTICE',
+	        titleId: 'LABEL_INFO_TOLLTAG_NOTICE',
 	        contentId: 'CONTENT_TOLLTAG_NOTICE'
 	}, {
 	        route: 'dontPay',
-	        titleId: 'INFO_DONT_PAY',
+	        titleId: 'LABEL_INFO_DONT_PAY',
 	        contentId: 'CONTENT_DONT_PAY'
 	}, {
 	        route: 'violator',
-	        titleId: 'INFO_VIOLATOR',
+	        titleId: 'LABEL_INFO_VIOLATOR',
 	        contentId: 'CONTENT_VIOLATOR'
 	}, {
 	        route: 'tollPlaza',
-	        titleId: 'INFO_TOLL_PLAZA',
+	        titleId: 'LABEL_INFO_TOLL_PLAZA',
 	        contentId: 'CONTENT_TOLL_PLAZA'
 	}, {
 	        route: 'tollRates',
-	        titleId: 'INFO_TOLL_RATES',
+	        titleId: 'LABEL_INFO_TOLL_RATES',
 	        contentId: 'CONTENT_TOLL_RATES'
 	    }, {
 	        route: 'cusSupportCenter',
-	        titleId: 'INFO_CUS_SUPPORT_CENTER',
+	        titleId: 'LABEL_INFO_CUS_SUPPORT_CENTER',
 	        contentId: 'CONTENT_CUS_SUPPORT_CENTER'
 	    }, {
 	        route: 'payInPerson',
-	        titleId: 'INFO_PAY_IN_PERSON',
+	        titleId: 'LABEL_INFO_PAY_IN_PERSON',
 	        contentId: 'CONTENT_PAY_IN_PERSON'
 	    }, {
 	        route: 'roadMaps',
-	        titleId: 'INFO_ROADMAPS',
+	        titleId: 'LABEL_INFO_ROADMAPS',
 	        contentId: 'CONTENT_ROADMAPS'
 	    }, {
 	        route: 'faqs',
-	        titleId: 'INFO_FAQS',
+	        titleId: 'LABEL_INFO_FAQS',
 	        contentId: 'CONTENT_FAQS'
 	    }];
 

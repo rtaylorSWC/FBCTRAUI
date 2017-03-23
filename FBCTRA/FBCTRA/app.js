@@ -1,16 +1,8 @@
 ﻿'use strict';
-angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", "MessageBusModule", "LocalStoreModule",
-                          "FlashModule", 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule', 'ngResource', 'ngFileUpload', 'kendo.directives'])
+angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule', 'TranslationModule',
+                          'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule', 'ngResource', 'ApiModule', 'kendo.directives'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
-      $urlRouterProvider.otherwise("/summary");
-
-      $translateProvider.useStaticFilesLoader({
-          prefix: '/Translations/',
-          suffix: '.json'
-      });
-      $translateProvider.preferredLanguage('en');
-      $translateProvider.fallbackLanguage('en');
-      $translateProvider.useSanitizeValueStrategy('escape');
+      $urlRouterProvider.otherwise("/notices");
 
       var fbcViewBase = {
           tabBarView: {
@@ -36,36 +28,29 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
       };
 
       $stateProvider
-            .state('summary', {
-                url: '/summary',
+            .state('notices', {
+                url: '/notices',
                 views: angular.extend({}, fbcViewBase, {
                     fbcView: {
-                        templateUrl: 'summary/summary.html',
-                        controller: 'SummaryController'
+                        templateUrl: 'notices/notices.html',
+                        controller: 'NoticesController'
                     }
                 })
-            })
-            .state('invoice', {
-                url: '/invoice',
-                views: angular.extend({}, fbcViewBase, {
-                    fbcView: {
-                        templateUrl: 'invoice/invoice.html',
-                        controller: 'InvoiceController'
-                    }
-                })
-            })
-            .state('reporting', {
-                url: '/reporting',
-                views: angular.extend({}, fbcViewBase, {
-                    fbcView: {
-                        templateUrl: 'reporting/reporting.html',
-                        controller: 'ReportingController'
-                    }
-                })
-            })
+            });
+
+      //translations
+      $translateProvider
+          .preferredLanguage('en')
+          .fallbackLanguage('en')
+          .useSanitizeValueStrategy('escape')
+          .useStaticFilesLoader({
+              prefix: '/Translations/',
+              suffix: '.json'
+          });
 
   })
   .run(function ($rootScope, $location, $cookieStore, $http) {
+
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
