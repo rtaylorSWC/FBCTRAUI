@@ -1,5 +1,4 @@
-﻿<!--<hr>-->
-<br />
+﻿<br />
 <div class="row">
     <div class="col-md-3">
         <div class="input-group input-group-sm add-on">
@@ -9,19 +8,13 @@
             </div>
         </div>
     </div>
-    <!--<div class="col-md-6">
-        <h4 class="text-center">Notices</h4>
-    </div>-->
     <div class="col-md-3">
         <select class="form-control input-sm pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('show '+size+' per page') for size in pageSizes"></select>
     </div>
     <div class="col-md-6">
-        <a href="#myModal" role="button" class="btn btn-primary pull-right" data-toggle="modal">Pay</a>
+        <a ng-click="getPaymentUrl()" role="button" class="btn btn-primary pull-right" data-toggle="modal">Pay</a>
     </div>
-
-    </div>
-<!--<a href="#myModal" role="button" class="btn btn-default" data-toggle="modal">Pay</a>-->
-<!--<a href="#myModal" role="button" class="btn btn-primary pull-right" data-toggle="modal">Pay</a>-->
+</div>
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

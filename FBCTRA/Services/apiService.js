@@ -4,16 +4,12 @@
 	    'use strict';
 
 	    var currentAuthToken = localStore.getAuthToken();
-	    var domainApiUrl = configurationService.getConsumerApiUrl();
-	    var agentApiUrl = configurationService.getAgentApiUrl();
+	    var domainApiUrl = configurationService.getVehicleApiUrl();
 
 	    function getResourcePromise(uri, payload, parameters, resourceConfig, resourceMethod, additionalHeaders, useCacheBuster, useResourceCache) {
 	        // calcualte URL
 	        var url = domainApiUrl + uri;
 	        //$log.debug({ url: url, method: resourceMethod });
-
-	        //ToDo: reduce check to base uri once params are passed in
-	        url = (uri === '/agents') ? agentApiUrl + uri : url;
 
 	        var headers = angular
 	            .extend({}, {

@@ -22,23 +22,23 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
 
       var fbcViewBase = {
           tabBarView: {
-              templateUrl: '../Widgets/tabBar/tabBar.html',
+              templateUrl: 'Widgets/tabBar/tabBar.html',
               controller: 'TabBarController'
           },
           infoBarView: {
-              templateUrl: '../Widgets/infoBar/infoBar.html',
+              templateUrl: 'Widgets/infoBar/infoBar.html',
               controller: 'InfoBarController'
           },
           menuBarView: {
-              templateUrl: '../Widgets/menuBar/menuBar.html',
+              templateUrl: 'Widgets/menuBar/menuBar.html',
               controller: 'MenuBarController'
           },
           modalView: {
-              templateUrl: '../Widgets/modal/modal.html',
+              templateUrl: 'Widgets/modal/modal.html',
               controller: 'ModalController'
           },
           navBarFooterView: {
-              templateUrl: '../Widgets/navBarFooter/navBarFooter.html',
+              templateUrl: 'Widgets/navBarFooter/navBarFooter.html',
               controller: 'NavBarFooterController'
           }
       };
@@ -70,7 +70,7 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
           .fallbackLanguage('en')
           .useSanitizeValueStrategy('escape')
           .useStaticFilesLoader({
-              prefix: '../Translations/',
+              prefix: 'Translations/',
               suffix: '.json'
           });
 

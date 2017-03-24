@@ -116,3 +116,12 @@ main {
   left: 7px;
   font-size: 15px;
 }
+
+@media (min-height: 392px) {
+  .modal-lg {
+    height: 80%;
+  }
+  .modal-body {
+    height: 550px;
+  }
+}

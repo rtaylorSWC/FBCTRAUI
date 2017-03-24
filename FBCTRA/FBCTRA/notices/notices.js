@@ -1,7 +1,29 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$location', '$scope', '$filter', 'localStore', 'messageBus', 'NoticesService',
-    function ($location, $scope, $filter, localStore, messageBus, NoticesService) {
+  .controller('NoticesController', ['$location', '$scope', '$filter', 'localStore', 'messageBus', 'FlashService', 'NoticesService', 'VehicleService',
+    function ($location, $scope, $filter, localStore, messageBus, FlashService, NoticesService, VehicleService) {
         'use strict';
+
+        $scope.open = function (payItem) {
+            messageBus.publish('payItemSelected', payItem);
+        };
+
+        $scope.getPaymentUrl = function () {
+            VehicleService.getPaymentURL(function (response) {
+                if (response.Success == true) {
+                    var paymentUrl = response;
+                    $scope.open(paymentUrl);
+                } else {
+                    FlashService.Error("Unable to get Payment URL.");
+                    //ToDo: remove once api in place
+                    $scope.payment = {};
+                    $scope.payment.titleId = "FBC Payment Portal";
+                    $scope.payment.contentId = response;
+                    $scope.payment.processingPayment = true;
+                    $scope.open($scope.payment);
+                }
+            });
+        };
+
         var generateData = function () {
             var arr = [];
             var letterWords = ["notice"]
