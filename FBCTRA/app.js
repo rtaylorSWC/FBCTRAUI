@@ -1,8 +1,24 @@
 ﻿'use strict';
-angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule', 'TranslationModule',
-                          'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule', 'ngResource', 'ApiModule', 'kendo.directives'])
+angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
+                          'TranslationModule', 'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule',
+                          'ngResource', 'ApiModule', 'ConfigurationModule'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
-      $urlRouterProvider.otherwise("/notices");
+      $urlRouterProvider.otherwise("/login");
+
+      var loginViewBase = {
+          menuBarView: {
+              templateUrl: 'Widgets/menuBar/menuBar.html',
+              controller: 'MenuBarController'
+          },
+          infoBarView: {
+              templateUrl: 'Widgets/infoBar/infoBar.html',
+              controller: 'InfoBarController'
+          },
+          modalView: {
+              templateUrl: 'Widgets/modal/modal.html',
+              controller: 'ModalController'
+          }
+      };
 
       var fbcViewBase = {
           tabBarView: {
@@ -28,15 +44,25 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
       };
 
       $stateProvider
-            .state('notices', {
-                url: '/notices',
-                views: angular.extend({}, fbcViewBase, {
-                    fbcView: {
-                        templateUrl: 'notices/notices.html',
-                        controller: 'NoticesController'
-                    }
-                })
-            });
+        //USER LOGIN
+        .state('login', {
+            url: '/login',
+            views: angular.extend({}, loginViewBase, {
+                loginView: {
+                    templateUrl: 'UserLogin/views/login.html',
+                    controller: 'LoginController'
+                }
+            })
+        })
+        .state('notices', {
+            url: '/notices',
+            views: angular.extend({}, fbcViewBase, {
+                fbcView: {
+                    templateUrl: 'FBCTRA/notices/notices.html',
+                    controller: 'NoticesController'
+                }
+            })
+        });
 
       //translations
       $translateProvider
@@ -44,7 +70,7 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
           .fallbackLanguage('en')
           .useSanitizeValueStrategy('escape')
           .useStaticFilesLoader({
-              prefix: '/Translations/',
+              prefix: '../Translations/',
               suffix: '.json'
           });
 

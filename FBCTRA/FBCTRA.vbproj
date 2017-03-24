@@ -84,11 +84,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\content\app.css" />
-    <Content Include="assets\content\bootstrap.css" />
+    <Content Include="assets\content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="assets\content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="assets\content\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\content\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\content\bootstrap\js\npm.js" />
+    <Content Include="assets\content\font-awesome.min.css" />
     <Content Include="assets\content\images\FBCTRA_logo.png" />
-    <Content Include="assets\content\kendo\kendo.common-material.min.css" />
-    <Content Include="assets\content\kendo\kendo.material.min.css" />
-    <Content Include="assets\content\kendo\kendo.material.mobile.min.css" />
     <Content Include="assets\scripts\angular-aside.js" />
     <Content Include="assets\scripts\angular-cookies.min.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.js" />
@@ -99,7 +104,6 @@
     <Content Include="assets\scripts\angular.js" />
     <Content Include="assets\scripts\jquery-3.1.1.min.js" />
     <Content Include="assets\scripts\jsonSelect.js" />
-    <Content Include="assets\scripts\kendo.all.min.js" />
     <Content Include="assets\scripts\linq.js" />
     <Content Include="assets\scripts\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="FBCTRA\fbcDirectives\pageSelect.js" />
@@ -116,16 +120,14 @@
     <Content Include="Services\messageBus.js" />
     <Content Include="Services\localStore.js" />
     <Content Include="Services\flashService.js" />
-    <Content Include="FBCTRA\app.js" />
-    <Content Include="FBCTRA\index.html" />
+    <Content Include="app.js" />
+    <Content Include="index.html" />
     <Content Include="assets\scripts\angular-resource.min.js" />
     <Content Include="assets\scripts\angular-route.min.js" />
     <Content Include="assets\scripts\angular.min.js" />
     <Content Include="Services\translationService.js" />
-    <Content Include="UserLogin\app.js" />
     <Content Include="UserLogin\controllers\login.js" />
     <Content Include="UserLogin\controllers\register.js" />
-    <Content Include="UserLogin\index.html" />
     <Content Include="UserLogin\views\login.html" />
     <Content Include="UserLogin\views\register.html" />
     <Content Include="Widgets\menuBar\menuBar.js" />
@@ -174,9 +176,16 @@
     <Content Include="editorconfig" />
     <Content Include="assets\scripts\angular-resource.min.js.map" />
     <Content Include="assets\scripts\angular-route.min.js.map" />
-    <Content Include="assets\content\kendo\images\kendoui.woff" />
-    <Content Include="assets\content\kendo\fonts\glyphs\WebComponentsIcons.woff" />
-    <Content Include="assets\content\kendo\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="assets\content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="assets\content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="assets\content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="assets\content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="assets\content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

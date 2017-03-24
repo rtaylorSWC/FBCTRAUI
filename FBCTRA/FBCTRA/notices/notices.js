@@ -1,169 +1,117 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$location', '$scope', 'localStore', 'messageBus', 'NoticesService',
-    function ($location, $scope, localStore, messageBus, NoticesService) {
+  .controller('NoticesController', ['$location', '$scope', '$filter', 'localStore', 'messageBus', 'NoticesService',
+    function ($location, $scope, $filter, localStore, messageBus, NoticesService) {
         'use strict';
-        //$scope.mainGridOptions = {
-        //    dataSource: {
-        //        type: "odata",
-        //        transport: {
-        //            read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
-        //        },
-        //        pageSize: 5,
-        //        serverPaging: true,
-        //        serverSorting: true
-        //    },
-        //    sortable: true,
-        //    pageable: true,
-        //    dataBound: function () {
-        //        this.expandRow(this.tbody.find("tr.k-master-row").first());
-        //    },
-        //    columns: [{
-        //        field: "FirstName",
-        //        title: "First Name",
-        //        width: "120px"
-        //    }, {
-        //        field: "LastName",
-        //        title: "Last Name",
-        //        width: "120px"
-        //    }, {
-        //        field: "Country",
-        //        width: "120px"
-        //    }, {
-        //        field: "City",
-        //        width: "120px"
-        //    }, {
-        //        field: "Title"
-        //    }]
-        //};
+        var generateData = function () {
+            var arr = [];
+            var letterWords = ["notice"]
+            for (var i = 1; i < 60; i++) {
+                var id = letterWords[Math.floor(Math.random() * letterWords.length)];
+                arr.push({ "id": id + i, "total": "total " + i, "description": "Description of item #" + i, "link": id, "field4": "Some info about notice: " + i, "field5": "field" + i });
+            }
+            return arr;
+        }
 
-        //$scope.showDisputed = true;
+        var sortingOrder = 'name'; //default sort
 
-        //$scope.dataItem = { "accountNumber": "123892", "beginDate": "dd/mm/yyyy", "endDate":"dd/mm/yyyy" };
+        $scope.sortingOrder = sortingOrder;
+        $scope.pageSizes = [5, 10, 25, 50];
+        $scope.reverse = false;
+        $scope.filteredItems = [];
+        $scope.groupedItems = [];
+        $scope.itemsPerPage = 10;
+        $scope.pagedItems = [];
+        $scope.currentPage = 0;
+        $scope.items = generateData();
 
-        //$scope.disputedGridOptions = {
-        //    dataSource: {
-        //        data: {
-        //            "items": [{ "licensePlate": "3X48J" }, { "licensePlate": "J238F" }, { "licensePlate": "D7832" }, { "licensePlate": "W238F" }, { "licensePlate": "MX48J" }, { "licensePlate": "W238F" }]
-        //        },
-        //        schema: {
-        //            data: "items"
-        //        },
-        //        pageSize: 5,
-        //        serverPaging: true,
-        //        serverSorting: true
-        //    },
-        //    columns: [
-        //      {
-        //          field: "licensePlate",
-        //          title: "License Plate"
-        //      }],
-        //    sortable: true,
-        //    pageable: true,
-        //    dataBound: function () {
-        //        this.expandRow(this.tbody.find("tr.k-master-row").first());
-        //    },
-        //};
-
-        //$scope.openGridOptions = {
-        //    dataSource: {
-        //        data: {
-        //            "items": [{ "licensePlate": "11111" }, { "licensePlate": "J238F" }, { "licensePlate": "D7832" }, { "licensePlate": "W238F" }, { "licensePlate": "MX48J" }, { "licensePlate": "W238F" }]
-        //        },
-        //        schema: {
-        //            data: "items"
-        //        },
-        //        pageSize: 5,
-        //        serverPaging: true,
-        //        serverSorting: true
-        //    },
-        //    columns: [
-        //      {
-        //          field: "licensePlate",
-        //          title: "License Plate"
-        //      }],
-        //    sortable: true,
-        //    pageable: true,
-        //    dataBound: function () {
-        //        this.expandRow(this.tbody.find("tr.k-master-row").first());
-        //    },
-        //};
-
-        //$scope.detailGridOptions = function (dataItem) {
-        //    return {
-        //        dataSource: {
-        //            data: {
-        //                "items": [{ "totalInvoicedAmount": "323", "paidAmount": "45", "adjustments": "23", "fees":"52", "unpaidBalance":"232", "uninvoicedTolls":"53", "amountDue":"323" }]
-        //            },
-        //            schema: {
-        //                data: "items"
-        //            },
-        //            serverPaging: true,
-        //            serverSorting: true,
-        //            serverFiltering: true,
-        //            pageSize: 5,
-        //            //filter: { field: "licensePlate", operator: "eq", value: dataItem.licensePlate }
-        //        },
-        //        columns: [
-        //          {
-        //              field: "totalInvoicedAmount",
-        //              title: "Total Invoiced Amount"
-        //          }, {
-        //              field: "paidAmount",
-        //              title: "Paid Amount"
-        //          }, {
-        //              field: "adjustments",
-        //              title: "Adjustments"
-        //          }, {
-        //              field: "fees",
-        //              title: "Fees"
-        //          }, {
-        //              field: "unpaidBalance",
-        //              title: "Unpaid Balance"
-        //          }, {
-        //              field: "uninvoicedTolls",
-        //              title: "Uninvoiced Tolls"
-        //          }, {
-        //              field: "amountDue",
-        //              title: "Amount Due"
-        //          }],
-        //        scrollable: false,
-        //        sortable: true,
-        //        pageable: true
-        //    };
-        //};
-
-        $scope.getDisputedNotices = function () {
-            var currentUserGUID = '';
-            NoticesService.getNoticesData(currentUserGUID, function (response) {
-                if (response.Success == true) {
-                    $scope.dataModel = response;
-                    $scope.noOfPages = $scope.dataModel.TotalPages;
-                    $scope.noOfNotices = $scope.dataModel.TotalRows;
-                } else {
-                    FlashService.Error("Unable to get Notices.");
-                }
-            });
+        var searchMatch = function (haystack, needle) {
+            if (!needle) {
+                return true;
+            }
+            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
         };
-        $scope.getDisputedNotices();
 
-        $scope.disputedGridOptions = {
-            dataSource: {
-                data: $scope.disputedNotices,
-                pageSize: 5,
-                serverPaging: true,
-                serverSorting: true
-            },
-            columns: [
-              {
-                  field: "licensePlate",
-                  title: "License Plate"
-              }],
-            sortable: true,
-            pageable: true,
-            dataBound: function () {
-                this.expandRow(this.tbody.find("tr.k-master-row").first());
+        // init the filtered items
+        $scope.search = function () {
+            $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+                for (var attr in item) {
+                    if (searchMatch(item[attr], $scope.query))
+                        return true;
+                }
+                return false;
+            });
+            // sorting order
+            if ($scope.sortingOrder !== '') {
+                $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+            }
+            $scope.currentPage = 0;
+            // group by pages
+            $scope.groupToPages();
+        };
+
+        // items per page
+        $scope.perPage = function () {
+            $scope.groupToPages();
+        };
+
+        // calculate page in place
+        $scope.groupToPages = function () {
+            $scope.pagedItems = [];
+
+            for (var i = 0; i < $scope.filteredItems.length; i++) {
+                if (i % $scope.itemsPerPage === 0) {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [$scope.filteredItems[i]];
+                } else {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+                }
             }
         };
 
+        $scope.deleteItem = function (idx) {
+            var itemToDelete = $scope.pagedItems[$scope.currentPage][idx];
+            var idxInItems = $scope.items.indexOf(itemToDelete);
+            $scope.items.splice(idxInItems, 1);
+            $scope.search();
+
+            return false;
+        };
+
+        $scope.range = function (start, end) {
+            var ret = [];
+            if (!end) {
+                end = start;
+                start = 0;
+            }
+            for (var i = start; i < end; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.setPage = function () {
+            $scope.currentPage = this.n;
+        };
+
+        $scope.search();
+
+        // sorting order
+        $scope.sort_by = function (newSortingOrder) {
+            if ($scope.sortingOrder == newSortingOrder)
+                $scope.reverse = !$scope.reverse;
+
+            $scope.sortingOrder = newSortingOrder;
+        };
     }
   ]);

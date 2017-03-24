@@ -1,4 +1,4 @@
-﻿angular.module('UserLoginApp')
+﻿angular.module('FBCApp')
   .controller('RegisterController', ['UserService', '$location', '$rootScope', 'FlashService',
 	function (UserService, $location, $rootScope, FlashService) {
 	    'use strict';
