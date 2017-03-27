@@ -1,9 +1,9 @@
 ﻿angular.module('ModalModule', [])
-    .filter('trustAsResourceUrl', ['$sce', function ($sce) {
-        return function (val) {
-            return $sce.trustAsResourceUrl(val);
-        };
-    }])
+    //.filter('trustAsResourceUrl', ['$sce', function ($sce) {
+    //    return function (val) {
+    //        return $sce.trustAsResourceUrl(val);
+    //    };
+    //}])
 .controller('ModalController', ['$scope', '$aside', 'localStore', 'messageBus',
 function ($scope, $aside, localStore, messageBus) {
     'use strict';

@@ -1,0 +1,213 @@
+﻿{
+  "BUTTON_LANG_EN": "English",
+  "BUTTON_LANG_ES": "Spanish",
+  "BUTTON_LOGIN": "Login",
+  "BUTTON_LOGOUT": "Logout",
+
+  "CONTENT_CUS_SUPPORT_CENTER": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders. Non account holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system.",
+  "CONTENT_DONT_OWN_VEHICLE": "I No Longer Own This Vehicle. What Do I Do?",
+  "CONTENT_DONT_PAY": "What Happens If I don't pay",
+  "CONTENT_FAQS": "FAQs",
+  "CONTENT_PAY": "How Can I Pay?",
+  "CONTENT_PAY_IN_PERSON": "Pay in Person",
+  "CONTENT_RECIEVE_NOTICE": "Why Did I Receive a Notice/Violation?",
+  "CONTENT_ROADMAPS": "Fort Bend Toll Roads Map",
+  "CONTENT_TOLL_PLAZA": "Toll Plaza Info",
+  "CONTENT_TOLL_RATES": "Toll Rates",
+  "CONTENT_TOLLTAG_NOTICE": "I Have a Toll Tag. Why Did I Get a Notice?",
+  "CONTENT_VIOLATION": "Pursuant to the Texas Transportation Code, Chapter 284, the registered owner or renter of record of a vehicle (not necessarily the driver of the vehicle) that passes through a toll facility is responsible for payment of tolls associated with said toll facility. Failure to pay toll charges is against the law and results in a Toll Violation.",
+  "CONTENT_VIOLATOR": "Don't Become A Violator",
+
+  "LABEL_INFO_CUS_SUPPORT_CENTER": "Customer Support Center",
+  "LABEL_INFO_DONT_OWN_VEHICLE": "I No Longer Own This Vehicle. What Do I Do?",
+  "LABEL_INFO_DONT_PAY": "What Happens If I don't pay",
+  "LABEL_INFO_FAQS": "FAQs",
+  "LABEL_INFO_PAY": "How Can I Pay?",
+  "LABEL_INFO_PAY_IN_PERSON": "Pay in Person",
+  "LABEL_INFO_RECIEVE_NOTICE": "Why Did I Receive a Notice/Violation?",
+  "LABEL_INFO_ROADMAPS": "Fort Bend Toll Roads Map",
+  "LABEL_INFO_TOLL_PLAZA": "Toll Plaza Info",
+  "LABEL_INFO_TOLL_RATES": "Toll Rates",
+  "LABEL_INFO_TOLLTAG_NOTICE": "I Have a Toll Tag. Why Did I Get a Notice?",
+  "LABEL_INFO_VIOLATION": "What is A Toll Violation?",
+  "LABEL_INFO_VIOLATOR": "Don't Become A Violator",
+  "LABEL_COPYRIGHT": "© 2017 Fort Bend County",
+  "LINK_HELP": "Need help?",
+  "TAB_NOTICES": "Notices",
+  "TEXTBOX_INVOICE": "Invoice #",
+  "TEXTBOX_LICENSEPLATE": "License Plate"
+}
+//{
+//  "BUTTON_LANG_EN": "English",
+//  "BUTTON_LANG_ES": "Spanish",
+//  "BUTTON_LOGIN": "Login",
+//  "BUTTON_LOGOUT": "Logout",
+
+//  "CONTENT_CUS_SUPPORT_CENTER": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders. Non account holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system.",
+//  "CONTENT_DONT_OWN_VEHICLE": {
+//    "content1": "Under Texas law, you may be able to dispute these charges if you meet one of the following criteria.",
+//    "list": [
+//      {
+//        "item1": "You were no longer the legal registered owner of the vehicle at the time it was on the toll road, or "
+//      },
+//      {
+//        "item2": "The vehicle was leased or rented to another entity at the time it was on the toll road, or "
+//      },
+//      {
+//        "item3": "The vehicle was stolen prior to its use on the toll road."
+//      }
+//    ],
+//    "content2": "Should any of the above situations apply, please fill out Dispute Section: CERTIFICATION OF NON-LIABILITY."
+//  },
+//  "CONTENT_DONT_PAY": " In accordance with Transportation Code 284, unpaid toll notices are subject to legal action. The following table shows how seven (7) unpaid toll transactions can add up quickly to more than $300 in tolls + fees.",
+//  "CONTENT_FAQS": {
+//    "content1": "Under Texas law, you may be able to dispute these charges if you meet one of the following criteria.",
+//    "content2": [
+//      {
+//        "faq": "How can I identify which toll roads are managed by Fort Bend County?",
+//        "answer": "Fort Bend County manages the Fort Bend Grand Parkway (SH-99) from US-59 to Fry Rd, Fort Bend Parkway from Beltway 8 to Sienna Parkway and the Westpark Tollway from SH-99, the Grand Parkway, to FM 1464 in Houston. You may also refer to the Fort Bend Toll Roads Map link on our homepage."
+//      },
+//      {
+//        "faq": "I have a Tag account, why did it not work on the Fort Bend County Toll Roads?",
+//        "answer": "TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders may also receive Notices/Violations. The most frequent reasons as to why the notice was received could be due to the following:",
+//        "list": [
+//          {
+//            "item1": "The toll tag is not properly mounted",
+//            "item2": "The credit card data on file for the toll tag account has expired",
+//            "item3": "You have a new car/new license plate and your account was not properly updated",
+//            "item4": "There are insufficient funds on the account",
+//            "item5": "The toll tag is defective."
+//          }
+//        ],
+//        "footer": {
+//          "content1": "In order to avoid future violations, before using the Fort Bend County toll roads again, please contact your toll tag’s customer service center to rectify your account.",
+//          "list": [
+//            {
+//              "title": "TxTag",
+//              "content": "1-888-468-9824 or http://www.txtag.org"
+//            },
+//            {
+//              "title": "EZ Tag",
+//              "content": "1-281-875-3279 or https://www.hctra.org "
+//            },
+//            {
+//              "title": "Toll Tag",
+//              "content": "1-972-818-6882 or https://www.ntta.org"
+//            }
+//          ],
+//          "content2": "You must also contact the Fort Bend Toll Road Customer Support Center at 855-999-2024 in order to address this violation notice. "
+//        }
+//      },
+//      {
+//        "faq": "What if I drove through a Fort Bend County toll plaza by mistake?",
+//        "answer": "Please contact our Customer Support Center at 855-999-2024 immediately."
+//      },
+//      {
+//        "faq": "I am a visitor to the area, can I set up a temporary account?",
+//        "answer": "visit www.ptoll.com to set up an account for future tolls."
+//      },
+//      {
+//        "faq": "Under what conditions can I get a violation?",
+//        "answer": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or Toll Tag (North Texas Tollway Authority) tag holders. Non tag holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system. In the event you have a tag account with one of the before mentioned agencies, you may have received the toll violation notice if your tag account was not valid at the time of the transaction."
+//      },
+//      {
+//        "faq": "I have a valid tag account and I sometimes pull a camper or trailer with my vehicle. Can I still use a Fort Bend County toll road?",
+//        "answer": "Yes, the toll rate will automatically calculate based on the amount of axles on your vehicle and trailer. You may also refer to the Fort Bend Toll Roads Map link on our homepage for toll rates by plaza."
+//      },
+//      {
+//        "faq": "Do I need a Tag account to travel on a Fort Bend County toll road?",
+//        "answer": "Yes, the Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized tag account holders."
+//      },
+//      {
+//        "faq": "I received an Initial Toll Notice (ITN)",
+//        "answer": "Please refer to the front or back of the ITN for payment or dispute instructions. Payment and or dispute can be made on our website."
+//      },
+//      {
+//        "faq": "I received a Toll Violation Notice (TVN), what should I do?",
+//        "list": [
+//          {
+//            "item1": "For a Sold/Lease or Rented vehicle, please attach copy of proof of sale, copy of lease or rental agreement with the notice coupon and mail to Fort Bend County Toll Road Authority, 16107 Kensington Drive, #1008, Sugar Land, TX 77479.",
+//            "item2": "For Stolen, please attach copy of police report or copy of insurance claim with the notice coupon and mail to Fort Bend County Toll Road Authority, 16107 Kensington Drive, #1008, Sugar Land, TX 77479.",
+//            "item3": "For valid tag account holders, please include toll payment and provide proof of a valid tag account (Vehicle Tag List/Account History) to Fort Bend County Toll Road Authority, 16107 Kensington Drive, #1008, Sugar Land, TX 77479."
+//          }
+//        ]
+//      },
+//      {
+//        "faq": "How can I check the status of a Notice/Violation?",
+//        "answer": "Status of a notice can be found on our website. You will need your violation notice number, license plate and license plate state to check the status."
+//      },
+
+//      {
+//        "faq": "What is a Determination Letter?",
+//        "answer": "Upon receipt of dispute and support documentation, a determination is made by the FBTRCSC and a Determination Letter is generated which will advise the status of a toll violation dispute."
+//      },
+//      {
+//        "faq": "I am a disabled veteran. Why did I receive this violation?",
+//        "answer": "Please refer to the following link for details. http://fbctra.com/faqs/veteran-discount-programs.html Upon completion of registration, please contact our Customer Support Center at 855-999-2024."
+//      },
+//      {
+//        "faq": "I am active military. Why did I receive this violation?",
+//        "answer": "For valid tag account holders, please include toll payment and provide proof of a valid tag account (Vehicle Tag List) to Fort Bend County Toll Road Authority, 16107 Kensington Drive, #1008, Sugar Land, TX 77479. For additional information, please refer to the following link for details. http://fbctra.com/images/FBCTRANonRevenuePolicyAugust2014.pdf"
+//      },
+//      {
+//        "faq": "I have an active Tag account, why do I see different toll rates on my account statement?",
+//        "answer": "Fort Bend County has Valid Tag and Invalid/Fleet toll rates. If a valid tag is read in the lane at the time of transaction, the Valid Tag rate is applied. If a tag is not present in the vehicle or an invalid transaction occurs, the Invalid/Fleet toll rate is applied. Please see toll plaza info to view rates."
+//      }
+//    ],
+//    "footer": "Should any of the above situations apply, please fill out Dispute Section: CERTIFICATION OF NON-LIABILITY."
+//  },
+//  "CONTENT_PAY": [
+//    {
+//      "Online": "Visit www.fbtrcsc.com and search for Notice/Violation Number and vehicle information.",
+//      "MAIL": "Using the payment coupon found below the Notice/Violation Number you have received.",
+//      "IN PERSON": "Visit any MoneyGram location (For location, please visit www.fbtrcsc.com/MoneyGram)",
+//      "PHONE": "By calling Toll Free 855-999-2024"
+//    }
+//  ],
+//  "CONTENT_PAY_IN_PERSON": " You can visit one of the MoneyGram locations and pay for the Toll Violation Notice by providing the Code 1262, Notice/Violation number (as account number) and your Last Name as it appears on the violation notice. For inquiries call Customer Support. ",
+//  "CONTENT_RECIEVE_NOTICE": "Why Did I Receive a Notice/Violation?",
+//  "CONTENT_ROADMAPS": "Fort Bend Toll Roads Map",
+//  "CONTENT_TOLL_PLAZA": "Toll Plaza Info",
+//  "CONTENT_TOLL_RATES": "Toll Rates",
+
+//  "CONTENT_TOLLTAG_NOTICE": {
+//    "content1": "I Have a Toll Tag. Why Did I Get a Notice?",
+//    "content2": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders. Non account holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system."
+//  },
+//  "CONTENT_VIOLATION": "Pursuant to the Texas Transportation Code, Chapter 284, the registered owner or renter of record of a vehicle (not necessarily the driver of the vehicle) that passes through a toll facility is responsible for payment of tolls associated with said toll facility. Failure to pay toll charges is against the law and results in a Toll Violation.",
+//  "CONTENT_VIOLATOR": {
+//    "content": "In order to avoid toll violations, before using the Fort Bend County toll roads again, please contact your toll tag's customer service center to rectify your account:",
+//    "list": [
+//      {
+//        "title": "TxTag",
+//        "content": "1-888-468-9824 or http://www.txtag.org"
+//      },
+//      {
+//        "title": "EZ Tag",
+//        "content": "1-281-875-3279 or https://www.hctra.org "
+//      },
+//      {
+//        "title": "Toll Tag",
+//        "content": "1-972-818-6882 or https://www.ntta.org"
+//      }
+//    ]
+//  },
+//  "LABEL_INFO_CUS_SUPPORT_CENTER": "Customer Support Center",
+//  "LABEL_INFO_DONT_OWN_VEHICLE": "I No Longer Own This Vehicle. What Do I Do?",
+//  "LABEL_INFO_DONT_PAY": "What Happens If I don't pay",
+//  "LABEL_INFO_FAQS": "FAQs",
+//  "LABEL_INFO_PAY": "How Can I Pay?",
+//  "LABEL_INFO_PAY_IN_PERSON": "Pay in Person",
+//  "LABEL_INFO_RECIEVE_NOTICE": "Why Did I Receive a Notice/Violation?",
+//  "LABEL_INFO_ROADMAPS": "Fort Bend Toll Roads Map",
+//  "LABEL_INFO_TOLL_PLAZA": "Toll Plaza Info",
+//  "LABEL_INFO_TOLL_RATES": "Toll Rates",
+//  "LABEL_INFO_TOLLTAG_NOTICE": "I Have a Toll Tag. Why Did I Get a Notice?",
+//  "LABEL_INFO_VIOLATION": "What is A Toll Violation?",
+//  "LABEL_INFO_VIOLATOR": "Don't Become A Violator",
+//  "LABEL_COPYRIGHT": "© 2017 Fort Bend County",
+//  "LINK_HELP": "Need help?",
+//  "TAB_NOTICES": "Notices",
+//  "TEXTBOX_INVOICE": "Invoice #",
+//  "TEXTBOX_LICENSEPLATE": "License Plate"
+//}

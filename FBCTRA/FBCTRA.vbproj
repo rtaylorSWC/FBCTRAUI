@@ -110,6 +110,7 @@
     <Content Include="FBCTRA\fbcDirectives\pagination.html" />
     <Content Include="FBCTRA\fbcDirectives\confirmation.js" />
     <Content Include="FBCTRA\fbcDirectives\paging.js" />
+    <Content Include="FBCTRA\fbcFilters\trustAsResourceUrl.js" />
     <Content Include="FBCTRA\fbcFilters\translate.js" />
     <Content Include="FBCTRA\fbcServices\noticesService.js" />
     <Content Include="FBCTRA\fbcServices\vehicleService.js" />
@@ -198,6 +199,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="Translations\en - Copy.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

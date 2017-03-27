@@ -1,10 +1,25 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$location', '$scope', '$filter', 'localStore', 'messageBus', 'FlashService', 'NoticesService', 'VehicleService',
-    function ($location, $scope, $filter, localStore, messageBus, FlashService, NoticesService, VehicleService) {
+  .controller('NoticesController', ['$window', '$scope', '$filter', 'localStore', 'messageBus', 'FlashService', 'NoticesService', 'VehicleService',
+    function ($window, $scope, $filter, localStore, messageBus, FlashService, NoticesService, VehicleService) {
         'use strict';
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
+        };
+
+        $scope.getNoticePdf = function () {
+            NoticesService.getNoticePdf(function (response) {
+                if (response.Success == true) {
+                    $scope.noticePdf = response.Data;
+                    //$window.open($scope.noticePdf);
+                    //ToDo: remove once api ready
+                    $window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
+                } else {
+                    FlashService.Error("Unable to get notice pdf.");
+                    //ToDo: remove once api ready
+                    $window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
+                }
+            });
         };
 
         $scope.getPaymentUrl = function () {
@@ -29,10 +44,20 @@
             var letterWords = ["notice"]
             for (var i = 1; i < 60; i++) {
                 var id = letterWords[Math.floor(Math.random() * letterWords.length)];
-                arr.push({ "id": id + i, "total": "total " + i, "description": "Description of item #" + i, "link": id, "field4": "Some info about notice: " + i, "field5": "field" + i });
+                arr.push({ "id": id + i, "total": i, "description": "Description of notice #" + i, "link": id + i + "Pdf", "field4": "Some info about notice: " + i, "field5": "field" + i });
             }
             return arr;
         }
+        //$scope.pagedItems = {};
+
+        $scope.getTotal = function () {
+            //var total = 0;
+            //for (var i = 0; i < $scope.cart.products.length; i++) {
+            //    var product = $scope.cart.products[i];
+            //    total += (product.price * product.quantity);
+            //}
+            //return total;
+        };
 
         var sortingOrder = 'name'; //default sort
 
@@ -41,10 +66,29 @@
         $scope.reverse = false;
         $scope.filteredItems = [];
         $scope.groupedItems = [];
-        $scope.itemsPerPage = 5;
+        $scope.itemsPerPage = 10;
         $scope.pagedItems = [];
         $scope.currentPage = 0;
         $scope.items = generateData();
+        $scope.idSelected = null;
+        $scope.itemSelected = false;
+        $scope.selection = [];
+
+        $scope.toggleSelection = function toggleSelection($event, item) {
+            $event.stopPropagation();
+            $scope.idSelected = item.id;
+            $scope.itemSelected = true;
+            var idx = $scope.selection.indexOf(item);
+            (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
+        };
+
+        $scope.$watchCollection('selection', function (array) {
+            if (array) {
+                $scope.paymentTotal = array.reduce(function (total, item) {
+                    return total + item.total;
+                }, 0);
+            }
+        });
 
         var searchMatch = function (haystack, needle) {
             if (!needle) {
@@ -87,15 +131,6 @@
                     $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
                 }
             }
-        };
-
-        $scope.deleteItem = function (idx) {
-            var itemToDelete = $scope.pagedItems[$scope.currentPage][idx];
-            var idxInItems = $scope.items.indexOf(itemToDelete);
-            $scope.items.splice(idxInItems, 1);
-            $scope.search();
-
-            return false;
         };
 
         $scope.range = function (start, end) {

@@ -11,8 +11,11 @@
     <div class="col-md-3">
         <select class="form-control input-sm pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('show '+size+' per page') for size in pageSizes"></select>
     </div>
-    <div class="col-md-6">
-        <a ng-click="getPaymentUrl()" role="button" class="btn btn-primary pull-right" data-toggle="modal">Pay</a>
+    <div class="col-md-3">
+        <div class="form-control label-warning pull-right" ng-show="paymentTotal">Payment Total: $<span ng-bind="paymentTotal"></span></div>
+    </div>
+    <div class="col-md-3">
+        <a ng-show="paymentTotal" ng-click="getPaymentUrl()" role="button" class="btn btn-primary" data-toggle="modal">Pay</a>
     </div>
 </div>
 
@@ -24,7 +27,7 @@
                 <h3 id="myModalLabel">Modal header</h3>
             </div>
             <div class="modal-body">
-                <p>One fine body…</p>
+                <p>Modal Body…</p>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -39,11 +42,10 @@
     <tbody>
         <tr>
             <th class="id"><a ng-click="sort_by('id')">Notice Number <i class="fa fa-sort"></i></a></th>
-            <th class="total"><a ng-click="sort_by('total')">Total Amount <i class="fa fa-sort"></i></a></th>
-            <!--<th class="description" title="non-sortable">Description</th>-->
+            <th class="total"><a ng-click="sort_by('total')">Amount Due <i class="fa fa-sort"></i></a></th>
             <th class="description"><a ng-click="sort_by('description')">Description <i class="fa fa-sort"></i></a></th>
             <th class="link"><a ng-click="sort_by('link')">Statement <i class="fa fa-sort"></i></a></th>
-            <th></th>
+            <th class="select"><a ng-click="sort_by('select')">Select</a></th>
         </tr>
     </tbody>
     <tfoot>
@@ -65,15 +67,25 @@
                 </div>
             </td>
         </tr>
-
     </tfoot>
+    <!--selection = {{selection}}-->
     <tbody>
-        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-            <td>{{item.id}}</td>
-            <td>{{item.total}}</td>
-            <td>{{item.description}}</td>
-            <td><a href="#">{{item.link}}</a></td>
-            <td><a href="#" ng-click="deleteItem($index)">x</a></td>
+        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse" ng-click="toggleSelection($event, item)" ng-class="{selected: item.id == idSelected}">
+
+            <td ng-bind="item.id"></td>
+            <td>$<span ng-bind="item.total"></span></td>
+            <td ng-bind="item.description"></td>
+            <td><a ng-bind="item.link | trustAsResourceUrl" ng-click="getNoticePdf()"></a></td>
+            <td>
+                <input type="checkbox"
+                       class="glyphicon glyphicon-unchecked"
+                       name="selectedItems[]"
+                       value="{{item}}"
+                       ng-checked="selection.indexOf(item) > -1">
+            </td>
         </tr>
     </tbody>
+    <tr>
+        <td ng-show="paymentTotal">Payment Total: $<span ng-bind="paymentTotal"></span></td>
+    </tr>
 </table>

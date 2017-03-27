@@ -52,7 +52,8 @@ header {
 
 nav {
     float: left;
-    max-width: 220px;
+    max-width: 270px;
+    min-width: 100px;
     margin: 0;
     padding: 1em;
 }
@@ -63,7 +64,7 @@ navTitle {
     color: white;
     font-weight: bold;
     width: 100%;
-    margin: 5px;
+    margin: 23px;
 }
 loginTitle
  {
@@ -124,4 +125,18 @@ main {
   .modal-body {
     height: 550px;
   }
+}
+
+.selected {
+  background-color: Highlight !important;
+}
+.glyphicon:before {
+ visibility: visible;
+}
+.glyphicon.glyphicon-unchecked:checked:before {
+   content: "\e013";
+}
+input[type=checkbox].glyphicon{
+    visibility: hidden;
+    
 }
