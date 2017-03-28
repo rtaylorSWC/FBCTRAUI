@@ -4,13 +4,13 @@
         'use strict';
 
         return {
-            login: function (invoice, licensePlate, callback) {
-                var apiUri = '/authenticateUser';
+            login: function (noticeNumber, licensePlate, state, callback) {
+                var apiUri = '/api/Login/GetAccount';
                 var params = {};
-                var credentials = { Invoice: invoice, LicensePlate: licensePlate };
-                return apiService.post(apiUri, credentials, params)
+                var credentials = { NoticeNumber: noticeNumber, LicensePlate: licensePlate, LP_State: state };
+                return apiService.postAuth(apiUri, credentials, params)
                                  .then(function successCallback(response) {
-                                     callback(response[0]);
+                                     callback(response.data);
                                  }, function errorCallback(response) {
                                      callback(false);
                                  });
@@ -25,7 +25,7 @@
                 return ((localStore.getAuthToken() || false) && (localStore.getCurrentUserId() || false)) ? true : false;
             },
             //setCredentials: function (username, authToken, entityData) {
-            setCredentials: function (username, licensePlate) {
+            setCredentials: function (AccountGuid, SessionId) {
                 var Base64 = {
                     keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
                     encode: function (input) {
@@ -103,10 +103,11 @@
                         return output;
                     }
                 };
-                var authdata = Base64.encode(invoice + ':' + authToken);
+                var authdata = Base64.encode(AccountGuid + ':' + AccountGuid, SessionId + ':' + SessionId);
                 $rootScope.globals = {
                     currentUser: {
-                        invoice: invoice,
+                        AccountGuid: AccountGuid,
+                        SessionId: SessionId,
                         authdata: authdata
                     }
                 };

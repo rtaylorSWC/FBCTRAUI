@@ -3,7 +3,7 @@
     function (apiService) {
         'use strict';
 
-        var apiUri = '/notices';
+        var apiUri = '/api/notices';
         return {
             getNoticesData: function (callback) {
                 var params = {};

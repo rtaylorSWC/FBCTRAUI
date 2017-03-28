@@ -4,6 +4,8 @@
 	    'use strict';
 
 	    var currentAuthToken = localStore.getAuthToken();
+	    //var sessionid = currentAuthToken ? localStore.getCurrentUser().SessionId : null;
+	    var sessionId = currentAuthToken ? localStore.getCurrentUser().currentUser.SessionId : null;
 	    var domainApiUrl = configurationService.getVehicleApiUrl();
 
 	    function getResourcePromise(uri, payload, parameters, resourceConfig, resourceMethod, additionalHeaders, useCacheBuster, useResourceCache) {
@@ -84,10 +86,10 @@
 	        get: function (url, parameters) {
 	            return $http({
 	                method: 'GET',
+	                dataType: 'jsonp',
 	                url: domainApiUrl + url,
 	                headers: {
-	                    'Content-Type': 'application/json; charset=utf-8',
-	                    'Authorization': currentAuthToken
+	                    'sessionId': sessionId
 	                },
 	                params: parameters
 	            });
@@ -95,7 +97,19 @@
 	        post: function (uri, payload, params) {
 	            return $http.post(domainApiUrl + uri, payload, {
 	                headers: {
-	                    'Content-Type': 'application/json; charset=utf-8'
+	                    'Content-Type': 'application/json; charset=utf-8',
+	                    'sessionId': sessionId
+	                },
+	                params: params
+	            });
+	        },
+	        postAuth: function (uri, payload, params) {
+	            return $http.post(domainApiUrl + uri, payload, {
+	                dataType: 'jsonp',
+	                headers: {
+	                    'Content-Type': 'application/json; charset=utf-8',
+	                    "Access-Control-Allow-Origin": "*",
+	                    "Access-Control-Allow-Headers": "Content-Type, Accept"
 	                },
 	                params: params
 	            });

@@ -3,7 +3,7 @@
 	function (apiService) {
 	    'use strict';
 
-	    var apiUri =  '/Vehicle';
+	    var apiUri = '/api/Vehicle';
 	    return {
 	        getAccountId: function (invoiceId, licensePlate, callback) {
 	            var params = {

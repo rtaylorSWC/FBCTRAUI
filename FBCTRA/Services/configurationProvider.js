@@ -1,10 +1,10 @@
 ﻿angular.module('ConfigurationModule', [])
 .constant('constants', {
     //Vehicle API URLs
-    API_LOCAL_VEHICLE_URI: 'localhost:54421/api',
-    API_DEV_VEHICLE_URL: '//dev/api', 
-    API_UAT_VEHICLE_URL: '//uat/api',
-    API_PROD_VEHICLE_URL: '//prod/api',
+    API_LOCAL_VEHICLE_URI: 'http://localhost:54444',
+    API_DEV_VEHICLE_URL: '//dev',
+    API_UAT_VEHICLE_URL: '//uat',
+    API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',
 })
 .provider('configurationService', function ($logProvider) {
     this.$get = [
@@ -39,9 +39,9 @@
 
             var urlMap = [
                     { host: 'localhost', urls: { rest: constants.API_LOCAL_VEHICLE_URI, base: defaultUrl } },
-                    { host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } },
-                    { host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
-                    { host: 'prod.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
+                    //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } },
+                    //{ host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
+                    { host: 'http://fbctraui.azurewebsites.net', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
             ];
 
             var urlData = getUrlDataFromMap();

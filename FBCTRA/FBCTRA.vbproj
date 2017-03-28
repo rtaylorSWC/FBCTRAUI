@@ -112,6 +112,7 @@
     <Content Include="FBCTRA\fbcDirectives\paging.js" />
     <Content Include="FBCTRA\fbcFilters\trustAsResourceUrl.js" />
     <Content Include="FBCTRA\fbcFilters\translate.js" />
+    <Content Include="FBCTRA\fbcServices\accountService.js" />
     <Content Include="FBCTRA\fbcServices\noticesService.js" />
     <Content Include="FBCTRA\fbcServices\vehicleService.js" />
     <Content Include="FBCTRA\notices\notices.html" />

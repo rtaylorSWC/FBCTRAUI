@@ -9,15 +9,13 @@
 
 	    $scope.login = function () {
 	        $scope.dataLoading = true;
-	        AuthenticationFactory.login($scope.invoice, $scope.licensePlate, function (response) {
+	        AuthenticationFactory.login($scope.noticeNumber, $scope.licensePlate, "TX", function (response) {
 	            if (response) {
-	                AuthenticationFactory.setCredentials($scope.invoice, $scope.licensePlate);
+	                AuthenticationFactory.setCredentials(response.AccountGuid, response.SessionId);
 	                $state.go('notices');
 	            } else {
-	                FlashService.Error("Invoice/License Plate are invalid.");
+	                response.Message ? FlashService.Error(response.Message) : FlashService.Error("Invoice/License Plate are invalid.");
 	                $scope.dataLoading = false;
-	                //toDo: remove after service in place
-	                $state.go('notices');
 	            }
 	        });
 	    };
