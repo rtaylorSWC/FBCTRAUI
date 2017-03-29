@@ -1,7 +1,5 @@
-﻿
-<div class="container-fluid">
+﻿<div class="container-fluid">
     <h5 style="text-align:center">NOTICE / VIOLATION INQUIRY</h5>
-
     <br /><br /><br />
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -9,12 +7,15 @@
                 <form class="form-signin" name="form" ng-submit="login()" role="form">
                     <input type="text" class="form-control" placeholder="{{ 'TEXTBOX_INVOICE' | translate }}" name="noticeNumber" id="noticeNumber" ng-model="noticeNumber" ng-required="true" autofocus>
                     <input type="text" class="form-control" placeholder="{{ 'TEXTBOX_LICENSEPLATE' | translate }}" name="licensePlate" id="licensePlate" ng-model="licensePlate" ng-required="true">
+                    <select  class="form-control" ng-model="selectedState"
+                            ng-options="state.name for state in states track by state.id">
+                        <option value="">select state</option>
+                    </select>
                     <button class="btn btn-sm btn-primary btn-block" type="submit" translate="BUTTON_LOGIN">
                         <i ng-if="dataLoading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
                     </button>
                     <br /> <br />
                     <center><a href="#" class="need-help" translate="LINK_HELP"></a></center>
-                    <!--<a href="#" class="text-center new-account">Create an account</a>-->
                 </form>
             </div>
         </div>

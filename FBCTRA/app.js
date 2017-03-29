@@ -1,7 +1,7 @@
 ﻿'use strict';
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
                           'TranslationModule', 'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule',
-                          'ngResource', 'ApiModule', 'ConfigurationModule'])
+                          'ngResource', 'ApiModule', 'ConfigurationModule', 'ConstantsModule'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
       $urlRouterProvider.otherwise("/login");
 
