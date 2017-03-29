@@ -1,5 +1,5 @@
 ﻿angular.module('ConstantsModule', [])
-.constant('constants', {
+.constant('appConstants', {
     STATES: [
       {
           "name": "Alabama",
