@@ -100,7 +100,7 @@
     <div class="col-md-3">
         <div class="form-control label-primary"><font color="white">Payment Amount: $<span ng-bind="paymentTotal"></span></font></div>
     </div>
-    <div class="col-md-3 btn-group" data-toggle="buttons">
+    <div class="col-md-5 btn-group" data-toggle="buttons">
         <!--<label class="btn btn-primary active">
             <input type="checkbox" checked autocomplete="off" value="true" ng-model="payMethod"> Bank Account/Check
         </label>
@@ -125,20 +125,20 @@
 <table class="table table-striped table-hover">
     <tbody>
         <tr>
-            <th class="select"><a ng-click="sort_by('select')"></a></th>
-            <th class="NoticeNumber"><a ng-click="sort_by('NoticeNumber')">Notice Number <i class="fa fa-sort"></i></a></th>
-            <th class="LicensePlate"><a ng-click="sort_by('LicensePlate')">License Plate <i class="fa fa-sort"></i></a></th>
-            <th class="Date"><a ng-click="sort_by('Date')">Date <i class="fa fa-sort"></i></a></th>
-            <th class="Status"><a ng-click="sort_by('Status')">Status <i class="fa fa-sort"></i></a></th>
-            <th class="Toll"><a ng-click="sort_by('Toll')">Toll <i class="fa fa-sort"></i></a></th>
-            <th class="InitialNoticeFee"><a ng-click="sort_by('InitialNoticeFee')">Initial Notice Fee <i class="fa fa-sort"></i></a></th>
-            <th class="TollViolationFee"><a ng-click="sort_by('TollViolationFee')">Toll Violation Fee <i class="fa fa-sort"></i></a></th>
-            <th class="FinalNoticeFee"><a ng-click="sort_by('FinalNoticeFee')">Final Notice Fee <i class="fa fa-sort"></i></a></th>
-            <th class="NSFFee"><a ng-click="sort_by('NSFFee')">NSFFee <i class="fa fa-sort"></i></a></th>
-            <th class="CourtFee"><a ng-click="sort_by('CourtFee')">Court Fee <i class="fa fa-sort"></i></a></th>
-            <th class="AdminFee"><a ng-click="sort_by('AdminFee')">Admin Fee <i class="fa fa-sort"></i></a></th>
-            <th class="AmountDue"><a ng-click="sort_by('AmountDue')">Amount Due <i class="fa fa-sort"></i></a></th>
-            <th class="TVNLetter"><a ng-click="sort_by('TVNLetter')">Statement <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('select')"></a></th>
+            <th><a ng-click="sort_by('NoticeNumber')">Notice Number <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('LicensePlate')">License Plate <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('Date')">Date <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('Status')">Status <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('Toll')">Toll <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('InitialNoticeFee')">Initial Notice Fee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('TollViolationFee')">Toll Violation Fee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('FinalNoticeFee')">Final Notice Fee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('NSFFee')">NSFFee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('CourtFee')">Court Fee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('AdminFee')">Admin Fee <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('AmountDue')">Amount Due <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('TVNLetter')">Statement <i class="fa fa-sort"></i></a></th>
         </tr>
     </tbody>
     <tbody>
@@ -166,7 +166,7 @@
         </tr>
     </tbody>
     <tr>
-        <td>Payment Total: $<span ng-bind="paymentTotal"></span></td>
+        <!--<td>Payment Total: $<span ng-bind="paymentTotal"></span></td>-->
     </tr>
     <!--violationData.Violations = {{violationData.Violations}}-->
 </table>
