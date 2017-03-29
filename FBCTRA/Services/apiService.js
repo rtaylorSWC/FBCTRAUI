@@ -3,9 +3,6 @@
 	function ($http, $log, $q, $resource, configurationService, localStore, localStoreConstants) {
 	    'use strict';
 
-	    var currentAuthToken = localStore.getAuthToken();
-	    //var sessionid = currentAuthToken ? localStore.getCurrentUser().SessionId : null;
-	    var sessionId = currentAuthToken ? localStore.getCurrentUser().currentUser.SessionId : null;
 	    var domainApiUrl = configurationService.getVehicleApiUrl();
 
 	    function getResourcePromise(uri, payload, parameters, resourceConfig, resourceMethod, additionalHeaders, useCacheBuster, useResourceCache) {
@@ -16,8 +13,7 @@
 	        var headers = angular
 	            .extend({}, {
 	                'Accept': 'application/json,text/html',
-	                "Content-Type": "application/json",
-	                'Authorization': 'Basic ' + currentAuthToken,
+	                "Content-Type": "application/json"
 	            }, additionalHeaders || {});
 
 	        // calculate method
@@ -88,29 +84,11 @@
 	                method: 'GET',
 	                dataType: 'jsonp',
 	                url: domainApiUrl + url,
-	                headers: {
-	                    'sessionId': sessionId
-	                },
 	                params: parameters
 	            });
 	        },
 	        post: function (uri, payload, params) {
 	            return $http.post(domainApiUrl + uri, payload, {
-	                headers: {
-	                    'Content-Type': 'application/json; charset=utf-8',
-	                    'sessionId': sessionId
-	                },
-	                params: params
-	            });
-	        },
-	        postAuth: function (uri, payload, params) {
-	            return $http.post(domainApiUrl + uri, payload, {
-	                dataType: 'jsonp',
-	                headers: {
-	                    'Content-Type': 'application/json; charset=utf-8',
-	                    "Access-Control-Allow-Origin": "*",
-	                    "Access-Control-Allow-Headers": "Content-Type, Accept"
-	                },
 	                params: params
 	            });
 	        },
@@ -121,16 +99,6 @@
                     params,
 	                null,
 	                'save');
-	        },
-	        postFile: function (uri, payload, params) {
-	            return $http.post(domainApiUrl + uri, payload, {
-	                headers: {
-	                    'Accept': 'application/json,multipart/form-data',
-	                    'Authorization': currentAuthToken,
-	                    'Content-Type': undefined
-	                },
-	                transformRequest: angular.identity
-	            });
 	        },
 	        put: function (uri, payload, params) {
 	            return getResourcePromise(

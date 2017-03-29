@@ -7,8 +7,8 @@
         return {
             getViolationsByAccountGuid: function (accountGuid, callback) {
                 var params = {};
-                apiUri = apiUri + '/GetViolations/' + accountGuid;
-                return apiService.get(apiUri, params)
+                var uri = apiUri + '/GetViolations/' + accountGuid;
+                return apiService.get(uri, params)
                                  .then(function successCallback(response) {
                                      callback(response.data);
                                  }, function errorCallback(response) {

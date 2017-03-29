@@ -1,6 +1,6 @@
 ﻿angular.module('AuthenticationModule', [])
-.factory('AuthenticationFactory', ['$http', '$rootScope', '$window', 'localStore', 'apiService', 'configurationService',
-    function ($http, $rootScope, $window, localStore, apiService, configurationService) {
+.factory('AuthenticationFactory', ['$http', '$rootScope', '$state', '$window', 'localStore', 'apiService', 'configurationService',
+    function ($http, $rootScope, $state, $window, localStore, apiService, configurationService) {
         'use strict';
 
         return {
@@ -8,7 +8,7 @@
                 var apiUri = '/api/Login/GetAccount';
                 var params = {};
                 var credentials = { NoticeNumber: noticeNumber, LicensePlate: licensePlate, LP_State: state };
-                return apiService.postAuth(apiUri, credentials, params)
+                return apiService.post(apiUri, credentials, params)
                                  .then(function successCallback(response) {
                                      callback(response.data);
                                  }, function errorCallback(response) {
@@ -24,7 +24,6 @@
             isLoggedIn: function () {
                 return ((localStore.getAuthToken() || false) && (localStore.getCurrentUserId() || false)) ? true : false;
             },
-            //setCredentials: function (username, authToken, entityData) {
             setCredentials: function (AccountGuid, SessionId) {
                 var Base64 = {
                     keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
@@ -111,14 +110,15 @@
                         authdata: authdata
                     }
                 };
-                localStore.setCurrentUser($rootScope.globals);                
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-                localStore.setAuthToken(authdata);
+                $http.defaults.headers.common['SessionId'] = SessionId; // jshint ignore:line
+                localStore.setCurrentUser($rootScope.globals);
+                //localStore.setAuthToken(authdata);
             },
             clearCredentials: function () {
                 $rootScope.globals = {};
                 localStore.reset();
                 $http.defaults.headers.common.Authorization = 'Basic';
+                $http.defaults.headers.common['SessionId'] = null; // jshint ignore:line
             }
         }
     }

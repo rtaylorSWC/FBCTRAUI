@@ -1,6 +1,6 @@
 ﻿angular.module('MenuBarModule', [])
-  .controller('MenuBarController', ['$scope', '$state', '$translate',
-	function ($scope, $state, $translate) {
+  .controller('MenuBarController', ['$scope', '$state', '$translate', 'localStore',
+	function ($scope, $state, $translate, localStore) {
 	    'use strict';
 
 	    $scope.langKey = 'en';
@@ -11,7 +11,8 @@
 	    };
 
 	    $scope.logout = function () {
-	        $state.go("logout");
+	        localStore.reset();
+	        $state.go("login");
 	    };
 
 	    $scope.hideLogout = $state.current.name.indexOf('login') >= 0;
