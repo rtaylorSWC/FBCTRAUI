@@ -38,7 +38,7 @@
             defaultUrl = defaultUrl.substr(0, defaultUrl.length - 1);
 
             var urlMap = [
-                    { host: 'localhost', urls: { rest: constants.API_LOCAL_VEHICLE_URI, base: defaultUrl } },
+                    { host: 'localhost', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
                     //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } },
                     //{ host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
                     { host: 'http://fbctraui.azurewebsites.net', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }

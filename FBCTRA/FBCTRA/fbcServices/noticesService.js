@@ -15,27 +15,27 @@
                 //                 });
                 return { "licensePlate": "123892", "beginDate": "dd/mm/yyyy", "endDate": "dd/mm/yyyy" };
             },
-            getNoticePdf: function (callback) {
-                var params = { responseType: 'arraybuffer' };
-                //return apiService.post(apiUri, params)
-                //                 .then(function successCallback(response) {
-                //                     var file = new Blob([response], { type: 'application/pdf' });
-                //                     var fileURL = URL.createObjectURL(file);
-                //                     callback(response);
-                //                 }, function errorCallback(response) {
-                //                     callback(false);
-                //                 });
-                return apiService.post(apiUri, params)
-                                 .then(function successCallback(response) {
-                                     var file = new Blob([response], { type: 'application/pdf' });
-                                     var fileURL = URL.createObjectURL(file);
-                                     callback(response);
-                                 }, function errorCallback(response) {
-                                     // callback(false);
-                                     //ToDo: remove once service ready
-                                     callback({ "Success": true, "Data": "Some Blob Data" });
-                                 });
-            },
+            //getNoticePdf: function (statementData, callback) {
+            //    var params = { responseType: 'arraybuffer' };
+            //    //return apiService.post(apiUri, params)
+            //    //                 .then(function successCallback(response) {
+            //    //                     var file = new Blob([response], { type: 'application/pdf' });
+            //    //                     var fileURL = URL.createObjectURL(file);
+            //    //                     callback(response);
+            //    //                 }, function errorCallback(response) {
+            //    //                     callback(false);
+            //    //                 });
+            //    return apiService.post(apiUri, statementData, params)
+            //                     .then(function successCallback(response) {
+            //                         //var file = new Blob([response], { type: 'application/pdf' });
+            //                         //var fileURL = URL.createObjectURL(file);
+            //                         callback(response);
+            //                     }, function errorCallback(response) {
+            //                         callback(false);
+            //                         //ToDo: remove once service ready
+            //                         //callback({ "Success": true, "Data": "Some Blob Data" });
+            //                     });
+            //},
             postNoticesData: function (noticesData, callback) {
                 var params = {
                     noticeId: noticesData.consumer.Id,

@@ -1,16 +1,22 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$window', '$scope', '$filter', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'NoticesService', 'VehicleService',
-    function ($window, $scope, $filter, localStore, messageBus, FlashService, AccountService, NoticesService, VehicleService) {
+  .controller('NoticesController', ['$window', '$scope', '$sce', '$filter', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'NoticesService', 'VehicleService',
+    function ($window, $scope, $sce, $filter, localStore, messageBus, FlashService, AccountService, NoticesService, VehicleService) {
         'use strict';
+
+        var currentUser = localStore.getCurrentUser();
+        currentUser = currentUser.currentUser;
+        $scope.paymentMethod = $scope.paymentTotal = false;
+        var sortingOrder = 'name'; //default sort
+        $scope.sortingOrder = sortingOrder;
+        $scope.reverse = false;
+        $scope.filteredItems = [];
+        $scope.idSelected = null;
+        $scope.itemSelected = false;
+        $scope.selection = [];
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
         };
-        ///
-        var currentUser = localStore.getCurrentUser();
-        currentUser = currentUser.currentUser;
-        $scope.paymentMethod = $scope.paymentTotal = false;
-        //var accountGuid = localStore.getCurrentUser().currentUser.accountGuid;
 
         $scope.getViolationList = function () {
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
@@ -21,57 +27,21 @@
                 }
             });
         };
-        $scope.getViolationList();
-        
-        //$scope.violationData = {
-        //    "NoOfViolations": 2,
-        //    "TotalAmount": 2.2,
-        //    "Violations": [
-        //      {
-        //          "NoticeNumber": "T371707542076",
-        //          "LicensePlate": "Lp1234",
-        //          "Date": "3/21/2017 3:46:06 PM -05:00",
-        //          "Status": "OPEN",
-        //          "Toll": "1.1000",
-        //          "InitialNoticeFee": "0.0000",
-        //          "TollViolationFee": "0.0000",
-        //          "FinalNoticeFee": "0.0000",
-        //          "NSFFee": "0.0000",
-        //          "CourtFee": "0.0000",
-        //          "AdminFee": "0.0000",
-        //          "AmountDue": "1.1000",
-        //          "TVNLetter": ""
-        //      },
-        //      {
-        //          "NoticeNumber": "T371707542076",
-        //          "LicensePlate": "Lp1234",
-        //          "Date": "3/21/2017 3:56:18 PM -05:00",
-        //          "Status": "OPEN",
-        //          "Toll": "1.1000",
-        //          "InitialNoticeFee": "0.0000",
-        //          "TollViolationFee": "0.0000",
-        //          "FinalNoticeFee": "0.0000",
-        //          "NSFFee": "0.0000",
-        //          "CourtFee": "0.0000",
-        //          "AdminFee": "0.0000",
-        //          "AmountDue": "1.1000",
-        //          "TVNLetter": ""
-        //      }
-        //    ]
-        //};
 
-        ///
         $scope.getNoticePdf = function () {
-            NoticesService.getNoticePdf(function (response) {
-                if (response.Success == true) {
-                    $scope.noticePdf = response.Data;
-                    //$window.open($scope.noticePdf);
-                    //ToDo: remove once api ready
-                    $window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
+            var statementData = {
+                "FileName": "FBCP_TEVFBA3_20170201_T371607402042.PDF",
+                "DirectoryName": ""
+            };
+            AccountService.getNoticePdf(statementData, function (response) {
+                if (response) {
+                    var file = new Blob([response.data], { type: 'application/pdf' });
+                    var fileURL = URL.createObjectURL(file);
+                    $window.open($sce.trustAsResourceUrl(fileURL));
                 } else {
                     FlashService.Error("Unable to get notice pdf.");
                     //ToDo: remove once api ready
-                    $window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
+                    //$window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
                 }
             });
         };
@@ -93,14 +63,6 @@
             });
         };
 
-        var sortingOrder = 'name'; //default sort
-        $scope.sortingOrder = sortingOrder;
-        $scope.reverse = false;
-        $scope.filteredItems = [];
-        $scope.idSelected = null;
-        $scope.itemSelected = false;
-        $scope.selection = [];
-
         $scope.toggleSelection = function toggleSelection($event, item) {
             $event.stopPropagation();
             $scope.idSelected = item.NoticeNumber;
@@ -117,12 +79,13 @@
             }
         });
 
-        // sorting order
         $scope.sort_by = function (newSortingOrder) {
             if ($scope.sortingOrder == newSortingOrder)
                 $scope.reverse = !$scope.reverse;
 
             $scope.sortingOrder = newSortingOrder;
         };
+
+        $scope.getViolationList();
     }
   ]);
