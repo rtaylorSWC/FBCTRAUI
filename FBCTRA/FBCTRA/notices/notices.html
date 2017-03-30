@@ -163,7 +163,7 @@
             <td ng-bind="item.CourtFee"></td>
             <td ng-bind="item.AdminFee"></td>
             <td ng-bind="item.AmountDue"></td>
-            <td><a ng-bind="item.TVNLetter | trustAsResourceUrl" ng-click="getNoticePdf()"></a></td>
+            <td><a ng-bind="item.TVNLetter | trustAsResourceUrl" ng-click="getNoticePdf(item.TVNLetter)"></a></td>
         </tr>
     </tbody>
     <tr>

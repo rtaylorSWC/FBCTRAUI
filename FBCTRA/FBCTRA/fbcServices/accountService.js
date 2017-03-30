@@ -16,7 +16,7 @@
                                  });
             },
             getNoticePdf: function (statementData, callback) {
-                var params = {};
+                var params = { responseType: 'arraybuffer' };
                 var uri = apiUri + '/GetStatement';
                 return apiService.post(uri, statementData, params)
                                  .then(function successCallback(response) {

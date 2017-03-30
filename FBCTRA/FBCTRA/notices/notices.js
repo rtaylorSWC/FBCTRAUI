@@ -28,9 +28,9 @@
             });
         };
 
-        $scope.getNoticePdf = function () {
+        $scope.getNoticePdf = function (fileName) {
             var statementData = {
-                "FileName": "FBCP_TEVFBA3_20170201_T371607402042.PDF",
+                "FileName": fileName,
                 "DirectoryName": ""
             };
             AccountService.getNoticePdf(statementData, function (response) {
@@ -40,8 +40,6 @@
                     $window.open($sce.trustAsResourceUrl(fileURL));
                 } else {
                     FlashService.Error("Unable to get notice pdf.");
-                    //ToDo: remove once api ready
-                    //$window.open("https://www.fbtrcsc.com/vector/violations/violationList.do?exclGen=true&openPDF=true&pdf=FBGP_TEVFBA3_20170201_T901607402377.PDF");
                 }
             });
         };

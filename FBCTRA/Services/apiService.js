@@ -88,18 +88,9 @@
 	            });
 	        },
 	        post: function (uri, payload, params) {
-	            return $http.post(domainApiUrl + uri, payload, {
-	                params: params
-	            });
+	            return $http.post(domainApiUrl + uri, payload, params
+	            );
 	        },
-	        //postPdf: function (uri, payload, params) {
-	        //    return $http.post(domainApiUrl + uri, payload, {
-	        //        headers: {
-	        //            'Response-Type': 'arraybuffer'
-	        //        },
-	        //        params: params
-	        //    });
-	        //},
 	        postData: function (uri, payload, params) {
 	            return getResourcePromise(
 	                uri,
