@@ -95,6 +95,7 @@
     <Content Include="assets\content\font-awesome.min.css" />
     <Content Include="assets\content\images\FBCTRA_logo.png" />
     <Content Include="assets\scripts\angular-aside.js" />
+    <Content Include="assets\scripts\angular-base64.min.js" />
     <Content Include="assets\scripts\angular-cookies.min.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.min.js" />

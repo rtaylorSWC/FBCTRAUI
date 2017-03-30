@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$window', '$scope', '$sce', '$filter', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'NoticesService', 'VehicleService',
-    function ($window, $scope, $sce, $filter, localStore, messageBus, FlashService, AccountService, NoticesService, VehicleService) {
+  .controller('NoticesController', ['$window', '$scope', '$sce', '$filter', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'NoticesService', 'VehicleService',
+    function ($window, $scope, $sce, $filter, $base64, localStore, messageBus, FlashService, AccountService, NoticesService, VehicleService) {
         'use strict';
 
         var currentUser = localStore.getCurrentUser();
@@ -35,6 +35,8 @@
             };
             AccountService.getNoticePdf(statementData, function (response) {
                 if (response) {
+                    //var decodedBlob = $base64.decode(response.data);
+                    //var file = new Blob([decodedBlob], { type: 'application/pdf' });
                     var file = new Blob([response.data], { type: 'application/pdf' });
                     var fileURL = URL.createObjectURL(file);
                     $window.open($sce.trustAsResourceUrl(fileURL));
