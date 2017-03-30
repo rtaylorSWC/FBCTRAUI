@@ -140,6 +140,7 @@
             <th><a ng-click="sort_by('AdminFee')">Admin Fee <i class="fa fa-sort"></i></a></th>
             <th><a ng-click="sort_by('AmountDue')">Amount Due <i class="fa fa-sort"></i></a></th>
             <th><a ng-click="sort_by('TVNLetter')">Statement <i class="fa fa-sort"></i></a></th>
+            <th><a ng-click="sort_by('Description_')"></a></th>
         </tr>
     </tbody>
     <tbody>
@@ -149,7 +150,9 @@
                        class="glyphicon glyphicon-unchecked"
                        name="selectedItems[]"
                        value="{{item}}"
-                       ng-checked="selection.indexOf(item) > -1">
+                       ng-checked="selection.indexOf(item) > -1"
+                       ng-hide="item.Payable==='0'"
+                       ng-disabled="item.Payable==='0'">
             </td>
             <td ng-bind="item.NoticeNumber"></td>
             <td ng-bind="item.LicensePlate"></td>
@@ -163,12 +166,13 @@
             <td ng-bind="item.CourtFee"></td>
             <td ng-bind="item.AdminFee"></td>
             <td ng-bind="item.AmountDue"></td>
-            <td><a ng-bind="item.TVNLetter | trustAsResourceUrl" ng-click="getNoticePdf(item.TVNLetter)"></a></td>
+            <td><a ng-click="getNoticePdf(item.TVNLetter)">link</a></td>
+            <td ng-bind="item.Description_"></td>
         </tr>
     </tbody>
-    <tr>
-        <!--<td>Payment Total: $<span ng-bind="paymentTotal"></span></td>-->
-    </tr>
-    <!--violationData.Violations = {{violationData.Violations}}-->
+    <tr></tr>
 </table>
-    <!--selection = {{selection}}-->
+<!--<code>
+    violationData.Violations = {{violationData.Violations}}
+</code>-->
+<!--selection = {{selection}}-->

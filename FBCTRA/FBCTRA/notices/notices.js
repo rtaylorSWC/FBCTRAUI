@@ -64,18 +64,20 @@
         };
 
         $scope.toggleSelection = function toggleSelection($event, item) {
-            $event.stopPropagation();
-            $scope.idSelected = item.NoticeNumber;
-            $scope.itemSelected = true;
-            var idx = $scope.selection.indexOf(item);
-            (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
+            if (item.Payable === '1') {
+                $event.stopPropagation();
+                $scope.idSelected = item.NoticeNumber;
+                $scope.itemSelected = true;
+                var idx = $scope.selection.indexOf(item);
+                (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
+            }
         };
 
         $scope.$watchCollection('selection', function (array) {
             if (array) {
                 $scope.paymentTotal = array.reduce(function (total, item) {
                     return total + parseFloat(item.AmountDue);
-                }, 0);
+                }, 0).toFixed(2);
             }
         });
 

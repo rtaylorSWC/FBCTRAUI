@@ -134,9 +134,7 @@
     <Content Include="Translations\en.json" />
     <Content Include="Translations\es.json" />
     <Content Include="UserLogin\controllers\login.js" />
-    <Content Include="UserLogin\controllers\register.js" />
     <Content Include="UserLogin\views\login.html" />
-    <Content Include="UserLogin\views\register.html" />
     <Content Include="Widgets\menuBar\menuBar.js" />
     <Content Include="Widgets\menuBar\menuBar.html" />
     <Content Include="Widgets\infoBar\infoBar.html" />

@@ -63,7 +63,6 @@
 	    };
 
 	    $scope.open = function (tab) {
-	        //$state.go(tab.route);
 	        messageBus.publish('itemSelected', tab);
 	    };
 	}
