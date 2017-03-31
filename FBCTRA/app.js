@@ -1,7 +1,7 @@
 ﻿'use strict';
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
                           'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule',
-                          'ngResource', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64'])
+                          'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
       $urlRouterProvider.otherwise("/login");
 
@@ -68,7 +68,7 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
       $translateProvider
           .preferredLanguage('en')
           .fallbackLanguage('en')
-          .useSanitizeValueStrategy('escape')
+          .useSanitizeValueStrategy('sanitize')
           .useStaticFilesLoader({
               prefix: 'Translations/',
               suffix: '.json'

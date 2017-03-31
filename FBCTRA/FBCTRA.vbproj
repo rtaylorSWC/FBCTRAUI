@@ -97,6 +97,7 @@
     <Content Include="assets\scripts\angular-aside.js" />
     <Content Include="assets\scripts\angular-base64.min.js" />
     <Content Include="assets\scripts\angular-cookies.min.js" />
+    <Content Include="assets\scripts\angular-sanitize.min.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.min.js" />
     <Content Include="assets\scripts\angular-translate.js" />

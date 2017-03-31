@@ -6,7 +6,7 @@
     <iframe src="{{dataModel.contentId | trustAsResourceUrl}}" height="100%" width="100%"></iframe>
 </div>
 <div class="modal-body" ng-show="!dataModel.processingPayment">
-    <span ng-bind="dataModel.contentId | translate"></span>
+    <span ng-bind-html="dataModel.contentId | translate | trustAsResourceUrl"></span>
 </div>
 <div class="modal-footer">
     <button class="btn btn-warning" type="button"
