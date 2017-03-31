@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$window', '$scope', '$sce', '$filter', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'NoticesService', 'VehicleService',
-    function ($window, $scope, $sce, $filter, $base64, localStore, messageBus, FlashService, AccountService, NoticesService, VehicleService) {
+  .controller('NoticesController', ['$scope', '$filter', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'VehicleService',
+    function ($scope, $filter, $base64, localStore, messageBus, FlashService, AccountService, VehicleService) {
         'use strict';
 
         var currentUser = localStore.getCurrentUser();
@@ -33,13 +33,16 @@
                 "FileName": fileName,
                 "DirectoryName": ""
             };
+            var fileName = "ViolationStatement_" + fileName;
+            var a = document.createElement("a");
+            document.body.appendChild(a);
             AccountService.getNoticePdf(statementData, function (response) {
                 if (response) {
-                    //var decodedBlob = $base64.decode(response.data);
-                    //var file = new Blob([decodedBlob], { type: 'application/pdf' });
                     var file = new Blob([response.data], { type: 'application/pdf' });
                     var fileURL = URL.createObjectURL(file);
-                    $window.open($sce.trustAsResourceUrl(fileURL));
+                    a.href = fileURL;
+                    a.download = fileName;
+                    a.click();
                 } else {
                     FlashService.Error("Unable to get notice pdf.");
                 }

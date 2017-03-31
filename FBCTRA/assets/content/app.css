@@ -66,8 +66,8 @@ navTitle {
     width: 100%;
     margin: 23px;
 }
-loginTitle
- {
+
+loginTitle {
     background-color: steelblue;
     color: white;
     font-weight: bold;
@@ -87,56 +87,68 @@ main {
     padding: 1em;
     overflow: hidden;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
 }
-  .contact-info-form {
+
+.contact-info-form {
     list-style-type: none;
     margin: 30px 0;
     padding: 0;
-  }
-
-  .contact-info-form li {
-    margin: 10px 0;
-  }
-
-  .contact-info-form label {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    font-weight: bold;
-  }
-  .search { position: relative; }
-.search input { text-indent: 30px;}
-.search .fa-search { 
-  position: absolute;
-  top: 24px;
-  left: 7px;
-  font-size: 15px;
 }
+
+    .contact-info-form li {
+        margin: 10px 0;
+    }
+
+    .contact-info-form label {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+.search {
+    position: relative;
+}
+
+    .search input {
+        text-indent: 30px;
+    }
+
+    .search .fa-search {
+        position: absolute;
+        top: 24px;
+        left: 7px;
+        font-size: 15px;
+    }
 
 @media (min-height: 392px) {
-  .modal-lg {
-    height: 80%;
-  }
-  .modal-body {
-    height: 550px;
-  }
+    .modal-lg {
+        height: 80%;
+    }
+
+    .modal-body {
+        height: 550px;
+    }
 }
 
-.selected {
-  background-color: Highlight !important;
-}
 .glyphicon:before {
- visibility: visible;
+    visibility: visible;
 }
+
 .glyphicon.glyphicon-unchecked:checked:before {
-   content: "\e013";
+    content: "\e013";
 }
-input[type=checkbox].glyphicon{
+
+input[type=checkbox].glyphicon {
     visibility: hidden;
-    
+}
+
+a.menu_links {
+    cursor: pointer;
 }
