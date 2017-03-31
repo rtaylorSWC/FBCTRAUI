@@ -129,7 +129,6 @@
     <Content Include="assets\scripts\angular-resource.min.js" />
     <Content Include="assets\scripts\angular-route.min.js" />
     <Content Include="assets\scripts\angular.min.js" />
-    <Content Include="Services\translationService.js" />
     <Content Include="Translations\en.json" />
     <Content Include="Translations\es.json" />
     <Content Include="UserLogin\controllers\login.js" />

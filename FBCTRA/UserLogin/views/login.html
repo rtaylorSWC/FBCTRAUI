@@ -9,7 +9,6 @@
                     <input type="text" class="form-control" placeholder="{{ 'TEXTBOX_LICENSEPLATE' | translate }}" name="licensePlate" id="licensePlate" ng-model="licensePlate" ng-required="true">
                     <select  class="form-control" ng-required="true" ng-model="selectedState"
                             ng-options="state.name for state in states track by state.id">
-                        <option value="">select state</option>
                     </select>
                     <button class="btn btn-sm btn-primary btn-block" type="submit" translate="BUTTON_LOGIN">
                         <i ng-if="dataLoading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>

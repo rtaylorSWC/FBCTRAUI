@@ -34,7 +34,6 @@
     <script src="Services/localStore.js"></script>
     <script src="Services/apiService.js"></script>
     <script src="Services/authenticationFactory.js"></script>
-    <script src="Services/translationService.js"></script>
     <script src="Constants/constants.js"></script>
     
     <script src="UserLogin/controllers/login.js"></script>
@@ -57,9 +56,9 @@
     <header>
         <div ui-view="menuBarView"></div>
     </header>
-    <nav>
+    <div>
         <div ui-view="infoBarView"></div>
-    </nav>
+    </div>
     <main>
         <div ng-show="false" ui-view="modalView"></div>
         <div ui-view="tabBarView"></div>

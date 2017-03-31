@@ -1,8 +1,6 @@
-﻿<div class="col-md-12">
-    <div class="form-control label-primary"><font color="white">General Information</font></div>
-</div>
-<nav>
+﻿<nav>
     <ul class="nav nav-tabs">
+        <li class="infoTitle">General Information</li>
         <li ng-repeat="tab in tabs" ng-class="{active: isActive(tab.route)}">
             <a ng-bind="tab.titleId | translate" ng-click="open(tab)" ></a>
         </li>

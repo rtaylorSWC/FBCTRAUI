@@ -1,9 +1,10 @@
 ﻿angular.module('FBCApp')
-  .controller('LoginController', ['$scope', '$state', '$window', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService', 'TranslationService',
-	function ($scope, $state, $window, AuthenticationFactory, localStore, configurationService, appConstants, FlashService, TranslationService) {
+  .controller('LoginController', ['$scope', '$state', '$filter', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService',
+	function ($scope, $state, $filter, AuthenticationFactory, localStore, configurationService, appConstants, FlashService) {
 	    'use strict';
 
 	    $scope.states = appConstants.STATES;
+	    $scope.selectedState = $filter('filter')($scope.states, { 'id': 'TX' })[0];
 
 	    $scope.navigateToLogin = function () {
 	        $state.go('login');

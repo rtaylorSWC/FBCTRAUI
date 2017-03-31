@@ -1,5 +1,5 @@
 ﻿<ul class="nav nav-tabs">
-    <li ng-repeat="tab in tabs" ng-class="{active: isActive(tab.route)}">
-        <a ui-sref="{{ tab.route }}" ng-bind="tab.titleId | translate">&nbsp;</a>
+    <li ng-repeat="tab in tabs" ng-class="{active: isActive(tab.route)}" class="tabBar">
+        <a ui-sref="{{ tab.route }}" ng-bind="tab.titleId | translate"></a>
     </li>
 </ul>
