@@ -7,7 +7,7 @@
     <div class="col-md-3">
         <div class="form-control label-warning pull-right fon">Total Amount Due: $<span ng-bind="violationData.TotalAmount"></span></div>
     </div>
-</div>
+</div> 
 <div class="row">
     <div class="col-md-3">
         <div class="form-control label-primary"><font color="white">Payment Amount: $<span ng-bind="paymentTotal"></span></font></div>
@@ -15,15 +15,15 @@
     <div class="col-md-5 btn-group" data-toggle="buttons">
         <div class="form-group">
             <div class="radio">
-                <label>
-                    <input type="radio" name="paymentMethod" value="bank" ng-model="paymentMethod">
+                <label ng-click="paymentMethod='ck'">
+                    <input type="radio" name="paymentMethod" value="ck" ng-model="paymentMethod">
                     Bank Account/Check
                 </label>
-                <label style="margin-left:15px;">
-                    <input type="radio" name="paymentMethod" value="card" ng-model="paymentMethod">
+                <label style="margin-left:15px;" ng-click="paymentMethod='cc'">
+                    <input type="radio" name="paymentMethod" value="cc" ng-model="paymentMethod">
                     Credit/Debit
                 </label>
-                <a ng-disabled="!paymentTotal || !paymentMethod" ng-click="getPaymentUrl()" role="button" class="btn btn-primary" style="margin-left:25px;" data-toggle="modal">Pay</a>
+                <a ng-disabled="paymentTotal == '0.00' || !paymentMethod" ng-click="getPaymentUrl()" role="button" class="btn btn-primary" style="margin-left:25px;" data-toggle="modal">Pay</a>
             </div>
         </div>
     </div>
@@ -94,7 +94,3 @@
     </tbody>
     <tr></tr>
 </table>
-<!--<code>
-    violationData.Violations = {{violationData.Violations}}
-</code>-->
-<!--selection = {{selection}}-->

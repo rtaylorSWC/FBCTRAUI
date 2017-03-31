@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$scope', '$filter', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'VehicleService',
-    function ($scope, $filter, $base64, localStore, messageBus, FlashService, AccountService, VehicleService) {
+  .controller('NoticesController', ['$scope', '$filter', '$translate', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'PaymentService',
+    function ($scope, $filter, $translate, $base64, localStore, messageBus, FlashService, AccountService, PaymentService) {
         'use strict';
 
         var currentUser = localStore.getCurrentUser();
@@ -13,6 +13,7 @@
         $scope.idSelected = null;
         $scope.itemSelected = false;
         $scope.selection = [];
+        $scope.noticeNumbers = [];
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -23,7 +24,7 @@
                 if (response) {
                     $scope.violationData = response;
                 } else {
-                    FlashService.Error("Unable to get Violation List.");
+                    response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
             });
         };
@@ -44,26 +45,32 @@
                     a.download = fileName;
                     a.click();
                 } else {
-                    FlashService.Error("Unable to get notice pdf.");
+                    response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get notice pdf.");
                 }
             });
         };
 
         $scope.getPaymentUrl = function () {
-            VehicleService.getPaymentURL(function (response) {
-                if (response.Success == true) {
-                    var paymentUrl = response;
-                    $scope.open(paymentUrl);
-                } else {
-                    FlashService.Error("Unable to get Payment URL.");
-                    //ToDo: remove once api in place
-                    $scope.payment = {};
-                    $scope.payment.titleId = "FBC Payment Portal";
-                    $scope.payment.contentId = response;
-                    $scope.payment.processingPayment = true;
-                    $scope.open($scope.payment);
-                }
-            });
+            if ($scope.paymentTotal != "0.00" && $scope.paymentMethod) {
+                $scope.paymentData = {};
+                $scope.paymentData.AccountGuId = currentUser.AccountGuid;
+                $scope.paymentData.Amount = parseFloat("100");//parseFloat($scope.paymentTotal); ToDo: remove hardcoded int once api handles decimals
+                $scope.paymentData.Paymethod = $scope.paymentMethod;
+                $scope.paymentData.Language = ($translate.use() == 'en') ? "English" : "Spanish";
+                $scope.paymentData.NoticeNumbers = $scope.noticeNumbers;
+
+                PaymentService.getPaymentURL($scope.paymentData, function (response) {
+                    if (response) {
+                        $scope.payment = {};
+                        $scope.payment.titleId = "FBC Payment Portal";
+                        $scope.payment.contentId = response.paymentUrl;
+                        $scope.payment.processingPayment = true;
+                        $scope.open($scope.payment);
+                    } else {
+                        response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Payment URL.");
+                    }
+                });
+            }
         };
 
         $scope.toggleSelection = function toggleSelection($event, item) {
@@ -73,6 +80,8 @@
                 $scope.itemSelected = true;
                 var idx = $scope.selection.indexOf(item);
                 (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
+                var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
+                (idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
             }
         };
 

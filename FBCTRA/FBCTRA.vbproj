@@ -115,7 +115,7 @@
     <Content Include="FBCTRA\fbcFilters\trustAsResourceUrl.js" />
     <Content Include="FBCTRA\fbcFilters\translate.js" />
     <Content Include="FBCTRA\fbcServices\accountService.js" />
-    <Content Include="FBCTRA\fbcServices\vehicleService.js" />
+    <Content Include="FBCTRA\fbcServices\paymentService.js" />
     <Content Include="FBCTRA\notices\notices.html" />
     <Content Include="FBCTRA\notices\notices.js" />
     <Content Include="Services\authenticationFactory.js" />
