@@ -4,11 +4,11 @@
     //        return $sce.trustAsResourceUrl(val);
     //    };
     //}])
-.controller('ModalController', ['$scope', '$aside', 'localStore', 'messageBus',
-function ($scope, $aside, localStore, messageBus) {
+.controller('ModalController', ['$scope', '$aside', '$sce', 'localStore', 'messageBus',
+function ($scope, $aside, $sce, localStore, messageBus) {
     'use strict';
     messageBus.subscribe($scope, 'itemSelected', function (event, selectedItem) {
-        $scope.openAside('top', true, selectedItem);
+        $scope.openInfoModal('top', true, selectedItem);
     });
 
     messageBus.subscribe($scope, 'payItemSelected', function (event, selectedItem) {
@@ -16,7 +16,7 @@ function ($scope, $aside, localStore, messageBus) {
     });
 
     $scope.asideState = { open: false };
-    $scope.openAside = function (position, backdrop, dataModel) {
+    $scope.openInfoModal = function (position, backdrop, dataModel) {
         $scope.asideState = { open: true, position: position };
         function postClose() {
             $scope.asideState.open = false;
