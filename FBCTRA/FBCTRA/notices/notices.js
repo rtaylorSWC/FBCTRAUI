@@ -54,7 +54,7 @@
             if ($scope.paymentTotal != "0.00" && $scope.paymentMethod) {
                 $scope.paymentData = {};
                 $scope.paymentData.AccountGuId = currentUser.AccountGuid;
-                $scope.paymentData.Amount = parseFloat("1");//parseFloat($scope.paymentTotal); ToDo: remove hardcoded int once api handles decimals
+                $scope.paymentData.Amount = parseFloat($scope.paymentTotal);
                 $scope.paymentData.Paymethod = $scope.paymentMethod;
                 $scope.paymentData.Language = ($translate.use() == 'en') ? "English" : "Spanish";
                 $scope.paymentData.NoticeNumbers = $scope.noticeNumbers;
