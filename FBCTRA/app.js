@@ -80,7 +80,7 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
       $translateProvider
           .preferredLanguage('en')
           .fallbackLanguage('en')
-          .useSanitizeValueStrategy('escape','sanitizeParameters')
+          .useSanitizeValueStrategy('sanitizeParameters')
           .useStaticFilesLoader({
               prefix: 'Translations/',
               suffix: '.json'
