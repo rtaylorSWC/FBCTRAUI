@@ -10,10 +10,6 @@ function ($scope, $aside, $sce, localStore, messageBus) {
         $scope.openIFrameModal('top', false, selectedItem);
     });
 
-    messageBus.subscribe($scope, 'helpSelected', function (event, selectedItem) {
-        $scope.openIFrameModal('top', false, selectedItem);
-    });
-
     messageBus.subscribe($scope, 'openPrivacyPolicy', function (event, selectedItem) {
         $scope.openModal('bottom', true, selectedItem);
     });

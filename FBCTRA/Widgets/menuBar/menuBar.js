@@ -1,6 +1,6 @@
 ﻿angular.module('MenuBarModule', [])
-  .controller('MenuBarController', ['$scope', '$state', '$translate', 'messageBus', 'localStore',
-	function ($scope, $state, $translate, messageBus, localStore) {
+  .controller('MenuBarController', ['$scope', '$state', '$window', '$translate', 'localStore',
+	function ($scope, $state, $window, $translate, localStore) {
 	    'use strict';
 
 	    $scope.langKey = 'en';
@@ -10,12 +10,8 @@
 	        $scope.langKey = langKey;
 	    };
 
-	    $scope.openHelpModal = function (url) {
-	        var help = {};
-	        help.titleId = "FBCTRA Help Portal";
-	        help.contentId = url;
-	        help.showIFrame = true;
-	        messageBus.publish('helpSelected', help);
+	    $scope.openUrlInTab = function (url) {
+	        $window.open(url, '_blank');
 	    };
 
 	    $scope.logout = function () {
