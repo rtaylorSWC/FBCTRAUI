@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
-                          'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'ModalModule', 'NavBarFooterModule',
+                          'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'GetTagModule', 'ModalModule', 'NavBarFooterModule',
                           'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
       $urlRouterProvider.otherwise("/login");
@@ -13,6 +13,10 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
           infoBarView: {
               templateUrl: 'Widgets/infoBar/infoBar.html',
               controller: 'InfoBarController'
+          },
+          getTagView: {
+              templateUrl: 'Widgets/getTag/getTag.html',
+              controller: 'GetTagController'
           },
           modalView: {
               templateUrl: 'Widgets/modal/modal.html',
@@ -32,6 +36,10 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
           infoBarView: {
               templateUrl: 'Widgets/infoBar/infoBar.html',
               controller: 'InfoBarController'
+          },
+          getTagView: {
+              templateUrl: 'Widgets/getTag/getTag.html',
+              controller: 'GetTagController'
           },
           menuBarView: {
               templateUrl: 'Widgets/menuBar/menuBar.html',

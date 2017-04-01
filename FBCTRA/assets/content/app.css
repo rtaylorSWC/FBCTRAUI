@@ -175,15 +175,36 @@ main {
     content: "\e013";
 }
 
-input[type=checkbox].glyphicon {
+/*input[type=checkbox].glyphicon {
+    visibility: hidden;
     border: none;
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
     -webkit-appearance: none;
+}*/
+input[type=checkbox].glyphicon {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    -webkit-appearance:checkbox;
 }
 
 a.menu_links {
     cursor: pointer;
+}
+
+.sideMenuBox {
+    float: left;
+    margin: 0px 0px 20px 0px;
+    font: normal 12px Verdana;
+    color: #000000;
+    line-height: 18px;
+    background: #ffffff;
+    border: 1px solid #cecece;
+    padding-bottom: 10px;
+    width: 190px;
 }

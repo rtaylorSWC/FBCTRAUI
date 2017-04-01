@@ -94,6 +94,9 @@
     <Content Include="assets\content\bootstrap\js\npm.js" />
     <Content Include="assets\content\font-awesome.min.css" />
     <Content Include="assets\content\images\FBCTRA_logo.png" />
+    <Content Include="assets\content\images\get-ez-tag.jpg" />
+    <Content Include="assets\content\images\TollTag_Logo.gif" />
+    <Content Include="assets\content\images\txtag_trans.gif" />
     <Content Include="assets\scripts\angular-aside.js" />
     <Content Include="assets\scripts\angular-base64.min.js" />
     <Content Include="assets\scripts\angular-cookies.min.js" />
@@ -134,6 +137,8 @@
     <Content Include="Translations\es.json" />
     <Content Include="UserLogin\controllers\login.js" />
     <Content Include="UserLogin\views\login.html" />
+    <Content Include="Widgets\getTag\getTag.html" />
+    <Content Include="Widgets\getTag\getTag.js" />
     <Content Include="Widgets\menuBar\menuBar.js" />
     <Content Include="Widgets\menuBar\menuBar.html" />
     <Content Include="Widgets\infoBar\infoBar.html" />
