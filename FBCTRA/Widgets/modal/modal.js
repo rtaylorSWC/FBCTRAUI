@@ -29,7 +29,9 @@ function ($scope, $aside, $sce, localStore, messageBus) {
             controller:
                 function ($scope, $uibModalInstance, messageBus) {
                     $scope.dataModel = dataModel;
-                    $scope.close = function (e) { $uibModalInstance.dismiss(); };
+                    $scope.close = function (e) {
+                        $uibModalInstance.dismiss();
+                    };
                     $scope.ok = function (e, selectedEntity) {
                         $uibModalInstance.close();
                         e.stopPropagation();

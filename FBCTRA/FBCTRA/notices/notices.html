@@ -5,12 +5,12 @@
         <div class="form-control label-warning pull-right">Number of Violations: <span ng-bind="violationData.NoOfViolations"></span></div>
     </div>
     <div class="col-md-3">
-        <div class="form-control label-warning pull-right fon">Total Amount Due: $<span ng-bind="violationData.TotalAmount"></span></div>
+        <div class="form-control label-primary"><font color="white">Payment Amount: $<span ng-bind="paymentTotal"></span></font></div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-3">
-        <div class="form-control label-primary"><font color="white">Payment Amount: $<span ng-bind="paymentTotal"></span></font></div>
+        <div class="form-control label-warning pull-right fon">Total Amount Due: $<span ng-bind="violationData.TotalAmount | number : 2"></span></div>
     </div>
     <div class="col-md-5 btn-group" data-toggle="buttons">
         <div class="form-group">
