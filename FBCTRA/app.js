@@ -17,6 +17,10 @@ angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ng
           modalView: {
               templateUrl: 'Widgets/modal/modal.html',
               controller: 'ModalController'
+          },
+          navBarFooterView: {
+              templateUrl: 'Widgets/NavBarFooter/navBarFooter.html',
+              controller: 'NavBarFooterController'
           }
       };
 

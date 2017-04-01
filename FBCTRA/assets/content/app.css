@@ -50,6 +50,15 @@ header {
     color: white;
 }
 
+footer {
+    padding: .25em;
+    background-color: steelblue;
+    clear: left;
+    text-align: right;
+    /*margin: 35px;*/
+    color: white;
+    text-decoration-color:white;
+}
 nav {
     float: left;
     max-width: 320px;

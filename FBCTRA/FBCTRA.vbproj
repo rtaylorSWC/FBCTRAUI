@@ -142,10 +142,10 @@
     <Content Include="Widgets\modal\modal.js" />
     <Content Include="Widgets\tabBar\tabBar.js" />
     <Content Include="Widgets\tabBar\tabBar.html" />
-    <Content Include="Widgets\navBarFooter\navBarFooter.html" />
+    <Content Include="Widgets\NavBarFooter\navBarFooter.html" />
     <Content Include="assets\scripts\lodash.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Widgets\navBarFooter\navBarFooter.js" />
+    <Content Include="Widgets\NavBarFooter\navBarFooter.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />

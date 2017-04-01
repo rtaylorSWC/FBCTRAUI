@@ -10,6 +10,10 @@ function ($scope, $aside, $sce, localStore, messageBus) {
         $scope.openPaymentModal('top', false, selectedItem);
     });
 
+    messageBus.subscribe($scope, 'openPrivacyPolicy', function (event, selectedItem) {
+        $scope.openInfoModal('bottom', true, selectedItem);
+    });
+
     $scope.asideState = { open: false };
     $scope.openInfoModal = function (position, backdrop, dataModel) {
         $scope.asideState = { open: true, position: position };
