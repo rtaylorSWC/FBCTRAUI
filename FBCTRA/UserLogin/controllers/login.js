@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('LoginController', ['$scope', '$state', '$filter', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService',
-	function ($scope, $state, $filter, AuthenticationFactory, localStore, configurationService, appConstants, FlashService) {
+  .controller('LoginController', ['$scope', '$state', '$filter', 'messageBus', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService',
+	function ($scope, $state, $filter, messageBus, AuthenticationFactory, localStore, configurationService, appConstants, FlashService) {
 	    'use strict';
 
 	    $scope.states = appConstants.STATES;
@@ -21,6 +21,14 @@
 	                $scope.dataLoading = false;
 	            }
 	        });
+	    };
+
+	    $scope.openHelpModal = function (url) {
+	        var help = {};
+	        help.titleId = "FBCTRA Help Portal";
+	        help.contentId = url;
+	        help.showIFrame = true;
+	        messageBus.publish('helpSelected', help);
 	    };
 
 	    (function initController() {

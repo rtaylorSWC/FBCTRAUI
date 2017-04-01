@@ -62,9 +62,9 @@
                 PaymentService.getPaymentURL($scope.paymentData, function (response) {
                     if (response) {
                         $scope.payment = {};
-                        $scope.payment.titleId = "FBC Payment Portal";
+                        $scope.payment.titleId = "FBCTRA Payment Portal";
                         $scope.payment.contentId = response.paymentUrl;
-                        $scope.payment.processingPayment = true;
+                        $scope.payment.showIFrame = true;
                         $scope.open($scope.payment);
                     } else {
                         response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Payment URL.");

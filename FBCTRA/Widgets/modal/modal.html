@@ -1,11 +1,11 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title" ng-bind="dataModel.titleId | translate"></h3>
 </div>
-<div class="modal-body-payment" ng-show="dataModel.processingPayment">
+<div class="modal-body-payment" ng-show="dataModel.showIFrame">
     <span ng-bind="dataModel.contentId | translate"></span>
     <iframe src="{{dataModel.contentId | trustAsResourceUrl}}" height="100%" width="100%"></iframe>
 </div>
-<div class="modal-body" ng-show="!dataModel.processingPayment">
+<div class="modal-body" ng-show="!dataModel.showIFrame">
     <span ng-bind-html="dataModel.contentId | translate | trustAsResourceUrl"></span>
 </div>
 <div class="modal-footer">

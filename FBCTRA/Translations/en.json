@@ -3,6 +3,7 @@
   "BUTTON_LANG_ES": "Spanish",
   "BUTTON_LOGIN": "Login",
   "BUTTON_LOGOUT": "Logout",
+  "BUTTON_CONTACT_US": "Contact Us",
   "CONTENT_CUS_SUPPORT_CENTER": "The Fort Bend County Toll Road Authority electronic toll collection system operates toll lanes exclusively for authorized TxTAG (Texas Tollways), EZ Tag (Harris County Toll Road Authority), or TollTag (North Texas Tollway Authority) account holders. Non account holders that use the dedicated toll lanes incur violations and have images of their license plates recorded by a video system.",
   "CONTENT_DONT_OWN_VEHICLE": "Under Texas law, you may be able to dispute these charges if you meet one of the following criteria. <ul><li>You were no longer the legal registered owner of the vehicle at the time it was on the toll road, or </li><li>The vehicle was leased or rented to another entity at the time it was on the toll road, or </li><li>The vehicle was stolen prior to its use on the toll road.</li></ul> <b>Should any of the above situations apply, please fill out Dispute Section: CERTIFICATION OF NON-LIABILITY.</b>",
   "CONTENT_DONT_PAY": "In accordance with Transportation Code 284, unpaid toll notices are subject to legal action. The following table shows how seven (7) unpaid toll transactions can add up quickly to more than $300 in tolls + fees",
