@@ -2,11 +2,13 @@
     <ul class="nav nav-tabs nav-stacked left-menu" id="stacked-menu">
         <li>
             <div>
-                <div class="infoTitle" href="#" data-target="#item1" data-toggle="collapse" data-parent="#stacked-menu">
-                    General Information <span class="caret arrow"></span>
+                <!--<div class="infoTitle" href="#" data-target="#item1" data-toggle="collapse" data-parent="#stacked-menu">-->
+                    <div class="infoTitle" href="#" data-target="#item1" data-parent="#stacked-menu">
+                        <!--General Information <span class="caret arrow"></span>-->
+                        General Information
+                    </div>
                 </div>
-            </div>
-            <ul class="nav nav-stacked collapse left-submenu" id="item1">
+            <ul class="nav nav-stacked left-submenu" id="item1">
                 <li ng-repeat="tab in tabs" ng-class="{active: isActive(tab.route)}">
                     <a ng-bind="tab.titleId | translate" ng-click="open(tab)"></a>
                 </li>
