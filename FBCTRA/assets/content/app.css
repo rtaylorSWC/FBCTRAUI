@@ -57,8 +57,9 @@ footer {
     text-align: right;
     /*margin: 35px;*/
     color: white;
-    text-decoration-color:white;
+    text-decoration-color: white;
 }
+
 nav {
     float: left;
     max-width: 320px;
@@ -175,7 +176,12 @@ main {
 }
 
 input[type=checkbox].glyphicon {
-    visibility: hidden;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    -webkit-appearance: none;
 }
 
 a.menu_links {
