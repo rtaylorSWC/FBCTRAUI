@@ -55,7 +55,6 @@ footer {
     background-color: steelblue;
     clear: left;
     text-align: right;
-    /*margin: 35px;*/
     color: white;
     text-decoration-color: white;
 }
@@ -66,7 +65,7 @@ nav {
     min-width: 290px;
     margin: 0;
     padding: 1em;
-    min-height: 500px;
+    min-height: 30px;
 }
 
     nav ul {
@@ -79,6 +78,7 @@ nav {
         width: 290px;
     }
 
+
 li {
     text-align: left;
     border-bottom: 1px solid #D3D3D3;
@@ -89,14 +89,23 @@ li {
         border-bottom: none;
     }
 
-    li:first-child {
+/*li:first-child {
         background-color: steelblue;
         color: white;
         font-weight: bold;
         font-size: larger;
         width: 290px;
         text-align: center;
-    }
+    }*/
+
+.infoTitle {
+    background-color: steelblue;
+    color: white;
+    font-weight: bold;
+    font-size: medium;
+    width: 290px;
+    text-align: center;
+}
 
 loginTitle {
     background-color: steelblue;
@@ -116,6 +125,7 @@ main {
     margin-left: 170px;
     padding: 1em;
     overflow: hidden;
+    min-height:500px;
 }
 
 .footer {
@@ -167,13 +177,13 @@ main {
     }
 }
 
-.glyphicon:before {
+/*.glyphicon:before {
     visibility: visible;
 }
 
 .glyphicon.glyphicon-unchecked:checked:before {
     content: "\e013";
-}
+}*/
 
 /*input[type=checkbox].glyphicon {
     visibility: hidden;
@@ -184,20 +194,20 @@ main {
     line-height: inherit;
     -webkit-appearance: none;
 }*/
-input[type=checkbox].glyphicon {
+/*input[type=checkbox].glyphicon {
     border: none;
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     line-height: inherit;
-    -webkit-appearance:checkbox;
-}
+    -webkit-appearance: checkbox;
+}*/
 
 a.menu_links {
     cursor: pointer;
 }
 
-.sideMenuBox {
+/*.sideMenuBox {
     float: left;
     margin: 0px 0px 20px 0px;
     font: normal 12px Verdana;
@@ -206,5 +216,22 @@ a.menu_links {
     background: #ffffff;
     border: 1px solid #cecece;
     padding-bottom: 10px;
-    width: 190px;
+    width: 290px;
+    height: 190px;
+}*/
+#parent {
+    padding: 1px;
+    width: 290px;
+}
+
+.child {
+    float: left;
+    margin: 0px 10px 0px 0px;
+    /*font: normal 12px Verdana;*/
+    color: #000000;
+    /*line-height: 18px;*/
+    background: #ffffff;
+    /*border: 1px solid #cecece;*/
+    /*padding-bottom: -30px;*/
+    width: 290px;
 }

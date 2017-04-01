@@ -58,9 +58,9 @@
     <header>
         <div ui-view="menuBarView"></div>
     </header>
-    <div>
-        <div ui-view="infoBarView"></div>
-        <!--<div ui-view="getTagView"></div>-->
+    <div id="parent">
+        <div class="child" ui-view="infoBarView"></div>
+        <div class="child" ui-view="getTagView"></div>
     </div>
     <main>
         <div ng-show="false" ui-view="modalView"></div>

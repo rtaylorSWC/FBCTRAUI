@@ -7,7 +7,7 @@
     <div class="col-md-3">
         <div class="form-control label-warning pull-right fon">Total Amount Due: $<span ng-bind="violationData.TotalAmount"></span></div>
     </div>
-</div> 
+</div>
 <div class="row">
     <div class="col-md-3">
         <div class="form-control label-primary"><font color="white">Payment Amount: $<span ng-bind="paymentTotal"></span></font></div>
@@ -69,7 +69,7 @@
         <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-click="toggleSelection($event, item)" ng-class="{selected: item.NoticeNumber == idSelected}">
             <td>
                 <input type="checkbox"
-                       class="glyphicon glyphicon-unchecked"
+                       class="checkbox"
                        name="selectedItems[]"
                        value="{{item}}"
                        ng-checked="selection.indexOf(item) > -1"
