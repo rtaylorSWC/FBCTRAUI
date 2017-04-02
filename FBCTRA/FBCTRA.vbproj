@@ -93,9 +93,13 @@
     <Content Include="assets\content\bootstrap\js\bootstrap.min.js" />
     <Content Include="assets\content\bootstrap\js\npm.js" />
     <Content Include="assets\content\font-awesome.min.css" />
+    <Content Include="assets\content\genInfo\images\dont-pay-es.gif" />
     <Content Include="assets\content\genInfo\images\dont-pay.gif" />
+    <Content Include="assets\content\genInfo\images\pay-in-person-es.gif" />
     <Content Include="assets\content\genInfo\images\pay-in-person.gif" />
+    <Content Include="assets\content\genInfo\images\toll-plaza-info-es.gif" />
     <Content Include="assets\content\genInfo\images\toll-plaza-info.gif" />
+    <Content Include="assets\content\genInfo\images\toll-roads-map-es.gif" />
     <Content Include="assets\content\genInfo\images\toll-roads-map.gif" />
     <Content Include="assets\content\images\FBCTRA_logo.png" />
     <Content Include="assets\content\images\get-ez-tag.jpg" />
