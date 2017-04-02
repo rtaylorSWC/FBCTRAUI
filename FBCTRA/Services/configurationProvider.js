@@ -4,7 +4,8 @@
     API_LOCAL_VEHICLE_URI: 'http://localhost:54444',
     API_DEV_VEHICLE_URL: '//dev',
     API_UAT_VEHICLE_URL: '//uat',
-    API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',
+    //API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',
+    API_PROD_VEHICLE_URL: 'https://api.fbctrcsc.com',
 })
 .provider('configurationService', function ($logProvider) {
     this.$get = [
@@ -39,9 +40,9 @@
 
             var urlMap = [
                     { host: 'localhost', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
-                    //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } },
+                    //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } }, 
                     //{ host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
-                    { host: 'http://fbctraui.azurewebsites.net', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
+                    { host: 'https://fbctrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
             ];
 
             var urlData = getUrlDataFromMap();
