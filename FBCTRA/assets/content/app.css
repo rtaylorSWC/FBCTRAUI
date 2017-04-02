@@ -238,3 +238,8 @@ a.menu_links {
     /*padding-bottom: -30px;*/
     width: 290px;
 }
+
+.info-img {
+    width:100%;
+    height:100%;
+}
