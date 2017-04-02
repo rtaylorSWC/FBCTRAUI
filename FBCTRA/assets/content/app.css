@@ -77,9 +77,12 @@ nav {
         border-bottom: 1px solid #D3D3D3;
         width: 290px;
     }
+    nav li:last-child {
+        border-bottom: none;
+    }
 
 
-li {
+/*li {
     text-align: left;
     border-bottom: 1px solid #D3D3D3;
     width: 190px;
@@ -87,7 +90,7 @@ li {
 
     li:last-child {
         border-bottom: none;
-    }
+    }*/
 
 /*li:first-child {
         background-color: steelblue;
