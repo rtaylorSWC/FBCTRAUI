@@ -3,35 +3,30 @@
 <div class="row">
     <div class="col-md-3">
         <div class="form-control label-warning pull-right"><span translate>LABEL_NUMBER_OF_VIOLATIONS</span>: <span ng-bind="violationData.NoOfViolations"></span></div>
-    </div>
-    <div class="col-md-3">
-        <div class="form-control label-primary"><font color="white"><span translate>LABEL_PAYMENT_AMOUNT</span>: $<span ng-bind="paymentTotal"></span></font></div>
-    </div>
-</div>
-<!--<div class="col-md-offset-7">
-    <p>Based on the violation information entered, the following toll violation notices were returned. To pay by credit card or check, select the notice checkboxes, select check or credit card and click PAY. To Appeal Toll Notices/Violations please call 855-999-2024</p>
-</div>-->
-<div class="row">
-    <div class="col-md-3">
         <div class="form-control label-warning pull-right fon"><span translate>LABEL_TOTAL_AMOUNT_DUE</span>: $<span ng-bind="violationData.TotalAmount | number : 2"></span></div>
     </div>
-    <div class="col-md-5 btn-group" data-toggle="buttons">
-        <div class="form-group">
-            <div class="radio">
-                <label ng-click="paymentMethod='ck'">
-                    <input type="radio" name="paymentMethod" value="ck" ng-model="paymentMethod">
-                    <span translate>LABEL_BANK_ACCOUNT_CHECK</span>
-                </label>
-                <label style="margin-left:15px;" ng-click="paymentMethod='cc'">
-                    <input type="radio" name="paymentMethod" value="cc" ng-model="paymentMethod">
-
-                    <span translate>LABEL_CREDIT_DEBIT</span>
-                </label>
-                <a ng-disabled="paymentTotal == '0.00' || !paymentMethod" ng-click="getPaymentUrl()" role="button" class="btn btn-primary" style="margin-left:25px;" data-toggle="modal">
-                    <span translate>LABEL_PAY</span>
-                </a>
+    <div class="col-md-4">
+        <div class="form-control label-primary"><font color="white"><span translate>LABEL_PAYMENT_AMOUNT</span>: $<span ng-bind="paymentTotal"></span></font></div>
+        <div class="btn-group" data-toggle="buttons">
+            <div class="form-group">
+                <div class="radio">
+                    <label ng-click="paymentMethod='ck'">
+                        <input type="radio" name="paymentMethod" value="ck" ng-model="paymentMethod">
+                        <span translate>LABEL_BANK_ACCOUNT_CHECK</span>
+                    </label>
+                    <label style="margin-left:15px;" ng-click="paymentMethod='cc'">
+                        <input type="radio" name="paymentMethod" value="cc" ng-model="paymentMethod">
+                        <span translate>LABEL_CREDIT_DEBIT</span>
+                    </label>
+                    <a ng-disabled="paymentTotal == '0.00' || !paymentMethod" ng-click="getPaymentUrl()" role="button" class="btn btn-primary" style="margin-left:25px;" data-toggle="modal">
+                        <span translate>LABEL_PAY</span>
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
+    <div class="col-md-5">
+        <p>Based on the violation information entered, the following toll violation notices were returned. To pay by credit card or check, select the notice checkboxes, select check or credit card and click PAY. To Appeal Toll Notices/Violations please call <a href="tel:855-999-2024">855-999-2024</a></p>
     </div>
 </div>
 <table class="table table-striped table-hover">
