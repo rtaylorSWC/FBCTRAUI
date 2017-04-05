@@ -43,7 +43,9 @@
                     //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } }, 
                     //{ host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
                     { host: 'https://fbctrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
-                    { host: 'https://fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
+                    { host: 'https://fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
+                    { host: 'https://www.fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
+                    { host: 'https://www.fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
             ];
 
             var urlData = getUrlDataFromMap();
