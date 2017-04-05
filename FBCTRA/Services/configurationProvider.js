@@ -45,7 +45,7 @@
                     { host: 'https://fbctrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
                     { host: 'https://fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
                     { host: 'https://www.fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
-                    { host: 'https://www.fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
+                    { host: 'https://www.fbctrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } }
             ];
 
             var urlData = getUrlDataFromMap();
