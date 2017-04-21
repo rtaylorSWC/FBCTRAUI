@@ -13,7 +13,7 @@
         $scope.idSelected = null;
         $scope.itemSelected = false;
         $scope.selection = [];
-        $scope.noticeNumbers = [];
+        $scope.noticeNumbers = null;
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -27,6 +27,14 @@
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
             });
+        };
+
+        $scope.disputeNotice = function (notice) {
+            localStore.setCurrentNotice(notice);
+            var metaData = [];
+            metaData.titleId = 'LINK_HELP_TITLE_DISPUTE';
+            metaData.templateUrl = 'Widgets/helpdesk/helpdesk.html';
+            messageBus.publish('openHelpDesk', metaData);
         };
 
         $scope.getNoticePdf = function (fileName) {
@@ -80,8 +88,9 @@
                 $scope.itemSelected = true;
                 var idx = $scope.selection.indexOf(item);
                 (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
-                var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
-                (idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
+                //var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
+                //(idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
+                $scope.noticeNumbers = item.NoticeNumber;
             }
         };
 

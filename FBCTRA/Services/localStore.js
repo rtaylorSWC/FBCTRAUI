@@ -3,7 +3,8 @@
         CURRENT_USER: '8638P1F2-7G18-692W-M2V2-50C9L31380DP',
         CURRENT_FULLNAME: '3833P1F2-9G12-692W-M2V2-50C9L31380WE',
         TRANSLATED_DATA: '6993D3D7-5E82-407C-A9E9-50C9439350MH',
-        ATTACHMENTS: '389D3LE2-305Y-3H23-MN28-90238DE380DE'
+        ATTACHMENTS: '389D3LE2-305Y-3H23-MN28-90238DE380DE',
+        CURRENT_NOTICE: 'Y2H27K1Z-182W-GH7E-U32K-Q9NT8DE3L5HR'
     })
     .service('localStore', ['$log', '$window', 'localStoreConstants', 'messageBus',
         function ($log, $window, localStoreConstants, messageBus) {
@@ -13,12 +14,14 @@
             this.getAuthToken = getAuthToken;
             this.getTranslatedData = getTranslatedData;
             this.getAttachments = getAttachments;
+            this.getCurrentNotice = getCurrentNotice;
 
             this.setCurrentUser = setCurrentUser;
             this.setCurrentFullName = setCurrentFullName;
             this.setAuthToken = setAuthToken;
             this.setTranslatedData = setTranslatedData;
             this.setAttachments = setAttachments;
+            this.setCurrentNotice = setCurrentNotice;
 
             this.setSession = setSession;
             this.reset = reset;
@@ -44,6 +47,10 @@
                 return getSession(localStoreConstants.ATTACHMENTS);
             }
 
+            function getCurrentNotice() {
+                return getSession(localStoreConstants.CURRENT_NOTICE);
+            }
+
             function setCurrentUser(currentUserValue) {
                 setSession(localStoreConstants.CURRENT_USER, currentUserValue);
             }
@@ -64,6 +71,10 @@
 
             function setAttachments(attachmentsValue) {
                 setSession(localStoreConstants.ATTACHMENTS, attachmentsValue);
+            }
+
+            function setCurrentNotice(currentNoticeValue) {
+                setSession(localStoreConstants.CURRENT_NOTICE, currentNoticeValue);
             }
 
             function getSession(key) {

@@ -69,7 +69,7 @@
         </tr>
     </tbody>
     <tbody>
-        <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-click="toggleSelection($event, item)" ng-class="{selected: item.NoticeNumber == idSelected}">
+        <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-class="{selected: item.NoticeNumber == idSelected}">
             <td>
                 <input type="checkbox"
                        class="checkbox"
@@ -77,23 +77,24 @@
                        value="{{item}}"
                        ng-checked="selection.indexOf(item) > -1"
                        ng-hide="item.Payable==='0'"
-                       ng-disabled="item.Payable==='0'">
+                       ng-disabled="item.Payable==='0'"
+                       ng-click="toggleSelection($event, item)">
             </td>
-            <td ng-bind="item.NoticeNumber"></td>
-            <td ng-bind="item.LicensePlate"></td>
-            <td ng-bind="item.Date"></td>
-            <td ng-bind="item.Status"></td>
-            <td ng-bind="item.Toll"></td>
-            <td ng-bind="item.InitialNoticeFee"></td>
-            <td ng-bind="item.TollViolationFee"></td>
-            <td ng-bind="item.FinalNoticeFee"></td>
-            <td ng-bind="item.NSFFee"></td>
-            <td ng-bind="item.CourtFee"></td>
-            <td ng-bind="item.AdminFee"></td>
-            <td ng-bind="item.AmountDue"></td>
+            <td ng-bind="item.NoticeNumber" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.LicensePlate" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.Date" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.Status" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.Toll" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.InitialNoticeFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.TollViolationFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.FinalNoticeFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.NSFFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.CourtFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.AdminFee" ng-click="toggleSelection($event, item)"></td>
+            <td ng-bind="item.AmountDue" ng-click="toggleSelection($event, item)"></td>
             <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
             <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
-            <td ng-bind="item.Description_" style="color:red"></td>
+            <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
         </tr>
     </tbody>
     <tr></tr>

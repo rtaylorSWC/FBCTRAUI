@@ -1,11 +1,19 @@
 ﻿angular.module('HelpDeskModule', [])
-  .controller('HelpDeskController', ['$scope', 'appConstants', 'FlashService', 'Upload', 'HelpDeskService', 'localStore', 'vcRecaptchaService',
-	function ($scope, appConstants, FlashService, Upload, HelpDeskService, localStore, vcRecaptchaService) {
+  .controller('HelpDeskController', ['$scope', '$filter', 'appConstants', 'FlashService', 'Upload', 'HelpDeskService', 'localStore', 'vcRecaptchaService',
+	function ($scope, $filter, appConstants, FlashService, Upload, HelpDeskService, localStore, vcRecaptchaService) {
 	    'use strict';
 
 	    $scope.categories = appConstants.CATEGORIES;
 	    $scope.priorities = appConstants.PRIORITIES;
-	    $scope.response = null;
+	    $scope.authUser = localStore.getCurrentUser();
+	    $scope.notice = localStore.getCurrentNotice();
+	    $scope.ticket = {};
+	    $scope.disputingNotice = $scope.notice ? true : false;
+	    $scope.disputingNotice ? ($scope.ticket.Category = $filter('filter')($scope.categories, 'Dispute Violation')[0],
+        $scope.ticket.Priority = $filter('filter')($scope.priorities, 'Normal')[0],
+        $scope.ticket.NoticeNumber = $scope.notice.NoticeNumber, $scope.ticket.TVNID = $scope.notice.TVNID) : null;
+
+	    $scope.captchaResponse = false;
 	    $scope.widgetId = null;
 	    $scope.captcha = {
 	        key: '6LdrGh4UAAAAAO-fepgA7i4zbwBAaUsoAbxpFe13'
@@ -13,7 +21,7 @@
 
 	    $scope.setResponse = function (response) {
 	        console.info('Response available');
-	        $scope.response = response;
+	        $scope.captchaResponse = response;
 	    };
 
 	    $scope.setWidgetId = function (widgetId) {
@@ -24,7 +32,7 @@
 	    $scope.cbExpiration = function () {
 	        console.info('Captcha expired. Resetting response object');
 	        vcRecaptchaService.reload($scope.widgetId);
-	        $scope.response = null;
+	        $scope.captchaResponse = false;
 	    };
 
 	    $scope.toggleFileTokens = function (token) {
@@ -42,7 +50,7 @@
 
 	    $scope.submit = function () {
 	        !$scope.ticket.TVNID ? $scope.ticket.TVNID = null : null;
-	        !$scope.ticket.noticeNumbers ? $scope.ticket.noticeNumbers = [] : null;
+	        //!$scope.ticket.noticeNumbers ? $scope.ticket.noticeNumbers = [] : null;
 
 	        HelpDeskService.submit($scope.ticket, function (response) {
 	            if (response) {
@@ -60,7 +68,7 @@
 	        if (file) {
 	            $scope.fileExt = file.name.split(".").pop();
 	        }
-	        if ($scope.fileExt != "png" && $scope.fileExt != "jpg") {
+	        if ($scope.fileExt != "txt" && $scope.fileExt != "pdf" && $scope.fileExt != "png" && $scope.fileExt != "jpg") {
 	            FlashService.Error("Unable to Upload Files of type - " + $scope.fileExt, false);
 	            return;
 	        }

@@ -1,7 +1,7 @@
 ﻿angular.module('ConstantsModule', [])
 .constant('appConstants', {
     CATEGORIES: ['Dispute Violation', 'Other', 'Payment', 'Web', 'Technical'],
-    PRIORITIES: ['-None-', 'High', 'Medium', 'Low'],
+    PRIORITIES: ['-None-', 'High', 'Normal', 'Low'],
     STATES: [
       {
           "name": "Alabama",
