@@ -106,6 +106,7 @@
     <Content Include="assets\scripts\angular-aside.js" />
     <Content Include="assets\scripts\angular-base64.min.js" />
     <Content Include="assets\scripts\angular-cookies.min.js" />
+    <Content Include="assets\scripts\angular-recaptcha.min.js" />
     <Content Include="assets\scripts\angular-sanitize.min.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.js" />
     <Content Include="assets\scripts\angular-translate-loader-static-files.min.js" />
@@ -116,6 +117,9 @@
     <Content Include="assets\scripts\jquery-3.1.1.min.js" />
     <Content Include="assets\scripts\jsonSelect.js" />
     <Content Include="assets\scripts\linq.js" />
+    <Content Include="assets\scripts\ng-file-upload.min.js" />
+    <Content Include="assets\scripts\textAngular-sanitize.min.js" />
+    <Content Include="assets\scripts\textAngular.min.js" />
     <Content Include="assets\scripts\ui-bootstrap-tpls-0.14.3.min.js" />
     <Content Include="Constants\constants.js" />
     <Content Include="FBCTRA\fbcDirectives\pageSelect.js" />
@@ -125,6 +129,7 @@
     <Content Include="FBCTRA\fbcFilters\trustAsResourceUrl.js" />
     <Content Include="FBCTRA\fbcFilters\translate.js" />
     <Content Include="FBCTRA\fbcServices\accountService.js" />
+    <Content Include="FBCTRA\fbcServices\helpdeskService.js" />
     <Content Include="FBCTRA\fbcServices\paymentService.js" />
     <Content Include="FBCTRA\notices\notices.html" />
     <Content Include="FBCTRA\notices\notices.js" />
@@ -145,6 +150,9 @@
     <Content Include="UserLogin\views\login.html" />
     <Content Include="Widgets\getTag\getTag.html" />
     <Content Include="Widgets\getTag\getTag.js" />
+    <Content Include="Widgets\helpdesk\formatPhone.js" />
+    <Content Include="Widgets\helpdesk\helpdesk.html" />
+    <Content Include="Widgets\helpdesk\helpdesk.js" />
     <Content Include="Widgets\menuBar\menuBar.js" />
     <Content Include="Widgets\menuBar\menuBar.html" />
     <Content Include="Widgets\infoBar\infoBar.html" />

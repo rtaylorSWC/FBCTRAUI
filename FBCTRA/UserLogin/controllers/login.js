@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('LoginController', ['$scope', '$state', '$window', '$filter', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService',
-	function ($scope, $state, $window, $filter, AuthenticationFactory, localStore, configurationService, appConstants, FlashService) {
+  .controller('LoginController', ['$scope', '$state', '$window', '$filter', 'AuthenticationFactory', 'localStore', 'configurationService', 'appConstants', 'FlashService', 'messageBus',
+	function ($scope, $state, $window, $filter, AuthenticationFactory, localStore, configurationService, appConstants, FlashService, messageBus) {
 	    'use strict';
 
 	    $scope.states = appConstants.STATES;
@@ -23,8 +23,15 @@
 	        });
 	    };
 
-	    $scope.openUrlInTab = function (url) {
-	        $window.open(url, '_blank');
+	    //$scope.openUrlInTab = function (url) {
+	    //    $window.open(url, '_blank');
+	    //};
+
+	    $scope.openHelpDeskModal = function () {
+	        var metaData = [];
+	        metaData.titleId = 'LINK_HELP_TITLE';
+	        metaData.templateUrl = 'Widgets/helpdesk/helpdesk.html';
+	        messageBus.publish('openHelpDesk', metaData);
 	    };
 
 	    (function initController() {

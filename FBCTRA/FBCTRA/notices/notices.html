@@ -64,6 +64,7 @@
             <th translate="LABEL_ADMIN_FEE">Admin Fee</th>
             <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
             <th translate="LABEL_STATEMENT">Statement</th>
+            <th translate="LABEL_APPEAL_VIOLATION">Appeal Violation</th>
             <th></th>
         </tr>
     </tbody>
@@ -91,6 +92,7 @@
             <td ng-bind="item.AdminFee"></td>
             <td ng-bind="item.AmountDue"></td>
             <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
+            <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
             <td ng-bind="item.Description_" style="color:red"></td>
         </tr>
     </tbody>

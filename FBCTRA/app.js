@@ -1,7 +1,7 @@
 ﻿'use strict';
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
-                          'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'GetTagModule', 'ModalModule', 'NavBarFooterModule',
-                          'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64'])
+                          'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'GetTagModule', 'ModalModule', 'NavBarFooterModule', 'vcRecaptcha',
+                          'HelpDeskModule', 'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64', 'textAngular', 'ngFileUpload'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
       $urlRouterProvider.otherwise("/login");
 

@@ -1,7 +1,7 @@
 ﻿angular.module('ConfigurationModule', [])
 .constant('constants', {
     //Vehicle API URLs
-    API_LOCAL_VEHICLE_URI: 'http://localhost:54444',
+    API_LOCAL_VEHICLE_URI: 'http://localhost:55101',
     API_DEV_VEHICLE_URL: '//dev',
     API_UAT_VEHICLE_URL: '//uat',
     //API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',

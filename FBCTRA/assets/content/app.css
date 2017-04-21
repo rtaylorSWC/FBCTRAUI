@@ -47,7 +47,7 @@ header {
     clear: left;
     text-align: right;
     margin: 35px;
-    color: white;
+    color: steelblue;
 }
 
 footer {
@@ -242,4 +242,37 @@ a.menu_links {
 .info-img {
     width:100%;
     height:100%;
+}
+
+  .ta-editor {
+    min-height: 100px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:20px 0;
+ }
+
+  .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.form-attach-limit {
+    /*float: left;*/
+    color: #8a8a8a;
+    font-size: 11px;
+    cursor: default;
+    margin: 20px 50px 0 0;
 }

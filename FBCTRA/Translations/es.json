@@ -18,7 +18,7 @@
   "CONTENT_TOLLTAG_NOTICE": "TxTAG (Texas Tollways), EZ Tag (Autoridad del Toll Road del Condado de Harris) o TollTag (North Texas Tollway Authority) también pueden recibir Notificaciones / Violaciones. Las razones más frecuentes por las que se recibió el aviso podrían deberse a lo siguiente:<ul><li>La etiqueta de peaje no está correctamente montada</li><li>Los datos de la tarjeta de crédito en el archivo de la cuenta de etiqueta de peaje han caducado</li><li>Tienes un nuevo coche / una nueva matrícula y tu cuenta no se actualizó correctamente.</li><li>No hay suficientes fondos en la cuenta</li><li>La etiqueta de peaje está defectuosa</li></ul>Para evitar futuras infracciones, antes de usar las carreteras de peaje del condado de Fort Bend nuevamente, comuníquese con el centro de servicio al cliente de su peaje para rectificar su cuenta.<br><b>TxTag: 1-888-468-9824 o <a href='http://www.txtag.org' target='_blank'>http://www.txtag.org</a><br> Etiqueta EZ: 1-281-875-3279 o <a href='https://www.hctra.org' target='_blank'>https://www.hctra.org</a><br>Etiqueta de peaje: 1-972-818-6882 o <a href=' https://www.ntta.org' target='_blank'>https://www.ntta.org</a> </b><br>También debe comunicarse con el Centro de Atención al Cliente de Fort Bend Toll Road al 855-999-2024 para tratar este aviso de violación.",
   "CONTENT_VIOLATION": "De acuerdo con el Código de Transporte de Texas, Capítulo 284, el propietario registrado o arrendatario de registro de un vehículo (no necesariamente el conductor del vehículo) que pasa a través de una instalación de peaje es responsable del pago de peajes asociados con dicha instalación de peaje. El incumplimiento de pagar cargos por peaje es contra la ley y resulta en una Violación de peaje.",
   "CONTENT_VIOLATOR": "Para evitar infracciones de peaje, antes de volver a usar las carreteras de peaje del condado de Fort Bend, comuníquese con el centro de servicio al cliente de su peaje para rectificar su cuenta:<br> <b>TxTag: 1-888-468-9824 or <a href='http://www.txtag.org' target='_blank'>http://www.txtag.org</a> <br>EZ Tag: 1-281-875-3279 or <a href='https://www.hctra.org' target='_blank'>https://www.hctra.org</a><br>Toll Tag: 1-972-818-6882 or <a href='https://www.ntta.org' target='_blank'>https://www.ntta.org</a>",
-  "CONTENT_NOTICES_INFO": "<p>Sobre la base de la información de infracción ingresada, los siguientes avisos de infracción de peaje fueron devueltos. Para pagar con tarjeta de crédito o cheque, seleccione las cajas de notificación, seleccione cheque o tarjeta de crédito y haga clic en PAGAR. Para apelar avisos / infracciones de peaje, llame al <a href='tel:855-999-2024'>855-999-2024</a>.</p>",
+  "CONTENT_NOTICES_INFO": "<p>Sobre la base de la información de infracción ingresada, los siguientes avisos de infracción de peaje fueron devueltos. Para pagar con tarjeta de crédito o cheque, seleccione las cajas de notificación, seleccione cheque o tarjeta de crédito y haga clic en PAGAR. Para apelar avisos / infracciones de peaje, llame al <a href='tel:855-999-2024'>855-999-2024</a>.Puede apelar una infracción si no está de acuerdo con ella. Haga clic en el enlace de apelación junto al Aviso. Nota importante: Si está apelando múltiples violaciones con diferentes circunstancias y razones, debe presentar controversias de violación por separado.</p>",
 
   "LABEL_LOGIN_TITLE": "COMUNICACIÓN / VIOLACIÓN",
   "LABEL_GENERAL_INFO": "Información general",
@@ -42,6 +42,8 @@
   "LABEL_AMOUNT_DUE": "Importe pendiente",
   "LABEL_STATEMENT": "Declaración",
   "LABEL_DOWNLOAD": "descargar",
+  "LABEL_APPEAL": "apelación",
+  "LABEL_APPEAL_VIOLATION": "Violación de la apelación",
   "LABEL_PRIVACY_POLICY": "Política de privacidad",
   "LABEL_COPYRIGHT": "Copyright © 2017 Condado de Fort Bend",
   "LABEL_GET_TAG": "Compra una etiqueta",
@@ -60,6 +62,7 @@
   "LABEL_INFO_VIOLATOR": "¿Qué es una violación de peaje?",
   "LABEL_COPYRIGHT": "© 2017 Condado de Fort Bend",
   "LINK_HELP": "¿Necesitas ayuda?",
+  "LINK_HELP_TITLE": "FBTRA - Enviar un ticket",
   "TAB_NOTICES": "Avisos",
   "TEXTBOX_INVOICE": "Factura #",
   "TEXTBOX_LICENSEPLATE": "Placa"

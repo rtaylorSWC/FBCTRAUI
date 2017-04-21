@@ -3,7 +3,7 @@
         CURRENT_USER: '8638P1F2-7G18-692W-M2V2-50C9L31380DP',
         CURRENT_FULLNAME: '3833P1F2-9G12-692W-M2V2-50C9L31380WE',
         TRANSLATED_DATA: '6993D3D7-5E82-407C-A9E9-50C9439350MH',
-        CURRENT_ENTITY: '389D3LE2-305Y-3H23-MN28-90238DE380DE'
+        ATTACHMENTS: '389D3LE2-305Y-3H23-MN28-90238DE380DE'
     })
     .service('localStore', ['$log', '$window', 'localStoreConstants', 'messageBus',
         function ($log, $window, localStoreConstants, messageBus) {
@@ -12,13 +12,13 @@
             this.getCurrentFullName = getCurrentFullName;
             this.getAuthToken = getAuthToken;
             this.getTranslatedData = getTranslatedData;
-            this.getCurrentEntity = getCurrentEntity;
+            this.getAttachments = getAttachments;
 
             this.setCurrentUser = setCurrentUser;
             this.setCurrentFullName = setCurrentFullName;
             this.setAuthToken = setAuthToken;
             this.setTranslatedData = setTranslatedData;
-            this.setCurrentEntity = setCurrentEntity;
+            this.setAttachments = setAttachments;
 
             this.setSession = setSession;
             this.reset = reset;
@@ -40,8 +40,8 @@
                 return getSession(localStoreConstants.TRANSLATED_DATA);
             }
 
-            function getCurrentEntity() {
-                return getSession(localStoreConstants.CURRENT_ENTITY);
+            function getAttachments() {
+                return getSession(localStoreConstants.ATTACHMENTS);
             }
 
             function setCurrentUser(currentUserValue) {
@@ -62,10 +62,8 @@
                 messageBus.publish('translatedDataChanged', translatedDataValue);
             }
 
-            function setCurrentEntity(currentEntityValue) {
-                setSession(localStoreConstants.CURRENT_ENTITY, currentEntityValue);
-
-                messageBus.publish('currentEntityChanged', currentEntityValue);
+            function setAttachments(attachmentsValue) {
+                setSession(localStoreConstants.ATTACHMENTS, attachmentsValue);
             }
 
             function getSession(key) {

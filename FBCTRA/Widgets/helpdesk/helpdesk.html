@@ -1,0 +1,86 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title" ng-bind="dataModel.titleId | translate"></h3>
+</div>
+<div class="container" ng-controller="HelpDeskController">
+    <br />
+    <form name="helpDeskForm" ng-submit="submit()" novalidate>
+        <div class="row">
+            <!-- Contact Name -->
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.firstName.$invalid && !helpDeskForm.firstName.$pristine }">
+                <label>First Name</label>
+                <input type="text" name="firstName" class="form-control" ng-model="ticket.FirstName" required>
+                <p ng-show="helpDeskForm.firstName.$invalid && !helpDeskForm.firstName.$pristine" class="help-block">Your first name is required.</p>
+            </div>
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.lastName.$invalid && !helpDeskForm.lastName.$pristine }">
+                <label>Last Name</label>
+                <input type="text" name="lastName" class="form-control" ng-model="ticket.LastName" required>
+                <p ng-show="helpDeskForm.lastName.$invalid && !helpDeskForm.lastName.$pristine" class="help-block">Your last name is required.</p>
+            </div>
+            <!-- Company Name -->
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.companyName.$invalid && !helpDeskForm.companyName.$pristine }">
+                <label>Company Name</label>
+                <input type="text" name="companyName" class="form-control" ng-model="ticket.CompanyName" required>
+                <p ng-show="helpDeskForm.companyName.$invalid && !helpDeskForm.companyName.$pristine" class="help-block">Your companyName is required.</p>
+            </div>
+            <!-- EMAIL -->
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.email.$invalid && !helpDeskForm.email.$pristine }">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="ticket.Email">
+                <p ng-show="helpDeskForm.email.$invalid && !helpDeskForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            </div>
+            <!-- Category -->
+            <div class="col-sm-3 form-group" ng-class="{ 'has-error' : helpDeskForm.category.$invalid && !helpDeskForm.category.$pristine }">
+                <label>Category</label>
+                <select type="text" name="category" class="form-control"
+                        ng-model="ticket.Category"
+                        ng-options="category for category in categories" required>
+                    <option value="">Select</option>
+                </select>
+                <p ng-show="helpDeskForm.category.$invalid && !helpDeskForm.category.$pristine" class="help-block">The Category is required.</p>
+            </div>
+            <!-- Subject -->
+            <div class="col-sm-3 form-group" ng-class="{ 'has-error' : helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine }">
+                <label>Subject</label>
+                <input type="text" name="subject" class="form-control" ng-model="ticket.Subject" required>
+                <p ng-show="helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine" class="help-block">The subject is required.</p>
+            </div>
+            <!-- Priority -->
+            <div class="col-sm-2 form-group" ng-class="{ 'has-error' : helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine }">
+                <label>Priority</label>
+                <select type="text" name="priority" class="form-control"
+                        ng-model="ticket.Priority"
+                        ng-options="priority for priority in priorities" required>
+                    <option value="">Select</option>
+                </select>
+                <p ng-show="helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine" class="help-block">The Priority is required.</p>
+            </div>
+            <!-- Description -->
+            <div class="col-sm-12 form-group" ng-class="{ 'has-error' : helpDeskForm.description.$invalid && !helpDeskForm.description.$pristine }">
+                <label>Description</label>
+                <text-angular ta-toolbar="[['bold', 'italics', 'underline', 'ul','ol'], ['justifyLeft', 'justifyCenter', 'justifyRight']]"
+                              name="description" ng-model="ticket.Description" required></text-angular>
+                <p ng-show="helpDeskForm.description.$invalid && !helpDeskForm.description.$pristine" class="help-block">The description is required.</p>
+            </div>
+            <!-- Attachments -->
+            <div class="col-sm-4 form-group">
+                <a ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
+                    <span class="fileUpload btn btn-primary">Attachment(s)</span>
+                </a>
+                <span class="form-attach-limit">(Up to 20 MB)</span>
+            </div>
+        </div>
+        <!-- Recaptcha -->
+        <div vc-recaptcha
+             theme="'light'"
+             key="captcha.key"
+             on-create="setWidgetId(widgetId)"
+             on-success="setResponse(response)"
+             on-expire="cbExpiration()">
+        </div>
+        <br />
+    </form>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()">Submit ticket</button>
+        <button class="btn btn-warning" type="button" ng-click="close()">Close</button>
+    </div>
+</div>
