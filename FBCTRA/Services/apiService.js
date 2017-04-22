@@ -100,7 +100,7 @@
 	                'save',
                     {
                         'attachmentToken': attachmentToken,
-                        "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryEbGG7m3A2CfFJyba"
+                        'Content-Type': undefined,
                     }
                 );
 	        },

@@ -77,12 +77,11 @@
 	        var fd = new FormData();
 	        fd.append('file', file);
 
-	        $scope.uploadFileName = file.name.replace(/\..+$/, '');
 	        if (file) {
-	            //HelpDeskService.uploadAttachment((JSON.stringify(file)), $scope.uploadFileName, $scope.attachmentToken, function (response) {
+	            $scope.uploadFileName = file.name.replace(/\..+$/, '');
 	            HelpDeskService.uploadAttachment(fd, $scope.uploadFileName, $scope.currentToken, function (response) {
 	                if (response) {
-	                    $scope.toggleFileTokens(response.Token);
+	                    $scope.toggleFileTokens(response.token);
 	                    FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
 	                }
 	                else {
@@ -90,29 +89,6 @@
 	                }
 	            });
 	        }
-
-	        //var reader = new FileReader();
-	        //reader.onload = function (readerEvt) {
-	        //    //var binaryString = readerEvt.target.result;
-	        //    //file = btoa(binaryString);
-	        //    //var file = String(binaryString).match(/,(.*)$/)[1];
-	        //    $scope.uploadFileName = file.name.replace(/\..+$/, '');
-	        //    if (file) {
-	        //        //HelpDeskService.uploadAttachment((JSON.stringify(file)), $scope.uploadFileName, $scope.attachmentToken, function (response) {
-	        //        HelpDeskService.uploadAttachment(file, $scope.uploadFileName, $scope.currentToken, function (response) {
-	        //            if (response) {
-	        //                $scope.toggleFileTokens(response.Token);
-	        //                FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
-	        //            }
-	        //            else {
-	        //                FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
-	        //            }
-	        //        });
-	        //    }
-	        //};
-	        //reader.readAsBinaryString(file);
-	        //reader.readAsDataURL(file)
-
 	    };
 	}
   ]);
