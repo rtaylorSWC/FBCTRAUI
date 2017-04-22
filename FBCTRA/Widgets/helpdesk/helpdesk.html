@@ -115,14 +115,14 @@
                 <span class="form-attach-limit" translate="LABEL_ATTACHMENTS_LIMIT"></span>
             </div>
         </div>
+        <div class="modal-footer">
+            <label ng-if="disputingNotice" class="checkbox-inline" style="border:thin;margin-right:20px;">
+                <input type="checkbox" ng-model="ticket.verifyCheckbox" required>I declare under penalty of perjury that the foregoing is true and correct.
+            </label>
+            <button ng-if="!disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_SUBMIT_TICKET"></button>
+            <button ng-if="disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_APPEAL_NOTICE"></button>
+            <button class="btn btn-warning" type="button" ng-click="close()" translate="LABEL_CLOSE"></button>
+        </div>
     </form>
-    <div class="modal-footer">
-        <label ng-if="disputingNotice" class="checkbox-inline" style="border:thin;margin-right:20px;">
-            <input type="checkbox" ng-model="ticket.verifyCheckbox" required>I declare under penalty of perjury that the foregoing is true and correct.
-        </label>
-        <button ng-if="!disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_SUBMIT_TICKET"></button>
-        <button ng-if="disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_APPEAL_NOTICE"></button>
-        <button class="btn btn-warning" type="button" ng-click="close()" translate="LABEL_CLOSE"></button>
-    </div>
 </div>
 </div>

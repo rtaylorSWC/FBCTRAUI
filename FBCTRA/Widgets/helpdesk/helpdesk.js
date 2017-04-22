@@ -50,7 +50,7 @@
 
 	    $scope.submit = function () {
 	        !$scope.ticket.TVNID ? $scope.ticket.TVNID = null : null;
-	        //!$scope.ticket.noticeNumbers ? $scope.ticket.noticeNumbers = [] : null;
+	        $scope.ticket.AttachmentTicket = $scope.currentToken;
 
 	        HelpDeskService.submit($scope.ticket, function (response) {
 	            if (response) {
