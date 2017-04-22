@@ -151,7 +151,7 @@
     <Content Include="UserLogin\views\login.html" />
     <Content Include="Widgets\getTag\getTag.html" />
     <Content Include="Widgets\getTag\getTag.js" />
-    <Content Include="FBCTRA\fbcDirectives\formatPhone.js" />
+    <Content Include="FBCTRA\fbcDirectives\phoneFormat.js" />
     <Content Include="Widgets\helpdesk\helpdesk.html" />
     <Content Include="Widgets\helpdesk\helpdesk.js" />
     <Content Include="Widgets\menuBar\menuBar.js" />
