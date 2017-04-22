@@ -91,13 +91,18 @@
 	            return $http.post(domainApiUrl + uri, payload, params
 	            );
 	        },
-	        postData: function (uri, payload, params) {
+	        postFile: function (uri, payload, attachmentToken, params) {
 	            return getResourcePromise(
 	                uri,
 	                payload,
                     params,
 	                null,
-	                'save');
+	                'save',
+                    {
+                        'attachmentToken': attachmentToken,
+                        "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundaryEbGG7m3A2CfFJyba"
+                    }
+                );
 	        },
 	        put: function (uri, payload, params) {
 	            return getResourcePromise(
