@@ -1,8 +1,8 @@
 ﻿angular.module('ConfigurationModule', [])
 .constant('constants', {
     //Vehicle API URLs
-    API_LOCAL_VEHICLE_URI: 'http://localhost:55101',
-    API_DEV_VEHICLE_URL: '//dev',
+    API_LOCAL_VEHICLE_URI: 'http://apifbctrcsc-dev.azurewebsites.net',
+    API_DEV_VEHICLE_URL: 'http://apifbctrcsc-dev.azurewebsites.net',
     API_UAT_VEHICLE_URL: '//uat',
     //API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',
     API_PROD_VEHICLE_URL: 'https://api.fbctrcsc.com',
@@ -39,9 +39,11 @@
             defaultUrl = defaultUrl.substr(0, defaultUrl.length - 1);
 
             var urlMap = [
-                    { host: 'localhost', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
+                    { host: 'localhost', urls: { rest: constants.API_LOCAL_VEHICLE_URI, base: defaultUrl } },
                     //{ host: 'dev.com', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } }, 
-                    //{ host: 'uat.com', urls: { rest: constants.API_UAT_VEHICLE_URL, base: defaultUrl } },
+                    //dev slot
+                    { host: 'http://fbctraui-dev-ui.azurewebsites.net', urls: { rest: constants.API_DEV_VEHICLE_URL, base: defaultUrl } },
+                    //prd slots
                     { host: 'https://fbctrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
                     { host: 'https://fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
                     { host: 'https://www.fbtrcsc.com', urls: { rest: constants.API_PROD_VEHICLE_URL, base: defaultUrl } },
