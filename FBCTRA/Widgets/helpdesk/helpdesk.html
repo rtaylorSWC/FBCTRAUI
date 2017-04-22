@@ -109,8 +109,8 @@
             </div>
             <!-- Attachments -->
             <div class="col-sm-6 form-group" ng-class="{ appealFormAttachment: disputingNotice }">
-                <a ng-disabled="!captchaResponse" ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
-                    <span ng-disabled="!captchaResponse" class="fileUpload btn btn-primary" translate="LABEL_ATTACHMENTS"></span>
+                <a ng-disabled="!captchaResponse && !authUser" ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
+                    <span ng-disabled="!captchaResponse && !authUser" class="fileUpload btn btn-primary" translate="LABEL_ATTACHMENTS"></span>
                 </a>
                 <span class="form-attach-limit" translate="LABEL_ATTACHMENTS_LIMIT"></span>
             </div>
