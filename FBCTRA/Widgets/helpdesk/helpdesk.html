@@ -6,11 +6,10 @@
             <span class="modal-title" style="font-weight:bold" ng-bind="'(' + notice.NoticeNumber + ')'"></span>
         </h4>
     </div>
-    <!--<code>notice = {{notice}}</code>-->
     <br ng-if="!disputingNotice" />
     <div ng-if="disputingNotice">
         <span translate="CONTENT_DISPUTE_INVOICE"></span>
-        <table class="table panel-info">
+        <table class="table panel-info" ng-class="{ appealFormTable: disputingNotice }">
             <tr>
                 <th translate="LABEL_LICENSE_PLATE">License Plate</th>
                 <!--<th translate="LABEL_LICENSE_STATE">License State/Province</th>-->
@@ -19,7 +18,7 @@
                 <!--<th translate="LABEL_LOCATION">Location</th>-->
                 <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
             </tr>
-            <tr>
+            <tr style="height:5px;">
                 <td ng-bind="notice.LicensePlate"></td>
                 <!--<td ng-bind="notice.LicenseState"></td>
                 <td ng-bind="notice.LicenseType"></td>-->
@@ -31,38 +30,38 @@
         <hr />
     </div>
     <form name="helpDeskForm" ng-submit="submit()" novalidate>
-        <div class="row">
+        <div class="row" ng-class="{appealForm: disputingNotice}">
             <!-- Contact Name -->
-            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.firstName.$invalid && !helpDeskForm.firstName.$pristine }">
+            <div class="col-sm-4" ng-class="{ 'has-error' : helpDeskForm.firstName.$invalid && !helpDeskForm.firstName.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_FIRST_NAME"></label>
                 <input type="text" name="firstName" class="form-control" ng-model="ticket.FirstName" placeholder="Required" required>
                 <!--<p ng-show="helpDeskForm.firstName.$invalid && !helpDeskForm.firstName.$pristine" class="help-block">Your first name is required.</p>-->
             </div>
-            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.lastName.$invalid && !helpDeskForm.lastName.$pristine }">
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.lastName.$invalid && !helpDeskForm.lastName.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_LAST_NAME"></label>
                 <input type="text" name="lastName" class="form-control" ng-model="ticket.LastName" placeholder="Required" required>
                 <!--<p ng-show="helpDeskForm.lastName.$invalid && !helpDeskForm.lastName.$pristine" class="help-block">Your last name is required.</p>-->
             </div>
             <!-- Company Name -->
-            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.companyName.$invalid && !helpDeskForm.companyName.$pristine }">
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.companyName.$invalid && !helpDeskForm.companyName.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_COMPANY_NAME"></label>
                 <input type="text" name="companyName" class="form-control" ng-model="ticket.CompanyName">
                 <!--<p ng-show="helpDeskForm.companyName.$invalid && !helpDeskForm.companyName.$pristine" class="help-block"></p>-->
             </div>
             <!-- EMAIL -->
-            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.email.$invalid && !helpDeskForm.email.$pristine }">
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.email.$invalid && !helpDeskForm.email.$pristine , appealForm: disputingNotice}">
                 <label translate="LABEL_EMAIL"></label>
                 <input type="email" name="email" class="form-control" ng-model="ticket.Email" placeholder="Required" required>
                 <!--<p ng-show="helpDeskForm.email.$invalid && !helpDeskForm.email.$pristine" class="help-block">Enter a valid email.</p>-->
             </div>
             <!-- PHONE -->
-            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.phone.$invalid && !helpDeskForm.phone.$pristine }">
+            <div class="col-sm-4 form-group" ng-class="{ 'has-error' : helpDeskForm.phone.$invalid && !helpDeskForm.phone.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_PHONE"></label>
                 <input type="text" name="phone" class="form-control" ng-model="ticket.phone" placeholder="Required" phone-input>
                 <!--<p ng-show="helpDeskForm.phone.$invalid && !helpDeskForm.phone.$pristine" class="help-block">Enter a valid phone number.</p>-->
             </div>
             <!-- Category -->
-            <div class="col-sm-3 form-group" ng-class="{ 'has-error' : helpDeskForm.category.$invalid && !helpDeskForm.category.$pristine }">
+            <div class="col-sm-3 form-group" ng-class="{ 'has-error' : helpDeskForm.category.$invalid && !helpDeskForm.category.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_CATEGORY"></label>
                 <select type="text" name="category" class="form-control"
                         ng-disabled="disputingNotice"
@@ -74,13 +73,13 @@
                 <!--<p ng-show="helpDeskForm.category.$invalid && !helpDeskForm.category.$pristine" class="help-block">The Category is required.</p>-->
             </div>
             <!-- Subject -->
-            <div class="col-sm-8 form-group" ng-class="{ 'has-error' : helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine }">
+            <div class="col-sm-8 form-group" ng-class="{ 'has-error' : helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_SUBJECT"></label>
                 <input type="text" name="subject" class="form-control" ng-model="ticket.Subject" placeholder="Required" required>
                 <!--<p ng-show="helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine" class="help-block">The subject is required.</p>-->
             </div>
             <!-- Priority -->
-            <div class="col-sm-2 form-group" ng-class="{ 'has-error' : helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine }">
+            <div class="col-sm-2 form-group" ng-class="{ 'has-error' : helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_PRIORITY"></label>
                 <select type="text" name="priority" class="form-control"
                         ng-model="ticket.Priority"
@@ -90,7 +89,7 @@
                 <!--<p ng-show="helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine" class="help-block">The Priority is required.</p>-->
             </div>
             <!-- Description -->
-            <div class="col-sm-12 form-group" ng-class="{ 'has-error' : helpDeskForm.description.$invalid && !helpDeskForm.description.$pristine }">
+            <div class="col-sm-12 form-group" ng-class="{ 'has-error' : helpDeskForm.description.$invalid && !helpDeskForm.description.$pristine, appealFormTable: disputingNotice }">
                 <label translate="LABEL_DESCRIPTION"></label>
                 <text-angular ta-toolbar="[['bold', 'italics', 'underline', 'ul','ol'], ['justifyLeft', 'justifyCenter', 'justifyRight']]"
                               name="description" ng-model="ticket.Description" placeholder="Required" required></text-angular>
@@ -109,7 +108,7 @@
             <div ng-if="!authUser" class="col-sm-1 form-group">
             </div>
             <!-- Attachments -->
-            <div class="col-sm-6 form-group">
+            <div class="col-sm-6 form-group" ng-class="{ appealFormAttachment: disputingNotice }">
                 <a ng-disabled="!captchaResponse" ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
                     <span ng-disabled="!captchaResponse" class="fileUpload btn btn-primary" translate="LABEL_ATTACHMENTS"></span>
                 </a>

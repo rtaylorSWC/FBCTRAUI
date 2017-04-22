@@ -284,3 +284,16 @@ a.menu_links {
 .negNum {
     color: green;    
 }
+
+.appealForm {
+    margin-bottom: 10px;
+}
+
+.appealFormTable{
+    margin-bottom: -20px;
+}
+
+.appealFormAttachment{
+    margin-left:-10px;
+    margin-bottom: -10px;
+}
