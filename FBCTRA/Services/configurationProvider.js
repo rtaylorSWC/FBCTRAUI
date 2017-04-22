@@ -2,7 +2,7 @@
 .constant('constants', {
     //Vehicle API URLs
     API_LOCAL_VEHICLE_URI: 'http://apifbctrcsc-dev.azurewebsites.net',
-    API_DEV_VEHICLE_URL: 'http://apifbctrcsc-dev.azurewebsites.net',
+    API_DEV_VEHICLE_URL: 'https://apifbctrcsc-dev.azurewebsites.net',
     API_UAT_VEHICLE_URL: '//uat',
     //API_PROD_VEHICLE_URL: 'http://vpsapi.azurewebsites.net',
     API_PROD_VEHICLE_URL: 'https://api.fbctrcsc.com',
