@@ -12,7 +12,7 @@
 	    $scope.disputingNotice ? ($scope.ticket.Category = $filter('filter')($scope.categories, 'Dispute Violation')[0],
         $scope.ticket.Priority = $filter('filter')($scope.priorities, 'Normal')[0],
         $scope.ticket.NoticeNumber = $scope.notice.NoticeNumber, $scope.ticket.TVNID = $scope.notice.TVNID) : null;
-
+	    $scope.currentToken = '';
 	    $scope.captchaResponse = false;
 	    $scope.widgetId = null;
 	    $scope.captcha = {
@@ -38,7 +38,7 @@
 	    $scope.toggleFileTokens = function (token) {
 	        !$scope.ticket.fileTokens ? $scope.ticket.fileTokens = [] : null;
 	        var idx = $scope.ticket.fileTokens.indexOf(token);
-	        (idx > -1) ? $scope.ticket.fileTokens.splice(idx, 1) : $scope.ticket.fileTokens.push(token);
+	        (idx > -1) ? ($scope.ticket.fileTokens.splice(idx, 1), $scope.currentToken = ''): ($scope.ticket.fileTokens.push(token), $scope.currentToken = token );
 	    };
 
 	    $scope.toggleAttachments = function (uploadFile) {
@@ -73,27 +73,45 @@
 	            return;
 	        }
 	        var uploadFile = file;
-	        $scope.uploadFileName = file.name;
 
-	        var reader = new FileReader();
-	        reader.onload = function (readerEvt) {
-	            var binaryString = readerEvt.target.result;
-	            //file = btoa(binaryString);
-	            var file = String(binaryString).match(/,(.*)$/)[1];
-	            if (file) {
-	                HelpDeskService.uploadAttachment(JSON.stringify(file), $scope.uploadFileName, function (response) {
-	                    if (response) {
-	                        $scope.toggleFileTokens(response.Token);
-	                        FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
-	                    }
-	                    else {
-	                        FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
-	                    }
-	                });
-	            }
-	        };
+	        var fd = new FormData();
+	        fd.append('file', file);
+
+	        $scope.uploadFileName = file.name.replace(/\..+$/, '');
+	        if (file) {
+	            //HelpDeskService.uploadAttachment((JSON.stringify(file)), $scope.uploadFileName, $scope.attachmentToken, function (response) {
+	            HelpDeskService.uploadAttachment(fd, $scope.uploadFileName, $scope.currentToken, function (response) {
+	                if (response) {
+	                    $scope.toggleFileTokens(response.Token);
+	                    FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
+	                }
+	                else {
+	                    FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
+	                }
+	            });
+	        }
+
+	        //var reader = new FileReader();
+	        //reader.onload = function (readerEvt) {
+	        //    //var binaryString = readerEvt.target.result;
+	        //    //file = btoa(binaryString);
+	        //    //var file = String(binaryString).match(/,(.*)$/)[1];
+	        //    $scope.uploadFileName = file.name.replace(/\..+$/, '');
+	        //    if (file) {
+	        //        //HelpDeskService.uploadAttachment((JSON.stringify(file)), $scope.uploadFileName, $scope.attachmentToken, function (response) {
+	        //        HelpDeskService.uploadAttachment(file, $scope.uploadFileName, $scope.currentToken, function (response) {
+	        //            if (response) {
+	        //                $scope.toggleFileTokens(response.Token);
+	        //                FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
+	        //            }
+	        //            else {
+	        //                FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
+	        //            }
+	        //        });
+	        //    }
+	        //};
 	        //reader.readAsBinaryString(file);
-	        reader.readAsDataURL(file)
+	        //reader.readAsDataURL(file)
 
 	    };
 	}

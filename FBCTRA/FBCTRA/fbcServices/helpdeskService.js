@@ -5,10 +5,10 @@
 
         var apiUri = '/support';
         return {
-            uploadAttachment: function (fileData, fileName, callback) {
+            uploadAttachment: function (fileData, fileName, attachmentToken, callback) {
                 var params = {};
                 var uri = apiUri + '/upload/' + fileName;
-                return apiService.post(uri, fileData, params)
+                return apiService.postFile(uri, fileData, attachmentToken, params)
                                  .then(function successCallback(response) {
                                      callback(response);
                                  }, function errorCallback(response) {

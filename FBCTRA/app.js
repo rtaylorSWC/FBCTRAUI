@@ -2,7 +2,11 @@
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
                           'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'GetTagModule', 'ModalModule', 'NavBarFooterModule', 'vcRecaptcha',
                           'HelpDeskModule', 'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64', 'textAngular', 'ngFileUpload'])
-  .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
+  .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $httpProvider) {
+
+      $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+      $httpProvider.defaults.headers.post['Content-Type'] = 'multipart/form-data; charset=utf-8';
+
       $urlRouterProvider.otherwise("/login");
 
       var loginViewBase = {
