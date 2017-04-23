@@ -19,9 +19,9 @@
 	        key: '6LdrGh4UAAAAAO-fepgA7i4zbwBAaUsoAbxpFe13'
 	    };
 
-	    $scope.setResponse = function (response) {
+	    $scope.setResponse = function (captchaResponse) {
 	        console.info('Response available');
-	        $scope.captchaResponse = response;
+	        $scope.captchaResponse = captchaResponse;
 	    };
 
 	    $scope.setWidgetId = function (widgetId) {
@@ -30,9 +30,11 @@
 	    };
 
 	    $scope.cbExpiration = function () {
-	        console.info('Captcha expired. Resetting response object');
-	        vcRecaptchaService.reload($scope.widgetId);
-	        $scope.captchaResponse = false;
+	        if (!$scope.authUser) {
+	            console.info('Captcha expired. Resetting captcha response object');
+	            vcRecaptchaService.reload($scope.widgetId);
+	            $scope.captchaResponse = false;
+	        }
 	    };
 
 	    $scope.toggleFileTokens = function (token) {
@@ -59,7 +61,7 @@
 	            } else {
 	                response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to submit ticket, please try again.");
 	            }
-	            vcRecaptchaService.reload($scope.widgetId);
+	            !$scope.authUser ? vcRecaptchaService.reload($scope.widgetId) : null;
 	            $scope.close();
 	        });
 	    };

@@ -102,7 +102,7 @@
                  theme="'light'"
                  key="captcha.key"
                  on-create="setWidgetId(widgetId)"
-                 on-success="setResponse(response)"
+                 on-success="setResponse(captchaResponse)"
                  on-expire="cbExpiration()">
             </div>
             <div ng-if="!authUser" class="col-sm-1 form-group">
