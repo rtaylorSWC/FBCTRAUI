@@ -102,15 +102,15 @@
                  theme="'light'"
                  key="captcha.key"
                  on-create="setWidgetId(widgetId)"
-                 on-success="setResponse(captchaResponse)"
+                 on-success="setResponse(response)"
                  on-expire="cbExpiration()">
             </div>
             <div ng-if="!authUser" class="col-sm-1 form-group">
             </div>
             <!-- Attachments -->
             <div class="col-sm-6 form-group" ng-class="{ appealFormAttachment: disputingNotice }">
-                <a ng-disabled="!captchaResponse && !authUser" ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
-                    <span ng-disabled="!captchaResponse && !authUser" class="fileUpload btn btn-primary" translate="LABEL_ATTACHMENTS"></span>
+                <a ng-disabled="!response && !authUser" ngf-select="uploadFiles($file, $invalidFiles)" accept="*.xls, *.xlsx" ngf-max-height="50000" ngf-max-size="5MB">
+                    <span ng-disabled="!response && !authUser" class="fileUpload btn btn-primary" translate="LABEL_ATTACHMENTS"></span>
                 </a>
                 <span class="form-attach-limit" translate="LABEL_ATTACHMENTS_LIMIT"></span>
             </div>

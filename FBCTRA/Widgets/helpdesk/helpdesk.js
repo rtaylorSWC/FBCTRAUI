@@ -13,27 +13,27 @@
         $scope.ticket.Priority = $filter('filter')($scope.priorities, 'Normal')[0],
         $scope.ticket.NoticeNumber = $scope.notice.NoticeNumber, $scope.ticket.TVNID = $scope.notice.TVNID) : null;
 	    $scope.currentToken = '';
-	    $scope.captchaResponse = false;
+	    $scope.response = false;
 	    $scope.widgetId = null;
 	    $scope.captcha = {
 	        key: '6LdrGh4UAAAAAO-fepgA7i4zbwBAaUsoAbxpFe13'
 	    };
 
-	    $scope.setResponse = function (captchaResponse) {
+	    $scope.setResponse = function (response) {
 	        console.info('Response available');
-	        $scope.captchaResponse = captchaResponse;
+	        $scope.response = response;
 	    };
 
 	    $scope.setWidgetId = function (widgetId) {
 	        console.info('Created widget ID: %s', widgetId);
 	        $scope.widgetId = widgetId;
 	    };
-
+        
 	    $scope.cbExpiration = function () {
 	        if (!$scope.authUser) {
 	            console.info('Captcha expired. Resetting captcha response object');
 	            vcRecaptchaService.reload($scope.widgetId);
-	            $scope.captchaResponse = false;
+	            $scope.response = false;
 	        }
 	    };
 
