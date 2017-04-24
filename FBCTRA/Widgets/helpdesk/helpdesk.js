@@ -16,7 +16,7 @@
 	    $scope.response = false;
 	    $scope.widgetId = null;
 	    $scope.captcha = {
-	        key: '6LdrGh4UAAAAAO-fepgA7i4zbwBAaUsoAbxpFe13'
+	        key: '6LfHPx4UAAAAAAG0cZDkcdJA_KfMTaM0V3n3qfYS'
 	    };
 
 	    $scope.setResponse = function (response) {
