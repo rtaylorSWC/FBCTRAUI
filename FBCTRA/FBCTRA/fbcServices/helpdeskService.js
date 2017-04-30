@@ -7,8 +7,8 @@
         return {
             uploadAttachment: function (fileData, fileName, attachmentToken, callback) {
                 var params = {};
-                var uri = apiUri + '/upload/' + fileName;
-                return apiService.postFile(uri, fileData, attachmentToken, params)
+                var uri = apiUri + '/upload' ;
+                return apiService.postFile(uri, fileData, attachmentToken, fileName, params)
                                  .then(function successCallback(response) {
                                      callback(response);
                                  }, function errorCallback(response) {

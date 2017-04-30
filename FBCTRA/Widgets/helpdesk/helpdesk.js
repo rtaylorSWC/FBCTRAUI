@@ -80,7 +80,8 @@
 	        fd.append('file', file);
 
 	        if (file) {
-	            $scope.uploadFileName = file.name.replace(/\..+$/, '');
+	            // $scope.uploadFileName = file.name.replace(/\..+$/, '');
+	            $scope.uploadFileName = file.name;
 	            HelpDeskService.uploadAttachment(fd, $scope.uploadFileName, $scope.currentToken, function (response) {
 	                if (response) {
 	                    $scope.toggleFileTokens(response.token);

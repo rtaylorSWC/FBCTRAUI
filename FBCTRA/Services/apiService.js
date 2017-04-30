@@ -91,7 +91,7 @@
 	            return $http.post(domainApiUrl + uri, payload, params
 	            );
 	        },
-	        postFile: function (uri, payload, attachmentToken, params) {
+	        postFile: function (uri, payload, attachmentToken, filename, params) {
 	            return getResourcePromise(
 	                uri,
 	                payload,
@@ -100,6 +100,7 @@
 	                'save',
                     {
                         'attachmentToken': attachmentToken,
+                        'filename': filename,
                         'Content-Type': undefined,
                     }
                 );
