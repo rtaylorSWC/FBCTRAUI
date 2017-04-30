@@ -79,15 +79,14 @@
                 <!--<p ng-show="helpDeskForm.subject.$invalid && !helpDeskForm.subject.$pristine" class="help-block">The subject is required.</p>-->
             </div>
             <!-- Priority -->
-            <div class="col-sm-2 form-group" ng-class="{ 'has-error' : helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine, appealForm: disputingNotice }">
+            <!--<div class="col-sm-2 form-group" ng-class="{ 'has-error' : helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine, appealForm: disputingNotice }">
                 <label translate="LABEL_PRIORITY"></label>
                 <select type="text" name="priority" class="form-control"
                         ng-model="ticket.Priority"
                         ng-options="priority for priority in priorities" placeholder="Required" required>
                     <option value="">Select</option>
                 </select>
-                <!--<p ng-show="helpDeskForm.priority.$invalid && !helpDeskForm.priority.$pristine" class="help-block">The Priority is required.</p>-->
-            </div>
+            </div>-->
             <!-- Description -->
             <div class="col-sm-12 form-group" ng-class="{ 'has-error' : helpDeskForm.description.$invalid && !helpDeskForm.description.$pristine, appealFormTable: disputingNotice }">
                 <label translate="LABEL_DESCRIPTION"></label>
@@ -119,8 +118,8 @@
             <label ng-if="disputingNotice" class="checkbox-inline" style="border:thin;margin-right:20px;">
                 <input type="checkbox" ng-model="ticket.verifyCheckbox" required>I declare under penalty of perjury that the foregoing is true and correct.
             </label>
-            <button ng-if="!disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_SUBMIT_TICKET"></button>
-            <button ng-if="disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" ng-click="submit()" translate="LABEL_APPEAL_NOTICE"></button>
+            <button ng-if="!disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" translate="LABEL_SUBMIT_TICKET"></button>
+            <button ng-if="disputingNotice" type="submit" class="btn btn-primary" ng-disabled="helpDeskForm.$invalid" translate="LABEL_APPEAL_NOTICE"></button>
             <button class="btn btn-warning" type="button" ng-click="close()" translate="LABEL_CLOSE"></button>
         </div>
     </form>
