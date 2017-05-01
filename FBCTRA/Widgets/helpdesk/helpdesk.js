@@ -38,9 +38,10 @@
 	    };
 
 	    $scope.toggleFileTokens = function (token) {
+	        $scope.currentToken = token;
 	        !$scope.ticket.fileTokens ? $scope.ticket.fileTokens = [] : null;
 	        var idx = $scope.ticket.fileTokens.indexOf(token);
-	        (idx > -1) ? ($scope.ticket.fileTokens.splice(idx, 1), $scope.currentToken = ''): ($scope.ticket.fileTokens.push(token), $scope.currentToken = token );
+	        (idx > -1) ? null : ($scope.ticket.fileTokens.push(token));
 	    };
 
 	    $scope.toggleAttachments = function (uploadFile) {
@@ -85,7 +86,7 @@
 	            HelpDeskService.uploadAttachment(fd, $scope.uploadFileName, $scope.currentToken, function (response) {
 	                if (response) {
 	                    $scope.toggleFileTokens(response.token);
-	                    FlashService.Success($scope.uploadFileName + " - Uploaded." + response.Message, false);
+	                    FlashService.Success($scope.uploadFileName + " - Uploaded.", false);
 	                }
 	                else {
 	                    FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
