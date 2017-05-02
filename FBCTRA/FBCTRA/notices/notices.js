@@ -13,7 +13,7 @@
         $scope.idSelected = null;
         $scope.itemSelected = false;
         $scope.selection = [];
-        $scope.noticeNumbers = null;
+        $scope.noticeNumbers = [];
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -88,9 +88,9 @@
                 $scope.itemSelected = true;
                 var idx = $scope.selection.indexOf(item);
                 (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
-                //var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
-                //(idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
-                $scope.noticeNumbers = item.NoticeNumber;
+                var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
+                (idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
+                //$scope.noticeNumbers = item.NoticeNumber;
             }
         };
 
