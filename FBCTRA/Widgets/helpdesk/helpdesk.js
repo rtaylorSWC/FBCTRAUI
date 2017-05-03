@@ -69,7 +69,7 @@
 
 	    $scope.uploadFiles = function (file, errFiles) {
 	        if (file) {
-	            $scope.fileExt = file.name.split(".").pop();
+	            $scope.fileExt = file.name.split(".").pop().toLowerCase();
 	        }
 	        if ($scope.fileExt != "txt" && $scope.fileExt != "pdf" && $scope.fileExt != "png" && $scope.fileExt != "jpg") {
 	            FlashService.Error("Unable to Upload Files of type - " + $scope.fileExt, false);
@@ -89,7 +89,7 @@
 	                    FlashService.Success($scope.uploadFileName + " - Uploaded.", false);
 	                }
 	                else {
-	                    FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". " + response.Message, false);
+	                    FlashService.Error("Unable to Upload - " + $scope.uploadFileName + ". ", false);
 	                }
 	            });
 	        }

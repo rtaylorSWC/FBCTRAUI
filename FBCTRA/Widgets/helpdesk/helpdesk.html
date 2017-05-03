@@ -5,6 +5,7 @@
             <span class="modal-title" ng-bind="dataModel.titleId | translate"></span>
             <span class="modal-title" style="font-weight:bold" ng-bind="'(' + notice.NoticeNumber + ')'"></span>
         </h4>
+        <div ng-class="{ 'alert': flash, 'alert-info': flash.type === 'info', 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'  }" ng-bind="flash.message"></div>
     </div>
     <br ng-if="!disputingNotice" />
     <div ng-if="disputingNotice">
