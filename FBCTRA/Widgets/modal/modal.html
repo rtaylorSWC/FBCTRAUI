@@ -8,9 +8,6 @@
 <div class="modal-body" ng-if="!dataModel.showIFrame">
     <span ng-bind-html="dataModel.contentId | translate | trustAsResourceUrl"></span>
 </div>
-<div class="modal-body" ng-if="!dataModel.showHtmlPage">
-    <span ng-bind-html="dataModel.contentId | translate | trustAsResourceUrl"></span>
-</div>
 <div class="modal-footer">
     <button class="btn btn-warning" type="button"
             ng-click="close()"  translate="LABEL_CLOSE">
