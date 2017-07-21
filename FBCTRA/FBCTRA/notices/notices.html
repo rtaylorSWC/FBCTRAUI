@@ -30,72 +30,57 @@
     </div>
 </div>
 <br />
-<table class="table table-striped table-hover">
-    <tbody>
-        <!--<tr>
-            <th><a ng-click="sort_by('select')"></a></th>
-            <th><a ng-click="sort_by('NoticeNumber')">Notice Number <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('LicensePlate')">License Plate <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('Date')">Date <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('Status')">Status <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('Toll')">Toll <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('InitialNoticeFee')">Initial Notice Fee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('TollViolationFee')">Toll Violation Fee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('FinalNoticeFee')">Final Notice Fee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('NSFFee')">NSFFee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('CourtFee')">Court Fee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('AdminFee')">Admin Fee <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('AmountDue')">Amount Due <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('TVNLetter')">Statement <i class="fa fa-sort"></i></a></th>
-            <th><a ng-click="sort_by('Description_')"></a></th>
-        </tr>-->
-        <tr>
-            <th></th>
-            <th translate="LABEL_NOTICE_NUMBER"></th>
-            <th translate="LABEL_LICENCE_PLATE">License Plate</th>
-            <th translate="LABEL_DATE">Date</th>
-            <th translate="LABEL_STATUS">Status</th>
-            <th translate="LABEL_TOLL">Toll</th>
-            <th translate="LABEL_INITIAL_NOTICE_FEE">Initial Notice Fee</th>
-            <th translate="LABEL_TOLL_VIOLATION_FEE">Toll Violation Fee</th>
-            <th translate="LABEL_FINAL_NOTICE_FEE">Final Notice Fee</th>
-            <th translate="LABEL_NSF_FEE">NSFFee</th>
-            <th translate="LABEL_COURT_FEE">Court Fee</th>
-            <th translate="LABEL_ADMIN_FEE">Admin Fee</th>
-            <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
-            <th translate="LABEL_STATEMENT">Statement</th>
-            <th translate="LABEL_APPEAL_VIOLATION">Appeal Violation</th>
-            <th></th>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-class="{selected: item.NoticeNumber == idSelected}">
-            <td>
-                <input type="checkbox"
-                       class="checkbox"
-                       name="selectedItems[]"
-                       value="{{item}}"
-                       ng-checked="selection.indexOf(item) > -1"
-                       ng-hide="item.Payable==='0'"
-                       ng-disabled="item.Payable==='0'"
-                       ng-click="toggleSelection($event, item)">
-            </td>
-            <td ng-bind="item.NoticeNumber" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.LicensePlate" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.Date" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.Status" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.Toll" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.InitialNoticeFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.TollViolationFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.FinalNoticeFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.NSFFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.CourtFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.AdminFee" ng-click="toggleSelection($event, item)"></td>
-            <td ng-bind="item.AmountDue" ng-click="toggleSelection($event, item)"></td>
-            <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
-            <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
-            <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
-        </tr>
-    </tbody>
-    <tr></tr>
-</table>
+<div id="tableWrapper">
+    <table class="table table-striped table-hover data-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th translate="LABEL_NOTICE_NUMBER"></th>
+                <th translate="LABEL_LICENCE_PLATE">License Plate</th>
+                <th translate="LABEL_DATE">Date</th>
+                <th translate="LABEL_STATUS">Status</th>
+                <th translate="LABEL_TOLL">Toll</th>
+                <th translate="LABEL_INITIAL_NOTICE_FEE">Initial Notice Fee</th>
+                <th translate="LABEL_TOLL_VIOLATION_FEE">Toll Violation Fee</th>
+                <th translate="LABEL_FINAL_NOTICE_FEE">Final Notice Fee</th>
+                <th translate="LABEL_NSF_FEE">NSFFee</th>
+                <th translate="LABEL_COURT_FEE">Court Fee</th>
+                <th translate="LABEL_ADMIN_FEE">Admin Fee</th>
+                <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
+                <th translate="LABEL_STATEMENT">Statement</th>
+                <th translate="LABEL_APPEAL_VIOLATION">Appeal Violation</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-class="{selected: item.NoticeNumber == idSelected}">
+                <td>
+                    <input type="checkbox"
+                           class="checkbox"
+                           name="selectedItems[]"
+                           value="{{item}}"
+                           ng-checked="selection.indexOf(item) > -1"
+                           ng-hide="item.Payable==='0'"
+                           ng-disabled="item.Payable==='0'"
+                           ng-click="toggleSelection($event, item)">
+                </td>
+                <td ng-bind="item.NoticeNumber" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.LicensePlate" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.Date" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.Status" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.Toll" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.InitialNoticeFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.TollViolationFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.FinalNoticeFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.NSFFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.CourtFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.AdminFee" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.AmountDue" ng-click="toggleSelection($event, item)"></td>
+                <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
+                <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
+                <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
+            </tr>
+        </tbody>
+        <!--<tr></tr>-->
+    </table>
+</div>
