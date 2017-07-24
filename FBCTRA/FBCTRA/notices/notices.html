@@ -35,6 +35,7 @@
         <thead>
             <tr>
                 <th></th>
+                <th></th>
                 <th translate="LABEL_NOTICE_NUMBER"></th>
                 <th translate="LABEL_LICENCE_PLATE">License Plate</th>
                 <th translate="LABEL_DATE">Date</th>
@@ -52,8 +53,8 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            <tr ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse" ng-class="{selected: item.NoticeNumber == idSelected}">
+        <tbody ng-repeat="item in violationData.Violations | orderBy:sortingOrder:reverse">
+            <tr ng-class="{selected: item.NoticeNumber == idSelected}">
                 <td>
                     <input type="checkbox"
                            class="checkbox"
@@ -64,21 +65,51 @@
                            ng-disabled="item.Payable==='0'"
                            ng-click="toggleSelection($event, item)">
                 </td>
-                <td ng-bind="item.NoticeNumber" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.LicensePlate" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.Date" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.Status" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.Toll" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.InitialNoticeFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.TollViolationFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.FinalNoticeFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.NSFFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.CourtFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.AdminFee" ng-click="toggleSelection($event, item)"></td>
-                <td ng-bind="item.AmountDue" ng-click="toggleSelection($event, item)"></td>
+                <td ng-click="toggleExpand(item)">
+                    <i ng-if="item.TrxnDetail && item.NoticeNumber != idSelected" class="fa fa-plus" aria-hidden="true"></i>
+                    <!--<i ng-if="item.TrxnDetail && item.NoticeNumber == idSelected" class="fa fa-minus" aria-hidden="true"></i>-->
+                </td>
+                <td ng-bind="item.NoticeNumber" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.LicensePlate" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.Date" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.Status" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.Toll" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.InitialNoticeFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.TollViolationFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.FinalNoticeFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.NSFFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.CourtFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.AdminFee" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.AmountDue" ng-click="toggleExpand(item)"></td>
                 <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
                 <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
                 <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
+            </tr>
+            <tr ng-show="item.NoticeNumber == idSelected && item.TrxnDetail">
+                <td colspan="10">
+                    <div class="table-small-scrollbar">
+                        <table class="table table-condensed table-bordered table-hover trxnDetailtable">
+                            <tr>
+                                <th translate="LABEL_LANE"></th>
+                                <th translate="LABEL_DATE"></th>
+                                <th translate="LABEL_TIME"></th>
+                                <th translate="LABEL_TRXNNUM"></th>
+                                <th translate="LABEL_TOLL"></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr ng-repeat="tDetail in item.TrxnDetail">
+                                <td ng-bind="tDetail.Lane"></td>
+                                <td ng-bind="tDetail.TransactionDate"></td>
+                                <td ng-bind="tDetail.TransactionTime"></td>
+                                <td ng-bind="tDetail.TrxnNum"></td>
+                                <td ng-bind="tDetail.TollAmount | currency"></td>
+                                <td><button ng-show="tDetail.Image1!=null" ng-click="openImage(tDetail.Image1)"><i class="fa fa-picture-o"></i></button></td>
+                                <td><button ng-show="tDetail.Image2!=null" ng-click="openImage(tDetail.Image2)"><i class="fa fa-picture-o"></i></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
             </tr>
         </tbody>
         <!--<tr></tr>-->

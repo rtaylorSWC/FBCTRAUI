@@ -23,6 +23,8 @@
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
                 if (response) {
                     $scope.violationData = response;
+                    //ToDo: delete
+
                 } else {
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
@@ -81,11 +83,14 @@
             }
         };
 
+        $scope.toggleExpand = function toggleExpand(item) {
+            $scope.idSelected = item.NoticeNumber;
+            $scope.itemSelected = !$scope.itemSelected;
+        };
+
         $scope.toggleSelection = function toggleSelection($event, item) {
             if (item.Payable === '1') {
                 $event.stopPropagation();
-                $scope.idSelected = item.NoticeNumber;
-                $scope.itemSelected = true;
                 var idx = $scope.selection.indexOf(item);
                 (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
                 var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);

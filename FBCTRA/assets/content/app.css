@@ -353,3 +353,41 @@ a.menu_links {
             white-space: nowrap;
         }
 }
+
+.trxnDetailtable {
+    width: 100%;
+    font-size: smaller;
+    border-collapse: collapse;
+}
+
+    .trxnDetailtable td {
+        padding: 7px;
+        border: #4e95f4 1px solid;
+    }
+
+    .trxnDetailtable tr:nth-child(odd) {
+        background: #FFFFFF;
+    }
+
+    .trxnDetailtable tr:nth-child(even) {
+        background: #f5f5f5;
+    }
+
+    .trxnDetailtable td button {
+        padding: 1px;
+    }
+
+.selected {
+    background-color: Highlight;
+}
+
+.grid-item {
+    height: 26px !important;
+    padding: 0px 12px !important;
+}
+
+.grid-date-item {
+    width: 50px !important;
+    height: 26px !important;
+    padding: 0px 12px !important;
+}
