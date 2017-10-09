@@ -24,6 +24,7 @@
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
                 if (response) {
                     $scope.violationData = response;
+                    $scope.violationData.NSFFeeStatus == 'Unpaid'; //ToDo: Delete
                 } else {
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
@@ -106,6 +107,11 @@
                 $scope.paymentTotal = array.reduce(function (total, item) {
                     return total + parseFloat(item.AmountDue);
                 }, 0).toFixed(2);
+                if ($scope.violationData) {
+                    if ($scope.violationData.NSFFee && $scope.violationData.NSFFeeStatus == 'Unpaid') {
+                        $scope.paymentTotal = $scope.paymentTotal == "0.00" ? $scope.paymentTotal : parseFloat($scope.paymentTotal) + $scope.violationData.NSFFee;
+                    }
+                }
             }
         });
 
