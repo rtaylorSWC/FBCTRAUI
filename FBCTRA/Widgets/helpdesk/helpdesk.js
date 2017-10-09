@@ -54,7 +54,7 @@
 	    $scope.submit = function () {
 	        !$scope.ticket.TVNID ? $scope.ticket.TVNID = null : null;
 	        $scope.ticket.AttachmentTicket = $scope.currentToken;
-
+	        $scope.ticket.AccountNumber = $scope.authUser.AccountGuid;
 	        HelpDeskService.submit($scope.ticket, function (response) {
 	            if (response) {
 	                $scope.ticket = response;

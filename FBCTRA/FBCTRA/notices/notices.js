@@ -14,6 +14,7 @@
         $scope.itemSelected = false;
         $scope.selection = [];
         $scope.noticeNumbers = [];
+        $scope.expandedItems = [];
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -23,8 +24,6 @@
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
                 if (response) {
                     $scope.violationData = response;
-                    //ToDo: delete
-
                 } else {
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
@@ -83,9 +82,12 @@
             }
         };
 
-        $scope.toggleExpand = function toggleExpand(item) {
+        $scope.toggleExpand = function toggleExpand($event, item) {
             $scope.idSelected = item.NoticeNumber;
             $scope.itemSelected = !$scope.itemSelected;
+            $event.stopPropagation();
+            var idx = $scope.expandedItems.indexOf(item);
+            (idx > -1) ? $scope.expandedItems.splice(idx, 1) : $scope.expandedItems.push(item);
         };
 
         $scope.toggleSelection = function toggleSelection($event, item) {

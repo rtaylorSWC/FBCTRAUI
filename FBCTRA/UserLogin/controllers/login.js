@@ -23,10 +23,6 @@
 	        });
 	    };
 
-	    //$scope.openUrlInTab = function (url) {
-	    //    $window.open(url, '_blank');
-	    //};
-
 	    $scope.openHelpDeskModal = function () {
 	        var metaData = [];
 	        metaData.titleId = 'LINK_HELP_TITLE';

@@ -82,6 +82,7 @@
                 return apiService.get(uri, params)
                                  .then(function successCallback(response) {
                                      response.data.Violations[0].TrxnDetail = TrxnDetail; //ToDo: delete line
+                                     response.data.Violations[1].TrxnDetail = TrxnDetail; //ToDo: delete line
                                      callback(response.data);
                                  }, function errorCallback(response) {
                                      callback(false);

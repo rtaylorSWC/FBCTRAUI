@@ -35,7 +35,6 @@
         <thead>
             <tr>
                 <th></th>
-                <th></th>
                 <th translate="LABEL_NOTICE_NUMBER"></th>
                 <th translate="LABEL_LICENCE_PLATE">License Plate</th>
                 <th translate="LABEL_DATE">Date</th>
@@ -44,7 +43,6 @@
                 <th translate="LABEL_INITIAL_NOTICE_FEE">Initial Notice Fee</th>
                 <th translate="LABEL_TOLL_VIOLATION_FEE">Toll Violation Fee</th>
                 <th translate="LABEL_FINAL_NOTICE_FEE">Final Notice Fee</th>
-                <th translate="LABEL_NSF_FEE">NSFFee</th>
                 <th translate="LABEL_COURT_FEE">Court Fee</th>
                 <th translate="LABEL_ADMIN_FEE">Admin Fee</th>
                 <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
@@ -65,28 +63,24 @@
                            ng-disabled="item.Payable==='0'"
                            ng-click="toggleSelection($event, item)">
                 </td>
-                <td ng-click="toggleExpand(item)">
-                    <i ng-if="item.TrxnDetail && item.NoticeNumber != idSelected" class="fa fa-plus" aria-hidden="true"></i>
-                    <!--<i ng-if="item.TrxnDetail && item.NoticeNumber == idSelected" class="fa fa-minus" aria-hidden="true"></i>-->
-                </td>
-                <td ng-bind="item.NoticeNumber" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.LicensePlate" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.Date" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.Status" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.Toll" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.InitialNoticeFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.TollViolationFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.FinalNoticeFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.NSFFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.CourtFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.AdminFee" ng-click="toggleExpand(item)"></td>
-                <td ng-bind="item.AmountDue" ng-click="toggleExpand(item)"></td>
+                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.TrxnDetail}"  ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.LicensePlate" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Date" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Status" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Toll" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.InitialNoticeFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.TollViolationFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.FinalNoticeFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.CourtFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AdminFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AmountDue" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
                 <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
                 <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
                 <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
             </tr>
-            <tr ng-show="item.NoticeNumber == idSelected && item.TrxnDetail">
-                <td colspan="10">
+            <tr ng-show="toggle[$index] && item.TrxnDetail">
+                <td colspan="2"></td>
+                <td colspan="14">
                     <div class="table-small-scrollbar">
                         <table class="table table-condensed table-bordered table-hover trxnDetailtable">
                             <tr>

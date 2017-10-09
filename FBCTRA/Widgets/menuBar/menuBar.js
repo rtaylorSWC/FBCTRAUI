@@ -1,6 +1,6 @@
 ﻿angular.module('MenuBarModule', [])
-  .controller('MenuBarController', ['$scope', '$state', '$window', '$translate', 'localStore',
-	function ($scope, $state, $window, $translate, localStore) {
+  .controller('MenuBarController', ['$scope', '$state', '$window', '$translate', 'localStore', 'messageBus',
+	function ($scope, $state, $window, $translate, localStore, messageBus) {
 	    'use strict';
 
 	    $scope.langKey = 'en';
@@ -10,8 +10,11 @@
 	        $scope.langKey = langKey;
 	    };
 
-	    $scope.openUrlInTab = function (url) {
-	        $window.open(url, '_blank');
+	    $scope.openHelpDeskModal = function () {
+	        var metaData = [];
+	        metaData.titleId = 'LINK_HELP_TITLE';
+	        metaData.templateUrl = 'Widgets/helpdesk/helpdesk.html';
+	        messageBus.publish('openHelpDesk', metaData);
 	    };
 
 	    $scope.logout = function () {

@@ -391,3 +391,9 @@ a.menu_links {
     height: 26px !important;
     padding: 0px 12px !important;
 }
+
+.hasDetail {
+    cursor: pointer;
+    color: #337ab7;
+    text-decoration: none;
+}
