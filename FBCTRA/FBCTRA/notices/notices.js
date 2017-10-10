@@ -15,6 +15,7 @@
         $scope.selection = [];
         $scope.noticeNumbers = [];
         $scope.expandedItems = [];
+        $scope.toggle = [];
         $scope.NSFFeeAdded = false;
 
         $scope.open = function (payItem) {
@@ -25,11 +26,24 @@
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
                 if (response) {
                     $scope.violationData = response;
-                    $scope.violationData.NSFFeeStatus == 'Unpaid'; //ToDo: Delete
                 } else {
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
             });
+        };
+
+        $scope.getNoticeTransactions = function ($event, $index, notice) {
+            if (notice.HasDetails == 'Yes') {
+                $scope.selectedNotice = notice;
+                AccountService.getTransactionsByAccountGuidAndTVNID(currentUser.AccountGuid, notice.TVNID, function (response) {
+                    if (response) {
+                        $scope.noticeDetailData = response;
+                        $scope.toggleExpand($event, $index, $scope.selectedNotice);
+                    } else {
+                        response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Transaction Details.");
+                    }
+                });
+            }
         };
 
         $scope.disputeNotice = function (notice) {
@@ -85,13 +99,16 @@
             }
         };
 
-        $scope.toggleExpand = function toggleExpand($event, item) {
+        $scope.toggleExpand = function toggleExpand($event, $index, item) {
             $scope.idSelected = item.NoticeNumber;
             $scope.itemSelected = !$scope.itemSelected;
             $event.stopPropagation();
             var idx = $scope.expandedItems.indexOf(item);
             (idx > -1) ? $scope.expandedItems.splice(idx, 1) : $scope.expandedItems.push(item);
+
+            $scope.toggle[$index] = !$scope.toggle[$index]
         };
+
 
         $scope.toggleSelection = function toggleSelection($event, item) {
             if (item.Payable === '1') {
@@ -109,7 +126,7 @@
                     return total + parseFloat(item.AmountDue);
                 }, 0).toFixed(2);
                 if ($scope.violationData) {
-                    if ($scope.violationData.NSFFee && $scope.violationData.NSFFeeStatus == 'Unpaid') {
+                    if ($scope.violationData.NSFFee && $scope.violationData.NSFStatus != "Pending") {
                         $scope.paymentTotal = $scope.paymentTotal == "0.00" ? $scope.paymentTotal : parseFloat($scope.paymentTotal) + $scope.violationData.NSFFee;
                         if ($scope.paymentTotal == "0.00") {
                             $("#popover").popover('hide');
@@ -120,6 +137,8 @@
                             $scope.NSFFeeAdded = true;
                         }
                     }
+                    var paymentTotal = $scope.paymentTotal;
+                    $scope.paymentTotal = paymentTotal.toFixed(2);
                 }
             }
         });

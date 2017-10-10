@@ -5,7 +5,7 @@
         <div class="form-control label-warning pull-right"><span translate>LABEL_NUMBER_OF_VIOLATIONS</span>: <span ng-bind="violationData.NoOfViolations"></span></div>
         <div class="form-control label-warning pull-right">
             <span translate>LABEL_NSF_FEE</span>: $<span ng-bind="violationData.NSFFee | number : 2"></span>
-            <span ng-if="violationData.NSFFeeStatus=='Payment Pending'" ng-bind="'(' + violationData.NSFFeeStatus + ')'"></span>
+            <span ng-if="violationData.NSFStatus=='Pending'" ng-bind="'(' + violationData.NSFStatus + ')'"></span>
         </div>
         <div class="form-control label-warning pull-right">
             <span translate>LABEL_TOTAL_AMOUNT_DUE</span>: $<span ng-bind="violationData.TotalAmount | number : 2"></span>
@@ -47,18 +47,18 @@
             <tr>
                 <th></th>
                 <th translate="LABEL_NOTICE_NUMBER"></th>
-                <th translate="LABEL_LICENCE_PLATE">License Plate</th>
-                <th translate="LABEL_DATE">Date</th>
-                <th translate="LABEL_STATUS">Status</th>
-                <th translate="LABEL_TOLL">Toll</th>
-                <th translate="LABEL_INITIAL_NOTICE_FEE">Initial Notice Fee</th>
-                <th translate="LABEL_TOLL_VIOLATION_FEE">Toll Violation Fee</th>
-                <th translate="LABEL_FINAL_NOTICE_FEE">Final Notice Fee</th>
-                <th translate="LABEL_COURT_FEE">Court Fee</th>
-                <th translate="LABEL_ADMIN_FEE">Admin Fee</th>
-                <th translate="LABEL_AMOUNT_DUE">Amount Due</th>
-                <th translate="LABEL_STATEMENT">Statement</th>
-                <th translate="LABEL_APPEAL_VIOLATION">Appeal Violation</th>
+                <th translate="LABEL_LICENCE_PLATE"></th>
+                <th translate="LABEL_DATE"></th>
+                <th translate="LABEL_STATUS"></th>
+                <th translate="LABEL_TOLL"></th>
+                <th translate="LABEL_INITIAL_NOTICE_FEE"></th>
+                <th translate="LABEL_TOLL_VIOLATION_FEE"></th>
+                <th translate="LABEL_FINAL_NOTICE_FEE"></th>
+                <th translate="LABEL_COURT_FEE"></th>
+                <th translate="LABEL_ADMIN_FEE"></th>
+                <th translate="LABEL_AMOUNT_DUE"></th>
+                <th translate="LABEL_STATEMENT"></th>
+                <th translate="LABEL_APPEAL_VIOLATION"></th>
                 <th></th>
             </tr>
         </thead>
@@ -74,22 +74,22 @@
                            ng-disabled="item.Payable==='0'"
                            ng-click="toggleSelection($event, item)">
                 </td>
-                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.TrxnDetail}" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.LicensePlate" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.Date" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.Status" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.Toll" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.InitialNoticeFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.TollViolationFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.FinalNoticeFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.CourtFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.AdminFee" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.AmountDue" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.HasDetails=='Yes'}" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.Status" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.Toll" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.InitialNoticeFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.TollViolationFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.FinalNoticeFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.CourtFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.AdminFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.AmountDue" ng-click="getNoticeTransactions($event, $index, item)"></td>
                 <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
                 <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
-                <td ng-bind="item.Description_" style="color:red" ng-click="toggleSelection($event, item)"></td>
+                <td ng-bind="item.Description_" style="color:red"></td>
             </tr>
-            <tr ng-show="toggle[$index] && item.TrxnDetail">
+            <tr ng-show="toggle[$index] && item.HasDetails=='Yes'">
                 <td colspan="2"></td>
                 <td colspan="14">
                     <div class="table-small-scrollbar">
@@ -97,26 +97,25 @@
                             <tr>
                                 <th translate="LABEL_LANE"></th>
                                 <th translate="LABEL_DATE"></th>
-                                <th translate="LABEL_TIME"></th>
                                 <th translate="LABEL_TRXNNUM"></th>
+                                <th translate="LABEL_STATUS"></th>
                                 <th translate="LABEL_TOLL"></th>
                                 <th></th>
                                 <th></th>
                             </tr>
-                            <tr ng-repeat="tDetail in item.TrxnDetail">
-                                <td ng-bind="tDetail.Lane"></td>
-                                <td ng-bind="tDetail.TransactionDate"></td>
-                                <td ng-bind="tDetail.TransactionTime"></td>
-                                <td ng-bind="tDetail.TrxnNum"></td>
-                                <td ng-bind="tDetail.TollAmount | currency"></td>
-                                <td><button ng-show="tDetail.Image1!=null" ng-click="openImage(tDetail.Image1)"><i class="fa fa-picture-o"></i></button></td>
-                                <td><button ng-show="tDetail.Image2!=null" ng-click="openImage(tDetail.Image2)"><i class="fa fa-picture-o"></i></button></td>
+                            <tr ng-repeat="detail in noticeDetailData">
+                                <td ng-bind="detail.Lane"></td>
+                                <td ng-bind="detail.TransactionDate | date:'short'"></td>
+                                <td ng-bind="detail.TrxnNum"></td>
+                                <td ng-bind="detail.Status"></td>
+                                <td ng-bind="detail.TollAmount | currency"></td>
+                                <td ng-if="detail.ImageName_IR!=null"><button ng-click="openImage(detail.ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
+                                <td ng-if="detail.ROI_ImageName_IR!=null"><button ng-click="openImage(detail.ROI_ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
                             </tr>
                         </table>
                     </div>
                 </td>
             </tr>
         </tbody>
-        <!--<tr></tr>-->
     </table>
 </div>
