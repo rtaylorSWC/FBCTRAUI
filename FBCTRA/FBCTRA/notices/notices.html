@@ -15,7 +15,7 @@
         <div class="form-control label-primary">
             <font color="white">
                 <span translate>LABEL_PAYMENT_AMOUNT</span>: $<span ng-bind="paymentTotal"></span>
-                <a title="Payment Info" id="popover" data-toggle="popover" data-trigger="manual" data-content="The payment amount includes the required unpaid NSF Fee." data-placement="top"></a>
+                <a title="{{ 'LABEL_PAYMENT_INFO_TITLE' | translate }}" id="popover" data-toggle="popover" data-trigger="manual" data-content="{{ 'LABEL_PAYMENT_INFO_DETAIL' | translate }}" data-placement="top"></a>
             </font>
         </div>
         <div class="btn-group" data-toggle="buttons">

@@ -69,6 +69,8 @@
   "LABEL_NUMBER_OF_VIOLATIONS": "Número de infracciones",
   "LABEL_PAY": "Paga",
   "LABEL_PAYMENT_AMOUNT": "Monto del pago",
+  "LABEL_PAYMENT_INFO_DETAIL": "El monto del pago incluye la cuota de NSF no pagada.",
+  "LABEL_PAYMENT_INFO_TITLE": "Información de pago",
   "LABEL_PHONE": "Teléfono",
   "LABEL_PRIORITY": "Prioridad",
   "LABEL_PRIVACY_POLICY": "Política de privacidad",

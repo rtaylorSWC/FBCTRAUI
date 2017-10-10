@@ -70,6 +70,8 @@
   "LABEL_NUMBER_OF_VIOLATIONS": "Number of Violations",
   "LABEL_PAY": "Pay",
   "LABEL_PAYMENT_AMOUNT": "Payment Amount",
+  "LABEL_PAYMENT_INFO_DETAIL": "The payment amount includes the required unpaid NSF Fee.",
+  "LABEL_PAYMENT_INFO_TITLE": "Payment Information",
   "LABEL_PHONE": "Phone",
   "LABEL_PRIORITY": "Priority",
   "LABEL_PRIVACY_POLICY": "Privacy Policy",
