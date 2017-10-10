@@ -15,6 +15,7 @@
         $scope.selection = [];
         $scope.noticeNumbers = [];
         $scope.expandedItems = [];
+        $scope.NSFFeeAdded = false;
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -67,6 +68,7 @@
                 $scope.paymentData.Amount = parseFloat($scope.paymentTotal);
                 $scope.paymentData.Paymethod = $scope.paymentMethod;
                 $scope.paymentData.Language = ($translate.use() == 'en') ? "English" : "Spanish";
+                $scope.NSFFeeAdded ? $scope.noticeNumbers.push("NSF") : null;
                 $scope.paymentData.NoticeNumbers = $scope.noticeNumbers;
 
                 PaymentService.getPaymentURL($scope.paymentData, function (response) {
@@ -98,7 +100,6 @@
                 (idx > -1) ? $scope.selection.splice(idx, 1) : $scope.selection.push(item);
                 var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
                 (idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
-                //$scope.noticeNumbers = item.NoticeNumber;
             }
         };
 
@@ -110,17 +111,33 @@
                 if ($scope.violationData) {
                     if ($scope.violationData.NSFFee && $scope.violationData.NSFFeeStatus == 'Unpaid') {
                         $scope.paymentTotal = $scope.paymentTotal == "0.00" ? $scope.paymentTotal : parseFloat($scope.paymentTotal) + $scope.violationData.NSFFee;
+                        if ($scope.paymentTotal == "0.00") {
+                            $("#popover").popover('hide');
+                            $scope.NSFFeeAdded = false;
+                        }
+                        else {
+                            $("#popover").popover('show');
+                            $scope.NSFFeeAdded = true;
+                        }
                     }
                 }
             }
         });
 
         $scope.sort_by = function (newSortingOrder) {
-            if ($scope.sortingOrder == newSortingOrder)
+            if ($scope.sortingOrder == newSortingOrder) {
                 $scope.reverse = !$scope.reverse;
-
+            }
             $scope.sortingOrder = newSortingOrder;
         };
+
+        $(document).on('click', function (e) {
+            $('[data-toggle="popover"],[data-original-title]').each(function () {
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    (($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false
+                }
+            });
+        });
 
         $scope.getViolationList();
     }

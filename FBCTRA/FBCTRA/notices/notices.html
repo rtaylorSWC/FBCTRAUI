@@ -3,13 +3,21 @@
 <div class="row">
     <div class="col-md-3">
         <div class="form-control label-warning pull-right"><span translate>LABEL_NUMBER_OF_VIOLATIONS</span>: <span ng-bind="violationData.NoOfViolations"></span></div>
-        <div class="form-control label-warning pull-right"><span translate>LABEL_NSF_FEE</span>: $<span ng-bind="violationData.NSFFee | number : 2"></span>
-        <span ng-if="violationData.NSFFeeStatus=='Payment Pending'" ng-bind="'(' + violationData.NSFFeeStatus + ')'"></span>
+        <div class="form-control label-warning pull-right">
+            <span translate>LABEL_NSF_FEE</span>: $<span ng-bind="violationData.NSFFee | number : 2"></span>
+            <span ng-if="violationData.NSFFeeStatus=='Payment Pending'" ng-bind="'(' + violationData.NSFFeeStatus + ')'"></span>
         </div>
-        <div class="form-control label-warning pull-right"><span translate>LABEL_TOTAL_AMOUNT_DUE</span>: $<span ng-bind="violationData.TotalAmount | number : 2"></span></div>
+        <div class="form-control label-warning pull-right">
+            <span translate>LABEL_TOTAL_AMOUNT_DUE</span>: $<span ng-bind="violationData.TotalAmount | number : 2"></span>
+        </div>
     </div>
     <div class="col-md-4">
-        <div class="form-control label-primary"><font color="white"><span translate>LABEL_PAYMENT_AMOUNT</span>: $<span ng-bind="paymentTotal"></span></font></div>
+        <div class="form-control label-primary">
+            <font color="white">
+                <span translate>LABEL_PAYMENT_AMOUNT</span>: $<span ng-bind="paymentTotal"></span>
+                <a title="Payment Info" id="popover" data-toggle="popover" data-trigger="manual" data-content="The payment amount includes the required unpaid NSF Fee." data-placement="top"></a>
+            </font>
+        </div>
         <div class="btn-group" data-toggle="buttons">
             <div class="form-group">
                 <div class="radio">
@@ -66,7 +74,7 @@
                            ng-disabled="item.Payable==='0'"
                            ng-click="toggleSelection($event, item)">
                 </td>
-                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.TrxnDetail}"  ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.TrxnDetail}" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.LicensePlate" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.Date" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.Status" ng-click="toggleExpand($event, item);toggle[$index] = !toggle[$index]"></td>

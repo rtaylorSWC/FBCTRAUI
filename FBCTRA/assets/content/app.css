@@ -118,6 +118,7 @@ loginTitle {
 }
 
 .tabBar {
+    margin-top: 8px;
     background-color: white !important;
     font-weight: normal !important;
     font-size: 14px !important;
@@ -230,6 +231,7 @@ a.menu_links {
     height: 190px;
 }*/
 #parent {
+    margin-top: -20px;
     padding: 1px;
     max-width: 290px;
 }
@@ -396,4 +398,18 @@ a.menu_links {
     cursor: pointer;
     color: #337ab7;
     text-decoration: none;
+}
+
+.popover {
+    max-width: 600px;
+}
+
+.popover-title {
+    background-color: #337ab7;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.popover-content {
+    color: black;
 }
