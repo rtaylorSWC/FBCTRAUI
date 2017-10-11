@@ -1,5 +1,5 @@
 ﻿angular.module('RequestProgressModule', [])
-    .factory('requestInterceptor', function ($q, $rootScope) {
+    .factory('requestInterceptor', function ($q, $rootScope, $location, localStore) {
 
         $rootScope.pendingRequests = 0;
         return {
@@ -14,11 +14,13 @@
             },
 
             'response': function (response) {
+                response.status == 401 ? (localStore.reset(), $location.path('/login')) : null;
                 $rootScope.pendingRequests--;
                 return response || $q.when(response);
             },
 
             'responseError': function (rejection) {
+                response.status == 401 ? (localStore.reset(), $location.path('/login')) : null;
                 $rootScope.pendingRequests--;
                 return $q.reject(rejection);
             }
