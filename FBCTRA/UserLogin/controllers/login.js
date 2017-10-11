@@ -11,14 +11,12 @@
 	    };
 
 	    $scope.login = function () {
-	        $scope.dataLoading = true;
 	        AuthenticationFactory.login($scope.noticeNumber, $scope.licensePlate, $scope.selectedState.id, function (response) {
 	            if (response) {
 	                AuthenticationFactory.setCredentials(response.AccountGuid, response.SessionId);
 	                $state.go('notices');
 	            } else {
 	                response.Message ? FlashService.Error(response.Message) : FlashService.Error("Invoice/License Plate/State are invalid.");
-	                $scope.dataLoading = false;
 	            }
 	        });
 	    };

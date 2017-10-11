@@ -36,6 +36,7 @@
     <script src="app.js"></script>
     <script src="Services/configurationProvider.js"></script>
     <script src="Services/flashService.js"></script>
+    <script src="Services/requestInterceptor.js"></script>
     <script src="Services/messageBus.js"></script>
     <script src="Services/localStore.js"></script>
     <script src="Services/apiService.js"></script>
@@ -75,6 +76,7 @@
         <div ng-show="false" ui-view="modalView"></div>
         <div ui-view="tabBarView"></div>
         <div ng-class="{ 'alert': flash, 'alert-info': flash.type === 'info', 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error'  }" ng-bind="flash.message"></div>
+        <div ng-show="pendingRequests>0" class="loading"></div>
         <div ui-view="loginView"></div>
         <div ui-view="fbcView"></div>
     </main>

@@ -1,9 +1,10 @@
 ﻿'use strict';
 angular.module('FBCApp', ["ngRoute", "ui.router", "ui.bootstrap", "ngAside", "ngCookies", "pascalprecht.translate", 'MessageBusModule', 'LocalStoreModule',
                           'AuthenticationModule', 'FlashModule', 'MenuBarModule', 'InfoBarModule', 'GetTagModule', 'ModalModule', 'NavBarFooterModule', 'vcRecaptcha',
-                          'HelpDeskModule', 'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'ConstantsModule', 'base64', 'textAngular', 'ngFileUpload'])
+                          'HelpDeskModule', 'ngResource', 'ngSanitize', 'ApiModule', 'ConfigurationModule', 'RequestProgressModule', 'ConstantsModule', 'base64', 'textAngular', 'ngFileUpload'])
   .config(function ($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $translateProvider, $httpProvider) {
 
+      $httpProvider.interceptors.push('requestInterceptor');
       $urlRouterProvider.otherwise("/login");
 
       var loginViewBase = {
