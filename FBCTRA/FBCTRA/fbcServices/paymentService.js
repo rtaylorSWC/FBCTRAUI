@@ -14,6 +14,16 @@
                                  }, function errorCallback(response) {
                                      callback(false);
                                  });
+	        },
+	        getPaymentStatus: function (paymentData, callback) {
+	            var params = {};
+	            var uri = apiUri + '/PaymentStatus';
+	            return apiService.post(uri, paymentData, params)
+                                 .then(function successCallback(response) {
+                                     callback(response.data);
+                                 }, function errorCallback(response) {
+                                     callback(false);
+                                 });
 	        }
 	    }
 	}

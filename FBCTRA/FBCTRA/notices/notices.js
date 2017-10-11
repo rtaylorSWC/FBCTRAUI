@@ -3,6 +3,10 @@
     function ($scope, $filter, $translate, $base64, localStore, messageBus, FlashService, AccountService, PaymentService) {
         'use strict';
 
+        messageBus.subscribe($scope, 'payItemClosed', function (event, payItem) {
+            $scope.getPaymentStatus(payItem);
+        });
+
         var currentUser = localStore.getCurrentUser();
         currentUser = currentUser.currentUser;
         $scope.paymentMethod = $scope.paymentTotal = false;
@@ -80,7 +84,7 @@
                 $scope.paymentData.Amount = parseFloat($scope.paymentTotal);
                 $scope.paymentData.Paymethod = $scope.paymentMethod;
                 $scope.paymentData.Language = ($translate.use() == 'en') ? "English" : "Spanish";
-                $scope.NSFFeeAdded ? $scope.noticeNumbers.push("NSF") : null;
+                $scope.NSFFeeAdded && ($scope.noticeNumbers.indexOf("NSF") == -1) ? $scope.noticeNumbers.push("NSF") : null;
                 $scope.paymentData.NoticeNumbers = $scope.noticeNumbers;
 
                 PaymentService.getPaymentURL($scope.paymentData, function (response) {
@@ -88,6 +92,7 @@
                         $scope.payment = {};
                         $scope.payment.titleId = "FBCTRA Payment Portal";
                         $scope.payment.contentId = response.paymentUrl;
+                        $scope.payment.data = response;
                         $scope.payment.showIFrame = true;
                         $scope.open($scope.payment);
                     } else {
@@ -95,6 +100,17 @@
                     }
                 });
             }
+        };
+
+        $scope.getPaymentStatus = function (paymentData) {
+            PaymentService.getPaymentStatus(paymentData, function (response) {
+                if (response) {
+                    $scope.payment.data = response;
+                    $scope.getViolationList();
+                } else {
+                    response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Payment Status.");
+                }
+            });
         };
 
         $scope.toggleSelection = function toggleSelection($event, item) {
@@ -125,7 +141,7 @@
                         }
                     }
                     var paymentTotal = $scope.paymentTotal;
-                    $scope.paymentTotal = paymentTotal.toFixed(2);
+                    $scope.paymentTotal = angular.isString($scope.paymentTotal) ? $scope.paymentTotal : paymentTotal.toFixed(2);
                 }
             }
         });

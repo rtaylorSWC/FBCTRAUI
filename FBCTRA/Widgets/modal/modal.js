@@ -60,7 +60,10 @@ function ($scope, $aside, $sce, $controller, localStore, messageBus) {
             controller:
                 function ($scope, $uibModalInstance, messageBus) {
                     $scope.dataModel = dataModel;
-                    $scope.close = function (e) { $uibModalInstance.dismiss(); };
+                    $scope.close = function (e) {
+                        $scope.dataModel.data ? messageBus.publish('payItemClosed', $scope.dataModel.data) : null;
+                        $uibModalInstance.dismiss();
+                    };
                     $scope.ok = function (e, selectedEntity) {
                         $uibModalInstance.close();
                         e.stopPropagation();
