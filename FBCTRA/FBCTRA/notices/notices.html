@@ -74,17 +74,17 @@
                            ng-disabled="item.Payable==='0'"
                            ng-click="toggleSelection($event, item)">
                 </td>
-                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.HasDetails=='Yes'}" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.Status" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.Toll" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.InitialNoticeFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.TollViolationFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.FinalNoticeFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.CourtFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.AdminFee" ng-click="getNoticeTransactions($event, $index, item)"></td>
-                <td ng-bind="item.AmountDue" ng-click="getNoticeTransactions($event, $index, item)"></td>
+                <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.HasDetails=='Yes'}" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Status" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Toll" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.InitialNoticeFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.TollViolationFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.FinalNoticeFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.CourtFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AdminFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AmountDue" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
                 <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
                 <td ng-bind="item.Description_" style="color:red"></td>
@@ -100,10 +100,10 @@
                                 <th translate="LABEL_TRXNNUM"></th>
                                 <th translate="LABEL_STATUS"></th>
                                 <th translate="LABEL_TOLL"></th>
-                                <th></th>
-                                <th></th>
+                                <th ng-if="item.noticeDetailData.ImageName_IR"></th>
+                                <th ng-if="item.noticeDetailData.ROI_ImageName_IR"></th>
                             </tr>
-                            <tr ng-repeat="detail in noticeDetailData">
+                            <tr ng-repeat="detail in item.noticeDetailData">
                                 <td ng-bind="detail.Lane"></td>
                                 <td ng-bind="detail.TransactionDate | date:'short'"></td>
                                 <td ng-bind="detail.TrxnNum"></td>

@@ -14,7 +14,6 @@
         $scope.itemSelected = false;
         $scope.selection = [];
         $scope.noticeNumbers = [];
-        $scope.expandedItems = [];
         $scope.toggle = [];
         $scope.NSFFeeAdded = false;
 
@@ -32,13 +31,12 @@
             });
         };
 
-        $scope.getNoticeTransactions = function ($event, $index, notice) {
+        $scope.getNoticeTransactions = function ($index, notice) {
             if (notice.HasDetails == 'Yes') {
                 $scope.selectedNotice = notice;
                 AccountService.getTransactionsByAccountGuidAndTVNID(currentUser.AccountGuid, notice.TVNID, function (response) {
                     if (response) {
-                        $scope.noticeDetailData = response;
-                        $scope.toggleExpand($event, $index, $scope.selectedNotice);
+                        $scope.violationData.Violations[$index].noticeDetailData = response;
                     } else {
                         response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Transaction Details.");
                     }
@@ -98,17 +96,6 @@
                 });
             }
         };
-
-        $scope.toggleExpand = function toggleExpand($event, $index, item) {
-            $scope.idSelected = item.NoticeNumber;
-            $scope.itemSelected = !$scope.itemSelected;
-            $event.stopPropagation();
-            var idx = $scope.expandedItems.indexOf(item);
-            (idx > -1) ? $scope.expandedItems.splice(idx, 1) : $scope.expandedItems.push(item);
-
-            $scope.toggle[$index] = !$scope.toggle[$index]
-        };
-
 
         $scope.toggleSelection = function toggleSelection($event, item) {
             if (item.Payable === '1') {
