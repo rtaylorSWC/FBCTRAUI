@@ -19,6 +19,7 @@
         $scope.selection = [];
         $scope.noticeNumbers = [];
         $scope.NSFFeeAdded = false;
+        $scope.showNSFStatus = false;
 
         $scope.open = function (payItem) {
             messageBus.publish('payItemSelected', payItem);
@@ -28,6 +29,7 @@
             AccountService.getViolationsByAccountGuid(currentUser.AccountGuid, function (response) {
                 if (response) {
                     $scope.violationData = response;
+                    $scope.showNSFStatus = ($scope.violationData.NSFStatus !== '' && $scope.violationData.NSFStatus !== null) ? true : false;
                 } else {
                     response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                 }
