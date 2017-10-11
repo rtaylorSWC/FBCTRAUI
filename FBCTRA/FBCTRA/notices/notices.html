@@ -5,7 +5,7 @@
         <div class="form-control label-warning pull-right"><span translate>LABEL_NUMBER_OF_VIOLATIONS</span>: <span ng-bind="violationData.NoOfViolations"></span></div>
         <div class="form-control label-warning pull-right">
             <span translate>LABEL_NSF_FEE</span>: $<span ng-bind="violationData.NSFFee | number : 2"></span>
-            <span ng-if="violationData.NSFStatus=='Pending'" ng-bind="'(' + violationData.NSFStatus + ')'"></span>
+            <span ng-if="violationData.NSFStatus!==''" ng-bind="'(' + violationData.NSFStatus + ')'"></span>
         </div>
         <div class="form-control label-warning pull-right">
             <span translate>LABEL_TOTAL_AMOUNT_DUE</span>: $<span ng-bind="violationData.TotalAmount | number : 2"></span>
