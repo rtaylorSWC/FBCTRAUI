@@ -88,9 +88,11 @@ function ($scope, $aside, $sce, $controller, localStore, messageBus) {
                 function ($scope, $uibModalInstance, messageBus) {
                     $scope.dataModel = dataModel;
                     $scope.close = function (e) {
+                        localStore.setCurrentNotice(null);
                         $uibModalInstance.dismiss();
                     };
                     $scope.ok = function (e, selectedEntity) {
+                        localStore.setCurrentNotice(null);
                         $uibModalInstance.close();
                         e.stopPropagation();
                     };

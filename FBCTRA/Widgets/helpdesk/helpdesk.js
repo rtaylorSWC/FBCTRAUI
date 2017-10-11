@@ -5,7 +5,8 @@
 
 	    $scope.categories = appConstants.CATEGORIES;
 	    $scope.priorities = appConstants.PRIORITIES;
-	    $scope.authUser = localStore.getCurrentUser();
+	    var currentUser = localStore.getCurrentUser();
+	    $scope.authUser = currentUser ? currentUser.currentUser : null;
 	    $scope.notice = localStore.getCurrentNotice();
 	    $scope.ticket = {};
 	    $scope.disputingNotice = $scope.notice ? true : false;
@@ -54,7 +55,7 @@
 	    $scope.submit = function () {
 	        !$scope.ticket.TVNID ? $scope.ticket.TVNID = null : null;
 	        $scope.ticket.AttachmentTicket = $scope.currentToken;
-	        $scope.ticket.AccountNumber = $scope.authUser.AccountGuid;
+	        $scope.ticket.AccountGUID = $scope.authUser ? $scope.authUser.AccountGuid : '';
 	        HelpDeskService.submit($scope.ticket, function (response) {
 	            if (response) {
 	                $scope.ticket = response;
