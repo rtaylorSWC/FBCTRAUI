@@ -11,7 +11,6 @@
                 var uri = apiUri + '/GetViolations/' + accountGuid;
                 return apiService.get(uri, params)
                                  .then(function successCallback(response) {
-                                     response.data.NSFFee = 29; //ToDo: delete line
                                      callback(response.data);
                                  }, function errorCallback(response) {
                                      callback(false);

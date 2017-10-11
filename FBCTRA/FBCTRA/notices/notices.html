@@ -78,13 +78,13 @@
                 <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.Status" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.Toll" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.InitialNoticeFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.TollViolationFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.FinalNoticeFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.CourtFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.AdminFee" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.AmountDue" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.Toll | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.InitialNoticeFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.TollViolationFee  | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.FinalNoticeFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.CourtFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AdminFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td ng-bind="item.AmountDue | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td><a class="menu_links" ng-click="getNoticePdf(item.TVNLetter)" translate="LABEL_DOWNLOAD"></a></td>
                 <td><a class="menu_links" ng-hide="item.Payable==='0'" ng-disabled="item.Payable==='0'" ng-click="disputeNotice(item)" translate="LABEL_APPEAL"></a></td>
                 <td ng-bind="item.Description_" style="color:red"></td>

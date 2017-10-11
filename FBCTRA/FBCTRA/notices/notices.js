@@ -10,11 +10,10 @@
         $scope.sortingOrder = sortingOrder;
         $scope.reverse = false;
         $scope.filteredItems = [];
-        $scope.idSelected = null;
+        $scope.idSelected = false;
         $scope.itemSelected = false;
         $scope.selection = [];
         $scope.noticeNumbers = [];
-        $scope.toggle = [];
         $scope.NSFFeeAdded = false;
 
         $scope.open = function (payItem) {
@@ -42,6 +41,7 @@
                     }
                 });
             }
+            $scope.idSelected = notice.NoticeNumber;
         };
 
         $scope.disputeNotice = function (notice) {
