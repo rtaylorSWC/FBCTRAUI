@@ -20,7 +20,7 @@
             },
 
             'responseError': function (rejection) {
-                response.status == 401 ? (localStore.reset(), $location.path('/login')) : null;
+                rejection.status == 401 ? (localStore.reset(), $location.path('/login')) : null;
                 $rootScope.pendingRequests--;
                 return $q.reject(rejection);
             }
