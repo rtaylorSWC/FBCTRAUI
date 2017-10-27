@@ -5,6 +5,11 @@
 
         messageBus.subscribe($scope, 'payItemClosed', function (event, payItem) {
             $scope.getPaymentStatus(payItem);
+            $scope.paymentTotal = "0.00";
+            $scope.idSelected = false;
+            $scope.itemSelected = false;
+            $scope.selection = [];
+            $scope.noticeNumbers = [];
         });
 
         var currentUser = localStore.getCurrentUser();
