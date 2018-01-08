@@ -6,7 +6,7 @@ function ($scope, $aside, $sce, $controller, localStore, messageBus) {
         $scope.openModal('top', true, selectedItem);
     });
 
-    messageBus.subscribe($scope, 'payItemSelected', function (event, selectedItem) {
+    messageBus.subscribe($scope, 'iFrameItemSelected', function (event, selectedItem) {
         $scope.openIFrameModal('top', false, selectedItem);
     });
 

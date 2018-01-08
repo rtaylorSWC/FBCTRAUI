@@ -1,6 +1,6 @@
 ﻿angular.module('FBCApp')
-  .controller('NoticesController', ['$scope', '$filter', '$translate', '$base64', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'PaymentService',
-    function ($scope, $filter, $translate, $base64, localStore, messageBus, FlashService, AccountService, PaymentService) {
+  .controller('NoticesController', ['$scope', '$filter', '$translate', '$base64', '$interval', 'localStore', 'messageBus', 'FlashService', 'AccountService', 'PaymentService',
+    function ($scope, $filter, $translate, $base64, $interval, localStore, messageBus, FlashService, AccountService, PaymentService) {
         'use strict';
 
         messageBus.subscribe($scope, 'payItemClosed', function (event, payItem) {
@@ -26,8 +26,16 @@
         $scope.NSFFeeAdded = false;
         $scope.showNSFStatus = false;
 
-        $scope.open = function (payItem) {
-            messageBus.publish('payItemSelected', payItem);
+        $scope.openPaymentModal = function (payItem) {
+            messageBus.publish('iFrameItemSelected', payItem);
+        };
+
+        $scope.openImageModal = function (imageUrl) {
+            var imageData = {};
+            imageData.showImage = true;
+            imageData.titleId = '';
+            imageData.contentId = imageUrl;
+            messageBus.publish('iFrameItemSelected', imageData);
         };
 
         $scope.getViolationList = function () {
@@ -101,7 +109,7 @@
                         $scope.payment.contentId = response.paymentUrl;
                         $scope.payment.data = response;
                         $scope.payment.showIFrame = true;
-                        $scope.open($scope.payment);
+                        $scope.openPaymentModal($scope.payment);
                     } else {
                         response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Payment URL.");
                     }
@@ -114,8 +122,6 @@
                 if (response) {
                     $scope.payment.data = response;
                     $scope.getViolationList();
-                } else {
-                    response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Payment Status.");
                 }
             });
         };
@@ -169,5 +175,6 @@
         });
 
         $scope.getViolationList();
+        $interval(function () { $scope.getViolationList() }, 60000);
     }
   ]);

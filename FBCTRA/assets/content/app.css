@@ -181,11 +181,25 @@ main {
         height: 550px;
     }
 
+    .modal-body-iframe {
+        height: 550px;
+    }
+
+    .modal-body-image {
+        height: 650px;
+    }
+
     .modal-body-long {
         position: relative;
         padding: 15px;
         overflow-y: auto;
     }
+}
+
+.transaction-image {
+    position: center;
+    height: 650px;
+    width: 100% !important;
 }
 
 /*.glyphicon:before {

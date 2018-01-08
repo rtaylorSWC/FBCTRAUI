@@ -72,6 +72,7 @@
   "LABEL_PAYMENT_AMOUNT": "Payment Amount",
   "LABEL_PAYMENT_INFO_DETAIL": "The payment amount includes the required unpaid NSF Fee.",
   "LABEL_PAYMENT_INFO_TITLE": "Payment Information",
+  "LABEL_PENDING": "The payment is pending.  If the status hasn't updated in 24 hours, contact the Customer Support Center - Toll Free 855-999-2024.",
   "LABEL_PHONE": "Phone",
   "LABEL_PRIORITY": "Priority",
   "LABEL_PRIVACY_POLICY": "Privacy Policy",

@@ -5,7 +5,10 @@
     <!--<span ng-bind="dataModel.contentId | translate"></span>-->
     <iframe src="{{dataModel.contentId | trustAsResourceUrl}}" height="100%" width="100%"></iframe>
 </div>
-<div class="modal-body-long" ng-if="!dataModel.showIFrame">
+<div class="modal-body-image" ng-if="dataModel.showImage">
+    <img class="transaction-image" ng-src="{{dataModel.contentId}}" />
+</div>
+<div class="modal-body-long" ng-if="!dataModel.showIFrame && !dataModel.showImage">
     <span ng-bind-html="dataModel.contentId | translate | trustAsResourceUrl"></span>
 </div>
 <div class="modal-footer">

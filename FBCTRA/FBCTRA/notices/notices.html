@@ -77,7 +77,10 @@
                 <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.HasDetails=='Yes'}" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
-                <td ng-bind="item.Status" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
+                <td>
+                    <span ng-bind="item.Status" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></span>
+                    <i ng-show="item.Status == 'PENDING'" title="{{ 'LABEL_PENDING' | translate }}"class="fa fa-spinner fa-spin"></i>
+                </td>
                 <td ng-bind="item.Toll | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.InitialNoticeFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.TollViolationFee  | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
@@ -109,8 +112,8 @@
                                 <td ng-bind="detail.TrxnNum"></td>
                                 <td ng-bind="detail.Status"></td>
                                 <td ng-bind="detail.TollAmount | currency"></td>
-                                <td ng-if="detail.ImageName_IR!=null"><button ng-click="openImage(detail.ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
-                                <td ng-if="detail.ROI_ImageName_IR!=null"><button ng-click="openImage(detail.ROI_ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
+                                <td ng-if="detail.ImageName_IR!=null"><button ng-click="openImageModal(detail.ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
+                                <td ng-if="detail.ROI_ImageName_IR!=null"><button ng-click="openImageModal(detail.ROI_ImageName_IR)"><i class="fa fa-picture-o"></i></button></td>
                             </tr>
                         </table>
                     </div>
