@@ -79,7 +79,7 @@
                 <td ng-bind="item.Date | date:'MM/dd/yyyy'" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td>
                     <span ng-bind="item.Status" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></span>
-                    <i ng-show="item.Status == 'PENDING'" title="{{ 'LABEL_PENDING' | translate }}"class="fa fa-spinner fa-spin"></i>
+                    <i ng-show="statusPending(item.Status)" title="{{ 'LABEL_PENDING' | translate }}"class="fa fa-spinner fa-spin"></i>
                 </td>
                 <td ng-bind="item.Toll | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.InitialNoticeFee | number : 2" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>

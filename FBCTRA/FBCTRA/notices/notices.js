@@ -126,6 +126,10 @@
             });
         };
 
+        $scope.statusPending = function (status) {
+            return status.toUpperCase() === 'PENDING';
+        };
+
         $scope.toggleSelection = function toggleSelection($event, item) {
             if (item.Payable === '1') {
                 $event.stopPropagation();
