@@ -1,6 +1,6 @@
 ﻿angular.module('ApiModule', [])
-.factory('apiService', ['$http', '$log', '$q', '$resource', 'configurationService', 'localStore', 'localStoreConstants',
-	function ($http, $log, $q, $resource, configurationService, localStore, localStoreConstants) {
+.factory('apiService', ['$http', '$rootScope', '$log', '$q', '$resource', 'configurationService', 'localStore', 'localStoreConstants',
+	function ($http, $rootScope, $log, $q, $resource, configurationService, localStore, localStoreConstants) {
 	    'use strict';
 
 	    var domainApiUrl = configurationService.getVehicleApiUrl();
@@ -80,12 +80,15 @@
 
 	    return {
 	        get: function (url, parameters) {
-	            return $http({
-	                method: 'GET',
-	                dataType: 'jsonp',
-	                url: domainApiUrl + url,
-	                params: parameters
-	            });
+	            var loggedIn = $rootScope.globals.currentUser;
+	            if (loggedIn) {
+	                return $http({
+	                    method: 'GET',
+	                    dataType: 'jsonp',
+	                    url: domainApiUrl + url,
+	                    params: parameters
+	                });
+	            }
 	        },
 	        post: function (uri, payload, params) {
 	            return $http.post(domainApiUrl + uri, payload, params
