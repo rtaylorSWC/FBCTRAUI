@@ -4,12 +4,8 @@
             'use strict';
 
             messageBus.subscribe($scope, 'payItemClosed', function (event, payItem) {
-                $scope.getPaymentStatus(payItem);
-                $scope.paymentTotal = "0.00";
-                $scope.idSelected = false;
-                $scope.itemSelected = false;
-                $scope.selection = [];
-                $scope.noticeNumbers = [];
+                payItem ? $scope.getPaymentStatus(payItem) : null;
+                $scope.clearSelection();
             });
 
             var currentUser = localStore.getCurrentUser();
@@ -46,6 +42,7 @@
                     } else {
                         response.Message ? FlashService.Error(response.Message) : FlashService.Error("Unable to get Violation List.");
                     }
+                    $scope.clearSelection();
                 });
             };
 
@@ -130,6 +127,18 @@
                 return status.toUpperCase() === 'PENDING';
             };
 
+            $scope.toogleSelectAll = function ($event) {
+                $scope.noticeNumbers = [];
+                $scope.selection = [];
+                $scope.paymentTotal = '0.00';
+                angular.forEach($scope.violationData.Violations, function (item) {
+                    if (item.Payable === '1') {
+                        item.selected = $scope.selectedAll;
+                        $scope.selectedAll ? $scope.toggleSelection($event, item) : null;
+                    }
+                });
+            };
+
             $scope.toggleSelection = function toggleSelection($event, item) {
                 if (item.Payable === '1') {
                     $event.stopPropagation();
@@ -138,6 +147,23 @@
                     var idx2 = $scope.noticeNumbers.indexOf(item.NoticeNumber);
                     (idx2 > -1) ? $scope.noticeNumbers.splice(idx2, 1) : $scope.noticeNumbers.push(item.NoticeNumber);
                 }
+            };
+
+            $scope.selectionToggled = function () {
+                $scope.selectedAll = $scope.violationData.Violations.every(function (item) {
+                    return item.selected;
+                })
+            };
+
+            $scope.clearSelection = function () {
+                $scope.paymentTotal = "0.00";
+                $scope.payment = {};
+                $scope.paymentData = {};
+                $scope.idSelected = false;
+                $scope.itemSelected = false;
+                $scope.selection = [];
+                $scope.noticeNumbers = [];
+                $scope.selectionToggled();
             };
 
             $scope.$watchCollection('selection', function (array) {

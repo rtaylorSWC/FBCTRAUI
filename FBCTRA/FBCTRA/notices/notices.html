@@ -45,7 +45,12 @@
     <table class="table table-striped table-hover data-table">
         <thead>
             <tr>
-                <th></th>
+                <th>
+                    <input type="checkbox"
+                           class="checkbox"
+                           ng-model="selectedAll"
+                           ng-click="toogleSelectAll($event)" />
+                </th>
                 <th translate="LABEL_NOTICE_NUMBER"></th>
                 <th translate="LABEL_LICENCE_PLATE"></th>
                 <th translate="LABEL_DATE"></th>
@@ -72,7 +77,9 @@
                            ng-checked="selection.indexOf(item) > -1"
                            ng-hide="item.Payable==='0'"
                            ng-disabled="item.Payable==='0'"
-                           ng-click="toggleSelection($event, item)">
+                           ng-click="toggleSelection($event, item)"
+                           ng-model="violationData.Violations[$index].selected"
+                           ng-change="selectionToggled()">
                 </td>
                 <td ng-bind="item.NoticeNumber" ng-class="{hasDetail: item.HasDetails=='Yes'}" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
                 <td ng-bind="item.LicensePlate" ng-click="getNoticeTransactions($index, item);toggle[$index] = !toggle[$index]"></td>
