@@ -414,6 +414,10 @@ a.menu_links {
     text-decoration: none;
 }
 
+.hasError {
+    color: red !important;
+}
+
 .popover {
     max-width: 600px;
 }
